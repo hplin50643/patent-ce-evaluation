@@ -1,0 +1,13 @@
+{
+  "stage": "similarity",
+  "status": "complete",
+  "input_sha256": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+  "settings_sha256": "54fa98698fe005117744daefde5af9cb1fc7e7df2fe0e25593e07e5c2c0ecd84",
+  "environment_sha256": "501b34d4f5d52859a8d75006838388946803eee5617d8a1fd2a71332a4a40fb6",
+  "completed_pairs": 224,
+  "total_pairs": 224,
+  "elapsed_seconds": 530.843,
+  "updated_at": "2026-10-19T12:50:37+00:00",
+  "output": "C:\\Users\\agent\\Project\\專利挑戰\\outputs\\patent_ce_evaluation_20261019_203847\\similarity_scores.json",
+  "output_sha256": "9c11e7a4d2aab31e43ab81d2c9a7796e71e3176006188661e49efff3c42eacd8"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "original_output_sha256": "9c11e7a4d2aab31e43ab81d2c9a7796e71e3176006188661e49efff3c42eacd8",
+  "first_run_elapsed_seconds": 530.843,
+  "resumed_pairs": 224,
+  "inference_calls_on_resume": 0,
+  "all_scores_identical": true,
+  "original_output_unchanged": true,
+  "self_reference_pairs_checked": 20,
+  "resume_test_elapsed_seconds": 12.187,
+  "verified_at": "2026-10-19T12:51:26+00:00"
+}

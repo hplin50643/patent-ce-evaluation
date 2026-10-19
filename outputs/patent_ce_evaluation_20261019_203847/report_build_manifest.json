@@ -1,0 +1,21 @@
+{
+  "report": "C:\\Users\\agent\\Project\\專利挑戰\\outputs\\patent_ce_evaluation_20261019_203847\\Patent_CE_五項指標評估與專家答案比較報告.docx",
+  "sha256": "58320447f03438a7ab60ed69167b0898a30ea26f76732e77dbf5ee501622d259",
+  "primary_methods": [
+    "bleu4",
+    "rouge1_f1",
+    "rougeL_f1",
+    "bertscore_f1",
+    "patclaimeval"
+  ],
+  "results_source": "results.json",
+  "figures": {
+    "accuracy": "C:\\Users\\agent\\Project\\專利挑戰\\outputs\\patent_ce_evaluation_20261019_203847\\figures\\test_accuracy_ci.png",
+    "confusion": "C:\\Users\\agent\\Project\\專利挑戰\\outputs\\patent_ce_evaluation_20261019_203847\\figures\\test_confusion_five_metrics.png",
+    "ties": "C:\\Users\\agent\\Project\\專利挑戰\\outputs\\patent_ce_evaluation_20261019_203847\\figures\\test_tie_predictions.png",
+    "length": "C:\\Users\\agent\\Project\\專利挑戰\\outputs\\patent_ce_evaluation_20261019_203847\\figures\\text_length_and_truncation.png"
+  },
+  "planned_pages": 19,
+  "cases": 8,
+  "render_required": true
+}

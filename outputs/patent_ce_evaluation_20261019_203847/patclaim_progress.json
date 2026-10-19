@@ -1,0 +1,30 @@
+{
+  "stage": "patclaim",
+  "status": "complete",
+  "input_sha256": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+  "total_pairs": 224,
+  "completed_pairs": 224,
+  "resumed_pairs": 0,
+  "started_at_utc": "2026-10-19T12:41:57.282258+00:00",
+  "updated_at_utc": "2026-10-19T13:17:12.031732+00:00",
+  "settings": {
+    "worker_version": "1.0.0",
+    "device": "cpu",
+    "threads": 4,
+    "seed": 42,
+    "max_length": 2048,
+    "sensitivity_max_length": 4096,
+    "score_all_pairs_at_both_lengths": true,
+    "padding": "max_length",
+    "truncation": true,
+    "preprocessing": "none; preserve raw input strings including whitespace",
+    "local_files_only": true,
+    "model_eval": true,
+    "inference_mode": true,
+    "deterministic_algorithms": true,
+    "dtype": "float32"
+  },
+  "elapsed_seconds": 2114.7287009700003,
+  "last_pair_id": "fd947f4f2d000cc40374addada98136b4d0f8accaf0ee84fa9cb0ea46b4a801f",
+  "output_sha256": "af464dfe6ec67337f89336322e3f03c37f60f83d986c60025ff7e25b86ce18ce"
+}

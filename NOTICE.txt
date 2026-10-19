@@ -1,0 +1,26 @@
+Patent-CE data attribution and provenance
+
+Original authors: Lekang Jiang, Pascal A. Scherz, and Stefan Goetz.
+Paper: Towards Better Evaluation for Generated Patent Claims, ACL 2025, pages3775-3788.
+DOI: https://doi.org/10.18653/v1/2025.acl-long.190
+Source: https://github.com/scylj1/PatClaimEval
+Pinned source commit: 8a9df74271be1330cf3b185c550e82513cf265f6
+
+The upstream README declares Creative Commons Attribution-NonCommercial4.0 International
+(CC BY-NC4.0) for its repository and dataset.
+License: https://creativecommons.org/licenses/by-nc/4.0/
+Legal code: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+The original dataset and upstream README are redistributed with their existing license.
+Exports and reports that reproduce original dataset text remain subject to the
+upstream CC BY-NC 4.0 attribution and noncommercial conditions for that material.
+No additional permissions for third-party materials or model weights are implied.
+
+Changes: Original JSON files are unchanged. This repository adds an independent evaluation,
+candidate-score exports, preference classification, grouped uncertainty analysis,
+Traditional Chinese reports, verification records and evaluation scripts.
+Candidate patent text is supplied by the upstream dataset; expert reasoning is not provided.
+
+BERTScore model: roberta-large, revision722cf37b1afa9454edce342e7895e588b6ff1d59.
+PatClaimEval model: lj408/PatClaimEval-Quality,
+revisionc959e676f7eb61e32b0f8d9c4cc7d72a4aeb94d5.
+Model weights are not included; consult their original model cards for terms and provenance.

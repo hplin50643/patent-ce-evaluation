@@ -1,0 +1,19 @@
+# Shared Windows/WSL CPU environment for both public research programs.
+# vLLM and EPO data-reconstruction dependencies are intentionally excluded.
+aiofiles>=24.1.0
+dspy>=3.0.3
+huggingface-hub>=0.26
+lxml>=6.0.2
+matplotlib>=3.10.0
+numpy>=2.0
+openai>=1.0
+pandas>=2.2
+pydantic>=2.11
+pyrootutils>=1.0.4
+regex>=2025.0
+rich>=14.0
+rouge-score>=0.1.2
+scikit-learn>=1.5
+torch>=2.5
+tqdm>=4.67
+transformers==4.57.1

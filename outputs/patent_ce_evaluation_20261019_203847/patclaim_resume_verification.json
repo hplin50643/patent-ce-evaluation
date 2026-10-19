@@ -1,0 +1,76 @@
+{
+  "stage": "patclaim_resume_verification",
+  "status": "passed",
+  "verified_at_utc": "2026-10-19T13:17:52.700857+00:00",
+  "mode": "Copied completed actual JSONL checkpoint into TemporaryDirectory; original output directory was never rerun",
+  "pair_count": 224,
+  "resumed_pairs": 224,
+  "newly_inferred_pairs": 0,
+  "resume_process_exit_code": 0,
+  "resume_process_elapsed_seconds": 14.16007615799981,
+  "resume_worker_elapsed_seconds": 13.291206160999991,
+  "original_worker_elapsed_seconds": 2114.7287009700003,
+  "checks": {
+    "completed_status": true,
+    "all_224_pairs_present": true,
+    "all_224_pairs_resumed": true,
+    "all_result_fields_identical": true,
+    "settings_identical": true,
+    "environment_identical": true,
+    "model_provenance_identical": true,
+    "input_sha256_identical": true,
+    "temporary_checkpoint_unchanged": true,
+    "no_new_pair_progress_events": true,
+    "all_original_stage_files_unchanged": true,
+    "original_elapsed_seconds_unchanged": true
+  },
+  "original_files_before": {
+    "patclaim_scores.json": {
+      "sha256": "af464dfe6ec67337f89336322e3f03c37f60f83d986c60025ff7e25b86ce18ce",
+      "bytes": 96479,
+      "mtime_ns": 1792415832023912700
+    },
+    "patclaim_checkpoint.jsonl": {
+      "sha256": "83d9e4cd025603846994343a3eb0fcbeda2444c4d5ece7e71b00f579f571a09c",
+      "bytes": 87547,
+      "mtime_ns": 1792415831914453300
+    },
+    "patclaim_progress.json": {
+      "sha256": "915c6ba2e3d835e77124a00241c4c177774446386a492d1a593b6d2b40d8e395",
+      "bytes": 1018,
+      "mtime_ns": 1792415832041554600
+    }
+  },
+  "original_files_after": {
+    "patclaim_scores.json": {
+      "sha256": "af464dfe6ec67337f89336322e3f03c37f60f83d986c60025ff7e25b86ce18ce",
+      "bytes": 96479,
+      "mtime_ns": 1792415832023912700
+    },
+    "patclaim_checkpoint.jsonl": {
+      "sha256": "83d9e4cd025603846994343a3eb0fcbeda2444c4d5ece7e71b00f579f571a09c",
+      "bytes": 87547,
+      "mtime_ns": 1792415831914453300
+    },
+    "patclaim_progress.json": {
+      "sha256": "915c6ba2e3d835e77124a00241c4c177774446386a492d1a593b6d2b40d8e395",
+      "bytes": 1018,
+      "mtime_ns": 1792415832041554600
+    }
+  },
+  "stdout_events": [
+    {
+      "stage": "patclaim",
+      "status": "loading",
+      "total_pairs": 224,
+      "resumed_pairs": 224
+    },
+    {
+      "stage": "patclaim",
+      "status": "complete",
+      "pairs": 224,
+      "output": "/tmp/patclaim_resume_verification_umm910nf/patclaim_scores.json"
+    }
+  ],
+  "stderr": ""
+}

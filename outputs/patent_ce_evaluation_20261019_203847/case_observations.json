@@ -1,0 +1,388 @@
+{
+  "test_0001": {
+    "observation": "A與參考逐字相同，兩者只有一項方法請求項。B把信心分數、門檻與紀錄程式決定保留在第1項，卻未保留呼叫／修改頻率經正規化產生各指標的完整鏈條；參考明定四項指標相加，B另提出至少一項、加權和及統計量等不同方案。B也新增程式產品與系統請求項，將是否移除紀錄程式移至第10項，未交代參考中的變更及錯誤歷史如何形成穩定度。這是技術限定與結構差異，不能只用篇幅解釋。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "identifying a normalization guideline"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "an addition of said use frequency indicator"
+      },
+      {
+        "field": "B",
+        "quote": "based on at least one of:"
+      },
+      {
+        "field": "B",
+        "quote": "based on a weighted sum of:"
+      },
+      {
+        "field": "B",
+        "quote": "A computer program product"
+      }
+    ],
+    "interpretation_limit": "原文相同、指標鏈條省略及新增類別是可觀察事實；這些差異是否導致專家偏好A僅為假設，資料沒有逐筆專家評語，也未檢驗新增方案的原始說明書支持。"
+  },
+  "test_0002": {
+    "observation": "A與參考六項請求項逐字相同。B仍描述半導體層、網狀基底與量子井，但將摻雜層形成於第一半導體層上的位置條件移至第2項，另加上電子阻擋層及製造方法。參考明列鎂摻雜、第二發光功能層，以及第二發光功能層和量子井的中心發光波長不同，B沒有保留這些條件。B還把基底寫為摻有p型摻雜物的氮化鋁層，與參考允許氮化鋁或氮化鋁鎵的組成列法不同，並非單純重排文字。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "said dopant of said doped layer is Mg"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "a center emission wavelength different from that of said quantum well layer"
+      },
+      {
+        "field": "B",
+        "quote": "the base layer is an AlN layer doped with a p-type dopant"
+      },
+      {
+        "field": "B",
+        "quote": "an electron blocking layer"
+      },
+      {
+        "field": "B",
+        "quote": "A method for manufacturing a semiconductor light-emitting element"
+      }
+    ],
+    "interpretation_limit": "所列為完整文字中的保留、省略與新增內容；沒有將新增細節直接判定為錯誤，也不能由A等同參考推定所有不同表述均較差，人工偏好理由並未公開。"
+  },
+  "test_0004": {
+    "observation": "人工標籤為平手，A、B皆保留DHCP後取得設定檔及窄／寬頻註冊的流程。A將請求、回應與下載列成主動步驟，B則用長篇前置條件引入，並額外要求兩份檔案使用相同識別碼、儲存服務品質參數及檔案有效期間。兩者第11項皆寫第一設定檔的時間長度值，而參考要求第二設定檔具有型別、長度、數值三欄位的TLV。可見平手樣本也可能同時含有共同遺漏、不同新增內容及顯著句法差異。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "each TLV consists of three fields indicating a type, a length and a value"
+      },
+      {
+        "field": "A",
+        "quote": "a time length value"
+      },
+      {
+        "field": "B",
+        "quote": "the same unique identifier as the first DOCSIS configuration file"
+      },
+      {
+        "field": "B",
+        "quote": "quality of service, QoS, parameters"
+      },
+      {
+        "field": "B",
+        "quote": "a duration for which the DOCSIS configuration file is valid"
+      }
+    ],
+    "interpretation_limit": "平手僅是資料所載的整體品質比較，不代表兩候選的技術限定完全等價；新增內容是否受到說明書支持，以及專家如何權衡這些差異，均無資料可直接確認。"
+  },
+  "test_0005": {
+    "observation": "A與參考四項請求項逐字相同。B雖保留兩份DOCSIS檔案分別註冊窄頻與寬頻服務，卻沒有參考對第二檔案TLV三欄位、以DHCP中繼資訊選項宣告寬頻能力、再經初始TFTP取得檔案的完整條件。B另外展開CMTS插入IP位址、儲存配置表與電腦可讀媒體等內容，第11項又把第一設定檔描述為含時間長度值。其差異涉及參數意義、檔案歸屬與取得流程，不只是把四項改寫成十四項。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "type-length-value, TLV"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "an initial trivial file transfer protocol, TFTP, exchange"
+      },
+      {
+        "field": "B",
+        "quote": "inserting, by the CMTS, an IP address for the CMTS into the request"
+      },
+      {
+        "field": "B",
+        "quote": "the first DOCSIS configuration file downloaded by the requesting device comprises a time length value"
+      }
+    ],
+    "interpretation_limit": "A與參考完全一致且專家偏好A是兩項可核對事實；不能反推上述任一差異就是專家判斷的唯一原因，亦未檢驗新增網路流程在原始專利說明書中的依據。"
+  },
+  "test_0010": {
+    "observation": "A、B都保留依序分離水、燃料油與潤滑油的三階段加熱。A列出三組溫度範圍、約1.05 psi壓力及第四階段降黏，另擴寫成二十項方法與系統；B將溫度併入第2項，以五項呈現並新增占地一百平方英尺的條件。參考把第一階段上限連到燃料油的臨界汽化溫度，A卻在第1項連到潤滑油，B則未列此關係。兩者各有不同保留與變動，平手不能被解讀為內容完全相同或同樣充分。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "below the critical vaporization temperature of the fuel oil"
+      },
+      {
+        "field": "A",
+        "quote": "below the critical vaporization temperature of the lubrication oil"
+      },
+      {
+        "field": "A",
+        "quote": "about 1.05 pounds per square inch (psi)"
+      },
+      {
+        "field": "A",
+        "quote": "further comprising viscbreaking the lubrication oil"
+      },
+      {
+        "field": "B",
+        "quote": "within a surface area of 100 square feet"
+      }
+    ],
+    "interpretation_limit": "臨界汽化溫度所指物質與新增占地條件屬文字事實；是否構成技術錯誤需額外工程資料。人工平手標籤未附理由，參考原文自身也有第6項句子中斷等資料品質問題。"
+  },
+  "test_0013": {
+    "observation": "人工標為平手。A把參考獨立項的第一、第二顯示區域拆到第3、4項，但第4項只依附第1項，卻提到第3項才出現的第一區域；因此可直接觀察到用語引入與依附位置不同。B未保留雙區域配置，另加車速、引擎轉速、自動駕駛持續時間，以及衛星定位、感測器等連接。兩者都描述自動駕駛時在行動裝置顯示車況，卻以不同方式重組顯示條件，不能由主題相近推定結構一致。",
+    "evidence": [
+      {
+        "field": "A",
+        "quote": "3. The method according to claim 1, wherein a first area"
+      },
+      {
+        "field": "A",
+        "quote": "4. The method according to claim 1, wherein data is displayed on a second area"
+      },
+      {
+        "field": "A",
+        "quote": "different from the first area"
+      },
+      {
+        "field": "B",
+        "quote": "a current speed of the motor vehicle, an engine speed"
+      },
+      {
+        "field": "B",
+        "quote": "a satellite-based positioning system"
+      }
+    ],
+    "interpretation_limit": "依附項號及術語出現位置可由文字核對；是否因此不明確或影響法律範圍屬進一步判斷，這裡不作結論，也不將其冒充專家給予平手的實際理由。"
+  },
+  "test_0026": {
+    "observation": "兩者均描述矩形框架、掛鉤、推架及倒立擺盪。A新增推架橫桿與多項肌肉記憶、肩部訓練等效果描述；第11項說教練配合踢腿步驟，第10項卻寫擺動而非踢腿。B把泡棉、橡膠及上下護墊併入第1項，以四項重組參考十八項內容，但未保留教練同步推架、固定下橫桿及反向握持等步驟。兩候選的材料、結構與訓練步驟分布不同，人工平手並不表示它們只有長短差異。",
+    "evidence": [
+      {
+        "field": "A",
+        "quote": "a pushing crossbar spanning the distance between"
+      },
+      {
+        "field": "A",
+        "quote": "swinging the athlete's legs and torso upwards"
+      },
+      {
+        "field": "A",
+        "quote": "simultaneously with the athlete performing the kicking step"
+      },
+      {
+        "field": "A",
+        "quote": "retain muscle memory"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "securing the lower push bracket against a lower horizontal bar"
+      }
+    ],
+    "interpretation_limit": "比較已閱讀完整三段文字；條件是否實質等價及訓練效果是否成立均未驗證。本列屬PatClaimEval 2048輸入超長案例，完整文本的觀察不等於該模型實際看過全部內容。"
+  },
+  "test_0028": {
+    "observation": "A、B都把參考的罐體改稱容器，以感測器、洩壓閥與處理器為獨立項主體；B主要多了102至110部件編號，並有若干連接詞及措辭差異。兩者均未在第1項保留參考的負壓源、組織端導管及定時開閥條件，且末項只描述來源導管阻塞，參考則列出來源導管、罐體與組織端導管的流體路徑。這對候選的可見差異較偏向表達與編號，並具有共同省略，不能把人工平手當作無差異。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "open the valve (18) for a selected amount of time"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "the source conduit (24), the canister (17), and the target conduit (21)"
+      },
+      {
+        "field": "A",
+        "quote": "the presence of any blockages within the source conduit"
+      },
+      {
+        "field": "B",
+        "quote": "a container (102)"
+      },
+      {
+        "field": "B",
+        "quote": "whether a blockage exists within the source conduit"
+      }
+    ],
+    "interpretation_limit": "此比較關係亦出現在訓練集，不能將其測試表現直接解讀為未見比較的泛化能力；訓練重疊本身也不足以證明模型記憶，平手的專家權衡理由並未提供。"
+  },
+  "test_0039": {
+    "observation": "A、B的主要流程接近：A把DHCP請求、回應及下載寫成連續動作，B用先完成下載的前置條件引出CMTS收檔，並加入程序編號。第10項也有差異：A寫窄頻、寬頻的分開模組，B則沿用兩種CMTS的列法。兩者第11項均提第一設定檔的時間長度值，未重現參考第二設定檔含三欄位TLV的限定。此平手案例同時包含表面編號差異與系統結構用語變動，不宜只歸類為同義改寫。",
+    "evidence": [
+      {
+        "field": "A",
+        "quote": "separate modules for narrowband and wideband services"
+      },
+      {
+        "field": "B",
+        "quote": "the CMTS includes a narrowband CMTS and a wideband CMTS"
+      },
+      {
+        "field": "B",
+        "quote": "receiving (730) by the CMTS"
+      },
+      {
+        "field": "A",
+        "quote": "a time length value"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "type-length-value, TLV"
+      }
+    ],
+    "interpretation_limit": "部件編號、動作重排及模組／設備用語差異可直接觀察，是否影響保護範圍未作法律判斷。此列與訓練比較重複，不能把模型判對視為獨立的新比較證據。"
+  },
+  "test_0061": {
+    "observation": "人工偏好B。A第1項以前置DHCP請求接到窄／寬頻註冊，B還明寫DHCP回應中的IP、下載位址及TFTP下載，並以第4項敘述CMTS控制IP範圍。A的裝置項僅寫執行方法的手段，B則明列處理器與指令。這些是程序連接及裝置描述的具體差異；不過兩者仍未重現參考對第二設定檔TLV三欄位的要求，且都另寫第一設定檔的時間長度值，因此B受偏好不等於B與參考完全相同。",
+    "evidence": [
+      {
+        "field": "B",
+        "quote": "the requesting device having downloaded the DOCSIS configuration file by trivial file transfer protocol"
+      },
+      {
+        "field": "B",
+        "quote": "at least partially controls a range of IP address values"
+      },
+      {
+        "field": "A",
+        "quote": "An apparatus comprising: means for carrying out the method"
+      },
+      {
+        "field": "B",
+        "quote": "one or more processors and instructions"
+      },
+      {
+        "field": "A",
+        "quote": "a time length value"
+      }
+    ],
+    "interpretation_limit": "這些差異可能有助於理解比較，但不是資料公開的專家理由；尤其不能由處理器文字較明確就推定法律上必然較佳。本列亦屬與訓練集重複的比較。"
+  },
+  "test_0119": {
+    "observation": "本列A與第26列相同，包含多項訓練效果及重複的肌肉記憶敘述。B則明列直臂懸掛、踢腿到倒立、回落與重複，並保留把下推架固定於下橫桿及兩手反向握持的內容，這些在參考中都有對應。B仍未完整保留參考的乙烯基橡膠膠帶材料及推架回復垂直的明確步驟。可觀察到B較集中於結構與操作動作，而非大量效果敘述；此觀察可供解讀人工偏好B，但不能當作已知的評分原因。",
+    "evidence": [
+      {
+        "field": "A",
+        "quote": "retain muscle memory"
+      },
+      {
+        "field": "B",
+        "quote": "straight-armed in an upright vertical position"
+      },
+      {
+        "field": "B",
+        "quote": "securing the lower push bracket against a lower horizontal bar"
+      },
+      {
+        "field": "B",
+        "quote": "one hand is facing the front side"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "returning the swing-up rack to the generally vertical orientation"
+      }
+    ],
+    "interpretation_limit": "完整文本中保留或省略的步驟可直接核對，『較集中於操作』為文本組織上的歸納。人工偏好B的理由未提供；本列2048輸入超長，後段差異未必全部進入模型。"
+  },
+  "test_0167": {
+    "observation": "A、B都保留接合部升至第一溫度後，清潔氣體由第一流量逐降至第二流量的核心。A還以清潔方法、裝置及半導體製造方法三類請求項重述流程，保留先成膜再清潔；B主要列清潔方法，加入氟氣／一氧化氮混合比例、溫度梯度與氣體偵測差值計算。A也新增PID控制及控制模型不完美造成波動等文字，並非逐字複製參考。兩者差異涉及流程前提、請求項類別及新增控制細節，不能只由長度判斷。",
+    "evidence": [
+      {
+        "field": "A",
+        "quote": "after that, supplying a cleaning gas"
+      },
+      {
+        "field": "A",
+        "quote": "19. A method of manufacturing a semiconductor device"
+      },
+      {
+        "field": "A",
+        "quote": "a PID controller"
+      },
+      {
+        "field": "B",
+        "quote": "the cleaning gas is a mixture of F2 gas and NO gas"
+      },
+      {
+        "field": "B",
+        "quote": "a difference between detection values of detectors"
+      }
+    ],
+    "interpretation_limit": "人工偏好A，但未提供具體理由；新增控制或氣體細節是否有原始依據尚未驗證。分析閱讀完整文字，而2048模型會截斷本列部分輸入，不能假定後段製造方法已被模型完整處理。"
+  },
+  "test_0007": {
+    "observation": "A、B第1項都保留三層結構、應力及隨機網狀基底。A把鎂對應至摻雜層，與參考位置一致；B末項卻把鎂或其他p型摻雜物用於基底，並增加第二發光層位於第二半導體層側的方案。A另寫溝槽與量子井隨表面起伏，也新增藍寶石基板及電子阻擋層，因此不能直接視為參考原文。四項通用指標偏好B，專家與PatClaimEval偏好A，呈現文字重疊與整體比較標籤的分歧。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "said dopant of said doped layer is Mg"
+      },
+      {
+        "field": "A",
+        "quote": "the p-type dopant is magnesium (Mg)"
+      },
+      {
+        "field": "B",
+        "quote": "the base layer is doped with Mg or other p-type dopants"
+      },
+      {
+        "field": "B",
+        "quote": "on the second semiconductor layer side"
+      },
+      {
+        "field": "A",
+        "quote": "a mounting substrate comprising sapphire"
+      }
+    ],
+    "interpretation_limit": "摻雜位置及新增結構可直接核對；這些差異是否促成專家選A僅為解讀假設，人工評語未公開，也不能因PatClaimEval判對就認定它辨識了上述技術差異。"
+  },
+  "test_0027": {
+    "observation": "兩候選均保留端子、端子保持件、感測器端面直接抵接及壓肋等結構。B只略改參考的一處贅詞，幾乎照抄其餘文字，也保留被容納動詞形態及直接抵接詞性搭配不順之處；A則改用較完整的動詞與形容詞搭配，另將第3至5項改為多重依附。B因此取得接近滿分的重疊與語意分數，卻與人工偏好A相反；這個案例同時涉及參考自身文句瑕疵及依附結構變更，不能只看主題是否一致。",
+    "evidence": [
+      {
+        "field": "B",
+        "quote": "configured to be contain and held"
+      },
+      {
+        "field": "B",
+        "quote": "is brought into directly abutment"
+      },
+      {
+        "field": "A",
+        "quote": "configured to be contained and held"
+      },
+      {
+        "field": "A",
+        "quote": "is brought into direct abutment"
+      },
+      {
+        "field": "A",
+        "quote": "The connector of any one of claims 1 to 4"
+      }
+    ],
+    "interpretation_limit": "動詞形態、詞性及依附項號差異是文字觀察；不能確知專家是否因文法修訂而選A，也不判定多重依附法律上較佳。BERTScore高分表示相似，不等同人工品質正確。"
+  },
+  "test_0168": {
+    "observation": "兩者均以無線訊號分區、主人裝置位置與訪客通知為主軸。A把主人離區時的提醒移至第10項，並散列離開訊息、狀態更新及建議訊息；B另增分區分析模組、方法及電腦媒體請求項，卻未明列離區後提示主人選擇訊息。兩者也都未完整寫出參考在訪客入區時，再提醒離區主人的雙向通知流程。人工仍標平手，而PatClaimEval明顯偏好B；較大分數差在此並未轉成正確的平手辨識。",
+    "evidence": [
+      {
+        "field": "gold_claim",
+        "quote": "prompt the zone owner to select an away message"
+      },
+      {
+        "field": "gold_claim",
+        "quote": "sending an alert to the first device to notify the zone owner that the second device entered"
+      },
+      {
+        "field": "A",
+        "quote": "in response to the zone owner leaving the assigned zone"
+      },
+      {
+        "field": "B",
+        "quote": "a location analysis unit configured to provide zone-based away messages"
+      },
+      {
+        "field": "B",
+        "quote": "A method for managing location-based notifications"
+      }
+    ],
+    "interpretation_limit": "列出的是完整文本中的流程及請求項組織差異；尚不能由分數差推定模型信心或錯誤原因，亦不能把人工平手解讀為兩套通知邏輯完全等價。"
+  }
+}

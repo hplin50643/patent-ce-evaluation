@@ -1,0 +1,51 @@
+{
+  "bertscore": {
+    "repository": "roberta-large",
+    "revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+    "files": {
+      "config.json": {
+        "bytes": 482,
+        "sha256": "82ba49810e6441735e696033ac2512ee09da555507b2917ac3865b202d592cc3"
+      },
+      "merges.txt": {
+        "bytes": 456318,
+        "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5"
+      },
+      "model.safetensors": {
+        "bytes": 1421700479,
+        "sha256": "047c85f0b96269cd62e6f732644f067004eebd95af5b5d35965ae2528f13bf38"
+      },
+      "tokenizer.json": {
+        "bytes": 1355863,
+        "sha256": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e"
+      },
+      "tokenizer_config.json": {
+        "bytes": 25,
+        "sha256": "994f46754c5bf4014f1aa92d34b1374319c3a6b3f702105cd5b742beaecd18ce"
+      },
+      "vocab.json": {
+        "bytes": 898823,
+        "sha256": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655"
+      }
+    }
+  },
+  "patclaimeval": {
+    "repository": "lj408/PatClaimEval-Quality",
+    "revision": "c959e676f7eb61e32b0f8d9c4cc7d72a4aeb94d5",
+    "model_dir": "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/PatClaimEval-Quality",
+    "weights_bytes": 594673468,
+    "file_hashes": {
+      ".gitattributes": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+      "README.md": "0e5b26f4eae1ed03c2bbbe73d8341191a15be8e71c7a266f311e6262483076d6",
+      "SOURCE_REVISION.txt": "34948421e0e32242b24d7161c883ad504e76180605feb5189c6f642fc2b0c398",
+      "config.json": "8aeb826892c29a9b211d53920db5abe5d6baed14b1f6046e80c8ba657a53463d",
+      "merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "model.safetensors": "90fe3d9634fa8ac8b91e3f4c27a0479110c10c99046278701418955aace1ae49",
+      "modeling_contrastive.py": "b1d2385ca371fc77908732cef39eb30411f14930d874c832121df3b48488dd12",
+      "special_tokens_map.json": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f",
+      "tokenizer.json": "727009a8214ddfa5af1deedf1006d4d06e8e51e54aa5f03566263d4e19bfcdce",
+      "tokenizer_config.json": "18ef73773003fd10846845fa3adc26ce0bc0880de148effa2e684cd80061a0c8",
+      "vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e"
+    }
+  }
+}

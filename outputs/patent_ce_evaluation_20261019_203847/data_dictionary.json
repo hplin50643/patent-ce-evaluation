@@ -1,0 +1,52 @@
+{
+  "encoding": "CSV 為 UTF-8 BOM，標準引號及多行欄位；勿逐文字行計算紀錄筆數",
+  "scores_csv_rows": 1228,
+  "predictions_csv_rows": 7368,
+  "base_fields": {
+    "record_id": "固定切分及一基列號，例如 test_0026",
+    "split": "train 或 test，統計分開呈現",
+    "row_number": "在原始 JSON 陣列的一基列號",
+    "gold_id": "原始 gold_claim UTF-8 字串 SHA-256，作為分群重抽樣單位",
+    "human_label": "專家答案：1=A較佳，0=平手，-1=B較佳",
+    "gold_claim": "未自行正規化的完整參考文字",
+    "A": "未自行正規化的完整候選A",
+    "B": "未自行正規化的完整候選B",
+    "pair_a_id": "原始 gold/A 配對識別碼",
+    "pair_b_id": "原始 gold/B 配對識別碼",
+    "duplicate_full_row": "此列是否為同一切分中完全相同紀錄的第二次或之後出現",
+    "overlap_train_comparison": "測試列是否與訓練比較重複，A/B交換亦納入檢查",
+    "contains_gold_copy": "任一候選是否逐字等於 gold_claim",
+    "bertscore_truncated": "gold/A/B 任一文本超過標準512 tokens",
+    "patclaim_truncated": "任一 gold/candidate 配對超過官方2048 tokens"
+  },
+  "token_field_patterns": {
+    "bertscore_*_tokens": "包含特殊token的未截斷單一文本token數",
+    "bertscore_*_truncated": "對應文本是否超過512 tokens",
+    "patclaim_*_tokens": "包含特殊token的未截斷 gold/candidate 合併配對token數",
+    "patclaim_*_truncated": "對應配對是否超過2048 tokens"
+  },
+  "methods": {
+    "bleu4": "BLEU-4",
+    "rouge1_f1": "ROUGE-1 F1",
+    "rougeL_f1": "ROUGE-L F1",
+    "bertscore_f1": "BERTScore F1",
+    "patclaimeval": "PatClaimEval 2048",
+    "patclaimeval_4096": "PatClaimEval 4096"
+  },
+  "primary_methods": [
+    "bleu4",
+    "rouge1_f1",
+    "rougeL_f1",
+    "bertscore_f1",
+    "patclaimeval"
+  ],
+  "method_column_suffixes": {
+    "score_a": "相同方法下的 score(gold,A)，不是正確機率",
+    "score_b": "相同方法下的 score(gold,B)，不是正確機率",
+    "delta": "未四捨五入的 score_a - score_b",
+    "prediction": "abs(delta)<0.0001為0，否則依正負為1或-1",
+    "correct": "prediction 是否等於 human_label"
+  },
+  "confusion_matrix": "固定標籤順序[-1,0,1]；列為專家答案，欄為模型預測",
+  "ci": "依gold文字群組重抽樣的百分位95%信賴區間，非獨立逐列抽樣"
+}

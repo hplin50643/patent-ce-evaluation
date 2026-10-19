@@ -1,0 +1,67 @@
+{
+  "dataset": "Patent-CE",
+  "repository": "https://github.com/scylj1/PatClaimEval",
+  "commit": "8a9df74271be1330cf3b185c550e82513cf265f6",
+  "retrieved_at_utc": "2026-10-19T11:51:57.4753229+00:00",
+  "license": "CC BY-NC 4.0",
+  "paper": "https://aclanthology.org/2025.acl-long.190/",
+  "downloads": [
+    {
+      "file": "quality_train.json",
+      "source_url": "https://raw.githubusercontent.com/scylj1/PatClaimEval/8a9df74271be1330cf3b185c550e82513cf265f6/data/quality_train.json",
+      "bytes": 9307260,
+      "sha256": "20c3e88862b0a8cd3ce6e48607f9887a29c4502d4e87633b41095be194bdca48",
+      "rows": 1044
+    },
+    {
+      "file": "quality_test.json",
+      "source_url": "https://raw.githubusercontent.com/scylj1/PatClaimEval/8a9df74271be1330cf3b185c550e82513cf265f6/data/quality_test.json",
+      "bytes": 1646121,
+      "sha256": "10e68f47f2f4329f92c6d60936d23f4eaab6b852150b8fa1b039d8d348868039",
+      "rows": 184
+    },
+    {
+      "file": "UPSTREAM_README.md",
+      "source_url": "https://raw.githubusercontent.com/scylj1/PatClaimEval/8a9df74271be1330cf3b185c550e82513cf265f6/README.md",
+      "bytes": 1418,
+      "sha256": "f48eac0d68e75e29d73cbf37112c852dda1c155893fb97f25b6aa606b98f89d7",
+      "rows": null
+    }
+  ],
+  "statistics": [
+    {
+      "file": "quality_train.json",
+      "rows": 1044,
+      "quality_label_counts": {
+        "-1": 356,
+        "0": 333,
+        "1": 355
+      }
+    },
+    {
+      "file": "quality_test.json",
+      "rows": 184,
+      "quality_label_counts": {
+        "-1": 68,
+        "0": 49,
+        "1": 67
+      }
+    }
+  ],
+  "label_interpretation": {
+    "basis": "Paper section 4.2, equation (3); first and second candidate order mapped to JSON A and B",
+    "paper_url": "https://arxiv.org/html/2505.11095v1#S4.SS2",
+    "1": "Candidate A is better than candidate B",
+    "0": "Candidates A and B have equal quality",
+    "-1": "Candidate B is better than candidate A"
+  },
+  "example": {
+    "file": "example_train_0789.json",
+    "source_file": "quality_train.json",
+    "zero_based_array_index": 788,
+    "one_based_row_number": 789,
+    "quality": -1,
+    "preferred_candidate": "B",
+    "note": "Extracted original record; no field values changed. Expert reasoning is not provided in this record."
+  }
+}

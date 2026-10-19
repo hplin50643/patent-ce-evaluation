@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "verified_at_taipei": "2026-10-19T21:24:59+08:00",
+  "raw_records": 1228,
+  "unique_pairs": 224,
+  "independently_verified_preference_decisions": 7368,
+  "cohorts_verified": 9,
+  "methods_verified": 6,
+  "raw_text_exact_match": true,
+  "source_hashes_unchanged": true,
+  "tall_wide_agreement": true,
+  "confusion_accuracy_macro_weighted_f1_recomputed": true,
+  "artifact_hashes": {
+    "scores.csv": "f8edabd2f704a19336ee2c8499306306f96e3df3429a77543fdfc8de3c89d7dc",
+    "predictions.csv": "8012b95f1489d0cb59e12568ec9e8dfb72b2298ab50ee458a186a31edfdbf06b",
+    "summary.csv": "c0ff56368175441d79a8d9542a3d3848acd855b06a8cb37cfc64845fb36d4f46",
+    "pairs.json": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+    "similarity_scores.json": "9c11e7a4d2aab31e43ab81d2c9a7796e71e3176006188661e49efff3c42eacd8",
+    "patclaim_scores.json": "af464dfe6ec67337f89336322e3f03c37f60f83d986c60025ff7e25b86ce18ce"
+  }
+}

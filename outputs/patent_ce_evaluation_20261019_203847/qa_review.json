@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "reviewed_at_taipei": "2026-10-19T21:26:36+08:00",
+  "pages": 19,
+  "pdf_sha256": "69bb1c5764b6f883c1252ba4af3d0a7aaf4f9a1ebac3c3eeb0665524fb9763f3",
+  "docx_sha256": "58320447f03438a7ab60ed69167b0898a30ea26f76732e77dbf5ee501622d259",
+  "reviewers": {
+    "root": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "document_reviewer": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "independent_case_reviewer": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "review_method": "Every page inspected from original-resolution PNGs; unchanged reviewed pages bound by exact SHA-256 PNG equality after final legend correction",
+  "checks": {
+    "all_pages_present": true,
+    "no_missing_glyphs": true,
+    "all_four_charts_fully_visible": true,
+    "no_overlapping_labels": true,
+    "no_table_clipping": true,
+    "eight_complete_cases": true,
+    "no_orphan_continuation_pages": true,
+    "reproduction_commands_readable": true,
+    "no_internal_placeholders": true,
+    "numerical_verification_passed": true,
+    "unit_tests_passed": 18,
+    "both_actual_checkpoint_resume_checks_passed": true
+  },
+  "page_sha256": {
+    "1": "2e0b0488ed40aa71c6ba69a833b991b78c80e50704b9ee2839f4b64605695c15",
+    "2": "cfb940f2f2440eac054790d3dfe387e9259488af51daebfe59eb4c3be3d32a65",
+    "3": "fbdc5bc77c53af878e16cb807ed88dd5bac37b22de27d8a40ffcb3b3b70a6fe3",
+    "4": "ed539a61d9c4b64b10de34ef2d6e59c8776f5b8390ad3b8a55fb4b14ea142a3e",
+    "5": "6c282c4b0ad971dd49d51f37febd6cfb270971c85d26a939876b6917bc9a4340",
+    "6": "b5754b9ce6525f97bb57d7bb8f430f593418d8bb3cddf48ee8adcce368507ec3",
+    "7": "b8203b879635411592496967f251c3d7ba7766306ce480004332b20a6ec321ce",
+    "8": "5c8387dcf0582a0a013d81a316549e1a14db2293714c238305baf744caf92adf",
+    "9": "b79e3e8c9e67147884d02185c0be2d127913a2a8d4eb791eb2255708c6079d86",
+    "10": "5a95280782b2fa649ace26f67e1e347fb5ded09cd72ac049ec45279303cbfdc4",
+    "11": "d95d568c1199a7ad341fd6a8d72733759a06a79ccc4643efe43c0869e7b7bdc3",
+    "12": "753fc1a4e05e4868fb63b1f242b0c967c9a6573b52e93e58487d0c810cf68fa3",
+    "13": "28f07deaf98bec37d833c1e3aa69faf1b2e851231f1833066ad334f6c3f88b65",
+    "14": "245d42ce17b810b12c97a8a851e2d352063fa8e1ce04805a83b27cd57ed132dc",
+    "15": "e3a22a77d460bdf0f76782b2827e1bb1c45d101bfa94311b83789e92879a4711",
+    "16": "be76b6e0b61a125707ce4a8a5f7af62a322926de97dd39c4e26162e08836fc8b",
+    "17": "ec67b3b6f859ad1f5b28c9664085414a42377e3d9d45f00dacd2321007f05cc9",
+    "18": "fa164b24b40bcb53fb1c7954c80e77d9773d6dd07e983deef1a287dcbe8e016b",
+    "19": "41b301dd63f7da114630cba4d451787f75adfaab0426f3b01cb7cb865507fee1"
+  }
+}

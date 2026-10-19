@@ -1,0 +1,2327 @@
+{
+  "stage": "similarity",
+  "status": "complete",
+  "input_sha256": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+  "settings_sha256": "54fa98698fe005117744daefde5af9cb1fc7e7df2fe0e25593e07e5c2c0ecd84",
+  "environment_sha256": "501b34d4f5d52859a8d75006838388946803eee5617d8a1fd2a71332a4a40fb6",
+  "settings": {
+    "device": "cpu",
+    "seed": 42,
+    "threads": 4,
+    "batch_size": 4,
+    "offline": true,
+    "normalization": "No custom normalization; raw strings passed to metrics",
+    "bleu4": {
+      "max_order": 4,
+      "smooth": false,
+      "tokenizer": "Tokenizer13a",
+      "aggregation": "individual pair"
+    },
+    "rouge": {
+      "types": [
+        "rouge1",
+        "rougeL"
+      ],
+      "use_stemmer": false,
+      "use_aggregator": false,
+      "value": "fmeasure"
+    },
+    "bertscore": {
+      "lang": "en",
+      "model_type": "roberta-large",
+      "model_revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+      "num_layers": 17,
+      "idf": false,
+      "rescale_with_baseline": false,
+      "use_fast_tokenizer": false,
+      "value": "f1",
+      "max_length_including_special_tokens": 512,
+      "truncation_side": "right",
+      "text_strip": "BERTScore library internal strip only"
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "python_executable": "C:\\Users\\agent\\Project\\專利挑戰\\LLM4DPCG\\.venv\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "versions": {
+      "torch": "2.10.0+cpu",
+      "numpy": "2.2.6",
+      "evaluate": "0.4.6",
+      "bert-score": "0.3.13",
+      "transformers": "4.57.6",
+      "rouge-score": "0.1.2",
+      "datasets": "5.0.1"
+    },
+    "bert_score_internal_version": "0.3.12",
+    "metric_sources": {
+      "bleu": {
+        "path": "C:\\Users\\agent\\Project\\專利挑戰\\LLM4DPCG\\.cache\\huggingface\\modules\\evaluate_modules\\metrics\\evaluate-metric--bleu\\9e0985c1200e367cce45605ce0ecb5ede079894e0f24f54613fca08eeb8aff76\\bleu.py",
+        "sha256": "41aebd59ddb0306117c049edf6a2f71b978cf0c5cce1da63f0e1551987f34315"
+      },
+      "rouge": {
+        "path": "C:\\Users\\agent\\Project\\專利挑戰\\LLM4DPCG\\.cache\\huggingface\\modules\\evaluate_modules\\metrics\\evaluate-metric--rouge\\6e5315f72865c2eaa764c8361360bb938740b9c120a2cf3a7ad218aa0ce452ed\\rouge.py",
+        "sha256": "805b71b855be6dc270ce2366639a4e264c2a1fb93a2c8a50f9fb9ef5a2b9c21a"
+      },
+      "bertscore": {
+        "path": "C:\\Users\\agent\\Project\\專利挑戰\\LLM4DPCG\\.cache\\huggingface\\modules\\evaluate_modules\\metrics\\evaluate-metric--bertscore\\cf4907b18f8f741f202232c0f8009a3bd49ff98802c245abcb6ea51a37a8c05b\\bertscore.py",
+        "sha256": "5909d8cd1a6fdc9ec554fb4ff8afad0564961d37f5adc7df3fc8e664f1e5f296"
+      }
+    },
+    "bert_score_utils": {
+      "path": "C:\\Users\\agent\\Project\\專利挑戰\\LLM4DPCG\\.venv\\Lib\\site-packages\\bert_score\\utils.py",
+      "sha256": "e6126c5697aaa8f075fd30cdf907c38f8892668d20c086d5cd56995216438798"
+    },
+    "worker": {
+      "path": "C:\\Users\\agent\\Project\\專利挑戰\\public-programs\\verification\\patent_ce\\similarity_worker.py",
+      "sha256": "0e345771097575ff21fe817c5c8d2e6d2e36958869c3043e8f94766c4fb70aba"
+    }
+  },
+  "bertscore_hashcode": "roberta-large_L17_no-idf_version=0.3.12(hug_trans=4.57.6)",
+  "model_revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+  "input_path": "C:\\Users\\agent\\Project\\專利挑戰\\outputs\\patent_ce_evaluation_20261019_203847\\pairs.json",
+  "completed_at": "2026-10-19T12:50:37+00:00",
+  "elapsed_seconds": 530.843,
+  "scores": {
+    "d2d7b7b9e4291ab3abdc45976c388455ba31c4c0c9146c22cb150fb101547229": {
+      "bleu4": 0.570278902240044,
+      "rouge1_f1": 0.8023809523809523,
+      "rougeL_f1": 0.7071428571428572,
+      "bertscore_f1": 0.9286277294158936,
+      "gold_tokens": 473,
+      "candidate_tokens": 493,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "b7cdb982dd348c4ad5a43cfdc495233ee76c9c10f4f4b9db10ff0962c523d3e3": {
+      "bleu4": 0.244182522927998,
+      "rouge1_f1": 0.5502318392581144,
+      "rougeL_f1": 0.3833075734157651,
+      "bertscore_f1": 0.90565025806427,
+      "gold_tokens": 473,
+      "candidate_tokens": 1011,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "4d4962bcf5a8508bfd68a24401540491582e901ead404e43938f1bdd4031098e": {
+      "bleu4": 0.5256605089429152,
+      "rouge1_f1": 0.8286852589641436,
+      "rougeL_f1": 0.7144754316069057,
+      "bertscore_f1": 0.9277573823928833,
+      "gold_tokens": 473,
+      "candidate_tokens": 381,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "a56fb24cd026eae446e94d0cf0042451caabe09e2756476bda91c88c9a6d1a76": {
+      "bleu4": 0.40840787741686096,
+      "rouge1_f1": 0.7343358395989974,
+      "rougeL_f1": 0.4586466165413534,
+      "bertscore_f1": 0.9077306389808655,
+      "gold_tokens": 473,
+      "candidate_tokens": 469,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "0940802de6f63be5bc7c57270524562d9424de88538a6aad24c84c601b7f3d58": {
+      "bleu4": 0.3660803120528401,
+      "rouge1_f1": 0.6848319709355132,
+      "rougeL_f1": 0.5267938237965486,
+      "bertscore_f1": 0.9236271381378174,
+      "gold_tokens": 473,
+      "candidate_tokens": 808,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "6cdd60b4479a87c26edd8aa767d6630c497981bdfc8a5ae91f77b58e13d2f7e9": {
+      "bleu4": 0.3392349964379845,
+      "rouge1_f1": 0.6660533578656854,
+      "rougeL_f1": 0.3863845446182153,
+      "bertscore_f1": 0.9114069938659668,
+      "gold_tokens": 473,
+      "candidate_tokens": 774,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "8d1c4f8b195cb076a92b2159888e01e94a889a5464b2c109ac174317966b8b79": {
+      "bleu4": 0.5483803930142483,
+      "rouge1_f1": 0.8168373151308306,
+      "rougeL_f1": 0.7121729237770194,
+      "bertscore_f1": 0.9283747673034668,
+      "gold_tokens": 473,
+      "candidate_tokens": 523,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "280a50c25ca63b3d2b07cf85ae20b906f108f2c8e896c64dc27b482715745e38": {
+      "bleu4": 0.34416396910262864,
+      "rouge1_f1": 0.6895910780669146,
+      "rougeL_f1": 0.4107806691449814,
+      "bertscore_f1": 0.8943950533866882,
+      "gold_tokens": 473,
+      "candidate_tokens": 769,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "93ca682ad9bc3a9ca37e1503b1fadc5a3b6bdd7deba790a7de99c5a9097c992b": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 0.9999998807907104,
+      "gold_tokens": 473,
+      "candidate_tokens": 473,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "5ef3d89ac2429e536b89e16a15621e1fe107b33263a24e08f1f521c2dd03fb34": {
+      "bleu4": 0.6554944269817919,
+      "rouge1_f1": 0.8301655426118946,
+      "rougeL_f1": 0.6866952789699571,
+      "bertscore_f1": 0.9493502378463745,
+      "gold_tokens": 950,
+      "candidate_tokens": 1020,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "de0d0b822ecb3fd0251f05b885c11c8aedf19458bceca35ec237c05a220155b9": {
+      "bleu4": 0.45219655831667027,
+      "rouge1_f1": 0.7191269385410684,
+      "rougeL_f1": 0.4572085008615738,
+      "bertscore_f1": 0.9330594539642334,
+      "gold_tokens": 950,
+      "candidate_tokens": 1114,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "7b81996b2c97d0ca98c9edbe644ff42711b9e654a60b77ad5e28b3357d589400": {
+      "bleu4": 0.44304666202834225,
+      "rouge1_f1": 0.6982248520710058,
+      "rougeL_f1": 0.5428994082840237,
+      "bertscore_f1": 0.950192391872406,
+      "gold_tokens": 950,
+      "candidate_tokens": 701,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "9a330a74d0cf47c1aabd20a5c9710e5b7f5cf61185903e98220598ef9db714e4": {
+      "bleu4": 0.6724688570381679,
+      "rouge1_f1": 0.8569579288025889,
+      "rougeL_f1": 0.4970873786407766,
+      "bertscore_f1": 0.8755068182945251,
+      "gold_tokens": 950,
+      "candidate_tokens": 932,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "cd88270927fd64128223040f57126655a951b197ad099f95d7160a4a5bf82820": {
+      "bleu4": 0.3958374236255566,
+      "rouge1_f1": 0.6928895612708017,
+      "rougeL_f1": 0.5431164901664145,
+      "bertscore_f1": 0.9234209060668945,
+      "gold_tokens": 950,
+      "candidate_tokens": 623,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "5e2bf9397879ae107f5109bbf0a3f99b1a8c17b134d8717c567e62318bfdec27": {
+      "bleu4": 0.5239805803924155,
+      "rouge1_f1": 0.7686980609418284,
+      "rougeL_f1": 0.6024930747922439,
+      "bertscore_f1": 0.9062111377716064,
+      "gold_tokens": 950,
+      "candidate_tokens": 740,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "fbdbbaed8abc0eda7dd3a2d432918d9949fcaad071e6da305c11088c468b2e2f": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 950,
+      "candidate_tokens": 950,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "2c8733d3c30375dee01d7b9ebcc811d952725a9e8985b5c75fdfe574525ee120": {
+      "bleu4": 0.6330608406635018,
+      "rouge1_f1": 0.8487674883411059,
+      "rougeL_f1": 0.7181878747501665,
+      "bertscore_f1": 0.9331777095794678,
+      "gold_tokens": 950,
+      "candidate_tokens": 816,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "1bc5d63e6217fd3a63b506c87dccba6ec9dad4b50b1afd79fc547b301f634b85": {
+      "bleu4": 0.3294253098547854,
+      "rouge1_f1": 0.6507557677008752,
+      "rougeL_f1": 0.5282418456642801,
+      "bertscore_f1": 0.8963428139686584,
+      "gold_tokens": 950,
+      "candidate_tokens": 591,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "78945c5ef16cc0d133ce795e522a1e55c5fa4f84f1e3abb209f57a52c890e22c": {
+      "bleu4": 0.20172283757335635,
+      "rouge1_f1": 0.5271317829457364,
+      "rougeL_f1": 0.3591731266149871,
+      "bertscore_f1": 0.8727409243583679,
+      "gold_tokens": 714,
+      "candidate_tokens": 1003,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "e79e5a7b8f4b22e45961da8de21f4a0585671eb9cc1f13ad80025b545072448f": {
+      "bleu4": 0.1933611502737594,
+      "rouge1_f1": 0.5585714285714285,
+      "rougeL_f1": 0.31000000000000005,
+      "bertscore_f1": 0.8684861660003662,
+      "gold_tokens": 714,
+      "candidate_tokens": 857,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "234091dcf9a5c2fddf3b57d878542e4f0dfa3861b3de89224f6f863fe5bade19": {
+      "bleu4": 0.16222103033522134,
+      "rouge1_f1": 0.5130344108446299,
+      "rougeL_f1": 0.3691345151199166,
+      "bertscore_f1": 0.8742468953132629,
+      "gold_tokens": 714,
+      "candidate_tokens": 384,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "44007cfb65d7d9e3d4436696bc69a23ff56ed0656d39be0db59597c1fd2c3392": {
+      "bleu4": 0.40011438710735603,
+      "rouge1_f1": 0.6508024349750969,
+      "rougeL_f1": 0.48478140564471506,
+      "bertscore_f1": 0.9120790958404541,
+      "gold_tokens": 714,
+      "candidate_tokens": 1345,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "09c412b9a6870a2663bfe81fc0ec7e83e92916937585f873f378c59a465ed771": {
+      "bleu4": 0.3546960366163188,
+      "rouge1_f1": 0.6188490408673896,
+      "rougeL_f1": 0.44370308590492075,
+      "bertscore_f1": 0.8877001404762268,
+      "gold_tokens": 714,
+      "candidate_tokens": 661,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "0ce21f067cb46657535e12b8ec6c03eafc0e13ca8e8d9a2258d244fd03e2d896": {
+      "bleu4": 0.3146532104005037,
+      "rouge1_f1": 0.608,
+      "rougeL_f1": 0.3912727272727273,
+      "bertscore_f1": 0.8807101249694824,
+      "gold_tokens": 714,
+      "candidate_tokens": 822,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "5618c2517ee96b30acd65ffdcd480f77f7b329edc593e3c2ec85174de75bb8ec": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 714,
+      "candidate_tokens": 714,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "a5b5125c6d5037a79c12b4c854fe7ee3eab814b73ace8a8c1b241193b5de0f81": {
+      "bleu4": 0.3659085157837949,
+      "rouge1_f1": 0.6601049868766404,
+      "rougeL_f1": 0.5314960629921259,
+      "bertscore_f1": 0.9149705171585083,
+      "gold_tokens": 714,
+      "candidate_tokens": 961,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "2afd1b36e0e442fe34f8faa6993c91f2960a00c0322020d1edb53ba4619f128f": {
+      "bleu4": 0.561947407571136,
+      "rouge1_f1": 0.7955223880597014,
+      "rougeL_f1": 0.44925373134328356,
+      "bertscore_f1": 0.8947877287864685,
+      "gold_tokens": 789,
+      "candidate_tokens": 758,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "93efab6f4f2137424d913fe540bb19a0641e512dbe3afb4eafe55f940f37ef49": {
+      "bleu4": 0.5807933815224913,
+      "rouge1_f1": 0.7725587144622991,
+      "rougeL_f1": 0.6353522867737947,
+      "bertscore_f1": 0.9509089589118958,
+      "gold_tokens": 789,
+      "candidate_tokens": 1069,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "cd793635a188e2f17c96a55606b39119471d66369de291e98b42e7e2ae34988c": {
+      "bleu4": 0.18571887217929237,
+      "rouge1_f1": 0.5750736015701668,
+      "rougeL_f1": 0.4259077526987243,
+      "bertscore_f1": 0.8608463406562805,
+      "gold_tokens": 789,
+      "candidate_tokens": 403,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "6b94540b476013c1e7ef5438add1c7baa415ff5b0ca17d9c4b4ea7f09cccd41a": {
+      "bleu4": 0.45861017950091537,
+      "rouge1_f1": 0.7361111111111112,
+      "rougeL_f1": 0.4041666666666667,
+      "bertscore_f1": 0.9025740623474121,
+      "gold_tokens": 789,
+      "candidate_tokens": 918,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "6d6664aa5708cdd6a168611999f4de3471395113215ad72d2703b9ce56dba85b": {
+      "bleu4": 0.10054194788635544,
+      "rouge1_f1": 0.4150943396226416,
+      "rougeL_f1": 0.2730299667036626,
+      "bertscore_f1": 0.8423468470573425,
+      "gold_tokens": 789,
+      "candidate_tokens": 279,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "5df3d64a07226df5314c1e7d80e5b096d66d6341f5bd758d787559ae00f36f74": {
+      "bleu4": 0.17390615370320311,
+      "rouge1_f1": 0.535645472061657,
+      "rougeL_f1": 0.3583815028901734,
+      "bertscore_f1": 0.8729131817817688,
+      "gold_tokens": 789,
+      "candidate_tokens": 456,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "5c5481963b392d25d06378328f977d9db02c7aa690600543a0092055076ce643": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 789,
+      "candidate_tokens": 789,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "6cccadf00d99c3c69b0e5c7aa17194f3587eaa3c9f47633829431a6308b8ba51": {
+      "bleu4": 0.2912720952622582,
+      "rouge1_f1": 0.5761092150170648,
+      "rougeL_f1": 0.37269624573378834,
+      "bertscore_f1": 0.8469012379646301,
+      "gold_tokens": 789,
+      "candidate_tokens": 946,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "b9369b38409a627439d1047e15ecd4950bfbf77391c13d38e77a5cfb36f9d895": {
+      "bleu4": 0.3310038039605062,
+      "rouge1_f1": 0.5920651068158698,
+      "rougeL_f1": 0.5412004069175993,
+      "bertscore_f1": 0.9160223603248596,
+      "gold_tokens": 486,
+      "candidate_tokens": 769,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "9de53c65927fb773bf8b43e05cfab063c936af375a5c2d64927e6cc8ef496bef": {
+      "bleu4": 0.30291434312340615,
+      "rouge1_f1": 0.6157303370786517,
+      "rougeL_f1": 0.5101123595505618,
+      "bertscore_f1": 0.8993265628814697,
+      "gold_tokens": 486,
+      "candidate_tokens": 649,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "79cc62f75367e209c418a75c262ce5e9b4a95e40bd25c1220ec53436d31a04fe": {
+      "bleu4": 0.3371006413560714,
+      "rouge1_f1": 0.613588110403397,
+      "rougeL_f1": 0.5286624203821656,
+      "bertscore_f1": 0.9143376350402832,
+      "gold_tokens": 486,
+      "candidate_tokens": 710,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "1dd04a7f42bb818f8b03def86a7ad24ee2217d3f9437d1ef2e083bc60c97a2a4": {
+      "bleu4": 0.2695505451762234,
+      "rouge1_f1": 0.5615462868769074,
+      "rougeL_f1": 0.5025432349949135,
+      "bertscore_f1": 0.9049040079116821,
+      "gold_tokens": 486,
+      "candidate_tokens": 751,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "73276f35c2b6f1ad9af8075721e50da6612695952971760a11ff8c9fc31b50f2": {
+      "bleu4": 0.32551342641278,
+      "rouge1_f1": 0.6309921962095876,
+      "rougeL_f1": 0.5641025641025641,
+      "bertscore_f1": 0.9020048379898071,
+      "gold_tokens": 486,
+      "candidate_tokens": 703,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "b8b7e31a100f72b0358a34c09630a5dac5cae8841a2e7c8e983c5d942d104672": {
+      "bleu4": 0.31924734409247363,
+      "rouge1_f1": 0.6002076843198338,
+      "rougeL_f1": 0.5420560747663551,
+      "bertscore_f1": 0.912776529788971,
+      "gold_tokens": 486,
+      "candidate_tokens": 737,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "955d2b814be75d3d72d1630d61b4ccfbe9352d3a967768eb541daf49fd413452": {
+      "bleu4": 0.2579646055457895,
+      "rouge1_f1": 0.52516010978957,
+      "rougeL_f1": 0.4592863677950595,
+      "bertscore_f1": 0.9032552242279053,
+      "gold_tokens": 486,
+      "candidate_tokens": 930,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "e2aff65dbea8d883045bf93b471fa62dbd6b0045dfa1efe9755bd78d9c38b76e": {
+      "bleu4": 0.29471244242858924,
+      "rouge1_f1": 0.6043956043956042,
+      "rougeL_f1": 0.5274725274725274,
+      "bertscore_f1": 0.89972323179245,
+      "gold_tokens": 486,
+      "candidate_tokens": 676,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "948e2b0375e5ed48d746158c83dd3994ad1c35dd844131289f4a6b7c7ad96ef5": {
+      "bleu4": 0.2796995840475173,
+      "rouge1_f1": 0.5299625468164795,
+      "rougeL_f1": 0.4962546816479401,
+      "bertscore_f1": 0.9178531169891357,
+      "gold_tokens": 486,
+      "candidate_tokens": 835,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "8ed18613a0fbe562b130cfd4d10655da60fca4a792af37cdb41bbca4a97dc894": {
+      "bleu4": 0.38781314252976906,
+      "rouge1_f1": 0.7559943582510577,
+      "rougeL_f1": 0.5980253878702397,
+      "bertscore_f1": 0.9064068794250488,
+      "gold_tokens": 486,
+      "candidate_tokens": 454,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "abbfa1e2107af52000523157a8545010a5d9395cc6181c56c59a803c473325c7": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 0.9999999403953552,
+      "gold_tokens": 486,
+      "candidate_tokens": 486,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "db9c9f2588a023f6d5b8cd1afcfec474ab07d6250df306923eae438fe42a9a6f": {
+      "bleu4": 0.43578569227051067,
+      "rouge1_f1": 0.6966019417475728,
+      "rougeL_f1": 0.5970873786407768,
+      "bertscore_f1": 0.9169384837150574,
+      "gold_tokens": 486,
+      "candidate_tokens": 583,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "d0836aba6048ab5da075d0537ef567fcd6bb34357dc4053f3779a470983a5348": {
+      "bleu4": 0.23932550616072779,
+      "rouge1_f1": 0.4961106309420916,
+      "rougeL_f1": 0.4356093344857389,
+      "bertscore_f1": 0.9001621007919312,
+      "gold_tokens": 486,
+      "candidate_tokens": 982,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "fbc597f43d7725466be29a63cfb32b3f37440cfe3897b511ccd85362e1d6cc32": {
+      "bleu4": 0.29633444058914593,
+      "rouge1_f1": 0.5621939275220372,
+      "rougeL_f1": 0.5367286973555337,
+      "bertscore_f1": 0.9140344858169556,
+      "gold_tokens": 486,
+      "candidate_tokens": 813,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "77c903319adbc37333018abdb82ca3eba5811ec8c6ced632f83708771b2c6f48": {
+      "bleu4": 0.4048691483768468,
+      "rouge1_f1": 0.5965270684371808,
+      "rougeL_f1": 0.5903983656792645,
+      "bertscore_f1": 0.9489337205886841,
+      "gold_tokens": 326,
+      "candidate_tokens": 860,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "215dc8b89d6db7704ad316ffebd4b84516eba8cd91a340dc224476f55c211cc3": {
+      "bleu4": 0.3046578542507084,
+      "rouge1_f1": 0.4883333333333334,
+      "rougeL_f1": 0.48000000000000004,
+      "bertscore_f1": 0.9426460266113281,
+      "gold_tokens": 326,
+      "candidate_tokens": 1068,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "75fa9d65c8c5e45cdeeb56d505e3a479e0766e469c094c26a0cc3de0ef02cd34": {
+      "bleu4": 0.9158842631260926,
+      "rouge1_f1": 0.9664429530201342,
+      "rougeL_f1": 0.9664429530201342,
+      "bertscore_f1": 0.9848390817642212,
+      "gold_tokens": 326,
+      "candidate_tokens": 336,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "7e58597e936894adcdf21c1e0ddac95ff8648692907cb2cad0631b22c2172c44": {
+      "bleu4": 0.3286993236336928,
+      "rouge1_f1": 0.5115044247787611,
+      "rougeL_f1": 0.5079646017699115,
+      "bertscore_f1": 0.9540960192680359,
+      "gold_tokens": 326,
+      "candidate_tokens": 925,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "0426befd6fc1d2b946147fbb9ff991d24af9abc7faec1a8f44f42d8881a475ef": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 0.9999999403953552,
+      "gold_tokens": 326,
+      "candidate_tokens": 326,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "fd3771d661f2c81155b6c5ca0b4110b312474e481d399e59ae6f7a0df27ac9dc": {
+      "bleu4": 0.9920669907481073,
+      "rouge1_f1": 0.9982905982905983,
+      "rougeL_f1": 0.9982905982905983,
+      "bertscore_f1": 0.9980310797691345,
+      "gold_tokens": 326,
+      "candidate_tokens": 325,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "9b1871099f07c3971b98d7e7d29a327101780eb9e173ea500a3745311b6cb697": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 0.9999999403953552,
+      "gold_tokens": 326,
+      "candidate_tokens": 326,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "a641c2c24c4acc8172411e3850c1876fa8c2c7ac3651633d01fc3efd1a0eff77": {
+      "bleu4": 0.9192657797163313,
+      "rouge1_f1": 0.9648241206030151,
+      "rougeL_f1": 0.9648241206030151,
+      "bertscore_f1": 0.9824742078781128,
+      "gold_tokens": 326,
+      "candidate_tokens": 341,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "0f6d2af563e26e7c728658911c02b0769c4624f5224a2a28e1d5d76d2a94da08": {
+      "bleu4": 0.819598308137518,
+      "rouge1_f1": 0.9217687074829931,
+      "rougeL_f1": 0.91156462585034,
+      "bertscore_f1": 0.9563975930213928,
+      "gold_tokens": 326,
+      "candidate_tokens": 344,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "30d52ad58d71efa9e7793650762279070267509e26b950ef68b14873fb852f32": {
+      "bleu4": 0.11330290997123649,
+      "rouge1_f1": 0.32615786040443573,
+      "rougeL_f1": 0.23744292237442927,
+      "bertscore_f1": 0.8802459836006165,
+      "gold_tokens": 321,
+      "candidate_tokens": 1460,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "697a51d310729641e3d532c44a8847937bb8e0812cfa863851f66ded316b9bd0": {
+      "bleu4": 0.24624281519286353,
+      "rouge1_f1": 0.6179604261796042,
+      "rougeL_f1": 0.35616438356164387,
+      "bertscore_f1": 0.8641387224197388,
+      "gold_tokens": 321,
+      "candidate_tokens": 445,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "0d41149ab85809dc546a25f231b7099bb7aa93ce3bfb05ddf602de8bf09ce20a": {
+      "bleu4": 0.15010302596802116,
+      "rouge1_f1": 0.4359673024523161,
+      "rougeL_f1": 0.3033605812897366,
+      "bertscore_f1": 0.8738473653793335,
+      "gold_tokens": 321,
+      "candidate_tokens": 927,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "d65a42f84a273614cdfe70e15c806813e74f05109acf35427d3e9ee06c43ae4a": {
+      "bleu4": 0.15231185672581618,
+      "rouge1_f1": 0.42208370436331255,
+      "rougeL_f1": 0.29563668744434546,
+      "bertscore_f1": 0.8712878823280334,
+      "gold_tokens": 321,
+      "candidate_tokens": 1025,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "b06f94acd54bfde0c69f190223eb67c383bccbeb92e6d1ed7ee23512eea2c4aa": {
+      "bleu4": 0.2045580453792076,
+      "rouge1_f1": 0.5749086479902558,
+      "rougeL_f1": 0.3532277710109622,
+      "bertscore_f1": 0.8684916496276855,
+      "gold_tokens": 321,
+      "candidate_tokens": 622,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "8318ea895d61ea99adc0b8add1e13568f28049f51f33d8633548a8c3d6f9632a": {
+      "bleu4": 0.14393565449489193,
+      "rouge1_f1": 0.40032679738562094,
+      "rougeL_f1": 0.2875816993464052,
+      "bertscore_f1": 0.8759016990661621,
+      "gold_tokens": 321,
+      "candidate_tokens": 1130,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "30217ea74b4a4d75f9e1422f532e03229b73850e6180322022bd44b080581cd4": {
+      "bleu4": 0.1623436083813639,
+      "rouge1_f1": 0.4322869955156951,
+      "rougeL_f1": 0.2852017937219731,
+      "bertscore_f1": 0.8720317482948303,
+      "gold_tokens": 321,
+      "candidate_tokens": 939,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "1ac14bcf59c5e234b927dea9acb017ef8a73349810e61fe6876665c3dddc8f7b": {
+      "bleu4": 0.2977942011289913,
+      "rouge1_f1": 0.6559297218155197,
+      "rougeL_f1": 0.3865300146412884,
+      "bertscore_f1": 0.8774293065071106,
+      "gold_tokens": 321,
+      "candidate_tokens": 455,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "3bd8d15f15e60e30f28eac5be3db4502025feb4c238b15e407095c1a223faa3f": {
+      "bleu4": 0.20402028567876745,
+      "rouge1_f1": 0.5942408376963351,
+      "rougeL_f1": 0.3429319371727749,
+      "bertscore_f1": 0.8519726991653442,
+      "gold_tokens": 321,
+      "candidate_tokens": 657,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "f03f1aa38468596fcab84a7edd0bcd8bfcea0ca03ed83dbf92e9193195c55c2a": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 0.9999999403953552,
+      "gold_tokens": 321,
+      "candidate_tokens": 321,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "03c8cc96b9ff6692fde4cb7eba6afc1438cc8052e663b31d4a7c4023348c68d2": {
+      "bleu4": 0.394563467113329,
+      "rouge1_f1": 0.685483870967742,
+      "rougeL_f1": 0.5752688172043011,
+      "bertscore_f1": 0.917757511138916,
+      "gold_tokens": 408,
+      "candidate_tokens": 567,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "acc550cd2a1649c6a73e62d2f35abfdf55b8fb831948e01cc4e87d2f19c78dce": {
+      "bleu4": 0.2714912429154162,
+      "rouge1_f1": 0.5107577174929842,
+      "rougeL_f1": 0.44340505144995324,
+      "bertscore_f1": 0.9113031625747681,
+      "gold_tokens": 408,
+      "candidate_tokens": 973,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "8fa2671a0184027702083314d41e0114079e5c21d68b6e44a50ba4adb75783b9": {
+      "bleu4": 0.23350658497810153,
+      "rouge1_f1": 0.4555461473327688,
+      "rougeL_f1": 0.4132091447925488,
+      "bertscore_f1": 0.9291558265686035,
+      "gold_tokens": 408,
+      "candidate_tokens": 1110,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "53d110a405562671de2ae04192c7946ebe5dd1a7e71811a893913e97f8652d9c": {
+      "bleu4": 0.2883933376765562,
+      "rouge1_f1": 0.5466101694915255,
+      "rougeL_f1": 0.4364406779661017,
+      "bertscore_f1": 0.9103375673294067,
+      "gold_tokens": 408,
+      "candidate_tokens": 819,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "560cb04f56b7cbdf072dbc82abb6dc99a02dd090f8392b6d008dda998935f6af": {
+      "bleu4": 0.3257382643217776,
+      "rouge1_f1": 0.5561497326203209,
+      "rougeL_f1": 0.5048128342245989,
+      "bertscore_f1": 0.9233400821685791,
+      "gold_tokens": 408,
+      "candidate_tokens": 829,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "92c24f74c1e0d6d4bc3079023132ce04f56b79c1d513dec2ca6cfdf8bdc4052e": {
+      "bleu4": 0.3504705646035349,
+      "rouge1_f1": 0.6285018270401949,
+      "rougeL_f1": 0.5261875761266748,
+      "bertscore_f1": 0.9177649021148682,
+      "gold_tokens": 408,
+      "candidate_tokens": 666,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "28561c7ba4d16bcb6ba3da868c4353cafb650b92a166d53328075c0fddef4f22": {
+      "bleu4": 0.3259000586230701,
+      "rouge1_f1": 0.5773420479302832,
+      "rougeL_f1": 0.48583877995642705,
+      "bertscore_f1": 0.9177531599998474,
+      "gold_tokens": 408,
+      "candidate_tokens": 784,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "2cb7d619a33658f2876ed922117672e2a027138f5f402c4e6ef6e2f2c244f2ae": {
+      "bleu4": 0.27933262353064653,
+      "rouge1_f1": 0.5462012320328542,
+      "rougeL_f1": 0.41067761806981523,
+      "bertscore_f1": 0.9095399975776672,
+      "gold_tokens": 408,
+      "candidate_tokens": 858,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "54e122f058ca8e4c95e031b5be8bf570ae58724091c85c78d920e0bb63c73648": {
+      "bleu4": 0.27297308903544654,
+      "rouge1_f1": 0.5682574916759157,
+      "rougeL_f1": 0.37957824639289683,
+      "bertscore_f1": 0.8979851007461548,
+      "gold_tokens": 408,
+      "candidate_tokens": 755,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "81e58b1be62753bf8023d526ea62385348a3073b1760e79b2c790c6266bceeb1": {
+      "bleu4": 0.3429807492235259,
+      "rouge1_f1": 0.64247311827957,
+      "rougeL_f1": 0.43548387096774194,
+      "bertscore_f1": 0.8963080644607544,
+      "gold_tokens": 408,
+      "candidate_tokens": 572,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "c3eaed3a658df78440257f3c1cb2b5bac3a3a38e54becd7be8be89f04d00b3a9": {
+      "bleu4": 0.19626660419156775,
+      "rouge1_f1": 0.4683195592286502,
+      "rougeL_f1": 0.2975206611570248,
+      "bertscore_f1": 0.9020715951919556,
+      "gold_tokens": 408,
+      "candidate_tokens": 1034,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "544cb41f03c819f7d4237d66e28215ce1e89b759e9d80dc3f279c466ef591101": {
+      "bleu4": 0.22020908483636525,
+      "rouge1_f1": 0.44604316546762596,
+      "rougeL_f1": 0.41546762589928055,
+      "bertscore_f1": 0.9077562093734741,
+      "gold_tokens": 408,
+      "candidate_tokens": 1022,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "2d3574022e26df6110b3768901bada36a7fdd37ed570b8665c6c8531395a686a": {
+      "bleu4": 0.25657201980377065,
+      "rouge1_f1": 0.4975891996142719,
+      "rougeL_f1": 0.4416586306653809,
+      "bertscore_f1": 0.9219504594802856,
+      "gold_tokens": 408,
+      "candidate_tokens": 992,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "7206b4b2c74c3254e1a20a3e043bc5f4cc4cd42ab1120d7246890420fa4affb3": {
+      "bleu4": 0.3461427113615742,
+      "rouge1_f1": 0.6754772393538914,
+      "rougeL_f1": 0.43759177679882527,
+      "bertscore_f1": 0.8937828540802002,
+      "gold_tokens": 408,
+      "candidate_tokens": 504,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "bd7ca8efcc1a5e2b59f8d44db6f01d8781840f0ffe615b25dd5141f42d012a05": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 408,
+      "candidate_tokens": 408,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "47c6b6f0b80a07fc551b93f17e204eec3f9a483d5be3b63740be74a403738dd1": {
+      "bleu4": 0.2674421210953039,
+      "rouge1_f1": 0.5921658986175115,
+      "rougeL_f1": 0.47695852534562216,
+      "bertscore_f1": 0.9083028435707092,
+      "gold_tokens": 408,
+      "candidate_tokens": 744,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "921c4e07284af45d303a3a432a19e6e84861637e8158e49dd0c6ce8c6a01e8c9": {
+      "bleu4": 0.16958253252887903,
+      "rouge1_f1": 0.4542713567839196,
+      "rougeL_f1": 0.3437185929648241,
+      "bertscore_f1": 0.8554958701133728,
+      "gold_tokens": 360,
+      "candidate_tokens": 784,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "3013114acdf650d76d915792d6b7d131e6fc8e93b9e276f18c720000d12a6082": {
+      "bleu4": 0.16026134972868974,
+      "rouge1_f1": 0.42007001166861146,
+      "rougeL_f1": 0.31505250875145857,
+      "bertscore_f1": 0.8405473828315735,
+      "gold_tokens": 360,
+      "candidate_tokens": 628,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "7cd7512f8b6d3581c04d6dd77e2a8b69bbe9f7e62fad946e7ac38b689c5bde1a": {
+      "bleu4": 0.2533247909970608,
+      "rouge1_f1": 0.5267104029990628,
+      "rougeL_f1": 0.34114339268978444,
+      "bertscore_f1": 0.8535565137863159,
+      "gold_tokens": 360,
+      "candidate_tokens": 957,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "7db952b81ceef810aa2237e2284cc8010c7d0b18b1bd072e7dbb68d5c28b3930": {
+      "bleu4": 0.22163955588899012,
+      "rouge1_f1": 0.5144175317185697,
+      "rougeL_f1": 0.3229527104959631,
+      "bertscore_f1": 0.8617818355560303,
+      "gold_tokens": 360,
+      "candidate_tokens": 642,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "19d473f089c143dda0249ccdf67fc19b94f06310cfd5ccc9ab3dbf80707254fd": {
+      "bleu4": 0.12518839006001117,
+      "rouge1_f1": 0.39032815198618304,
+      "rougeL_f1": 0.27979274611398963,
+      "bertscore_f1": 0.8490414619445801,
+      "gold_tokens": 360,
+      "candidate_tokens": 979,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "34a56835edfda55d46ba93042368b096601262d93c300f2eb6b3b324cb070d4d": {
+      "bleu4": 0.13264623713096485,
+      "rouge1_f1": 0.39246119733924617,
+      "rougeL_f1": 0.2682926829268293,
+      "bertscore_f1": 0.8278918862342834,
+      "gold_tokens": 360,
+      "candidate_tokens": 697,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "c2d26fa94d42c38a8039fe4579c6e31881bac47d23f42a22968935bc50463ccc": {
+      "bleu4": 0.1278733995641666,
+      "rouge1_f1": 0.39718804920913886,
+      "rougeL_f1": 0.28471001757469244,
+      "bertscore_f1": 0.8490414619445801,
+      "gold_tokens": 360,
+      "candidate_tokens": 959,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "a78b9ebac4620eb353da820d774aed0df415afdf4d07cc9a6625534556c4b779": {
+      "bleu4": 0.1788762390073946,
+      "rouge1_f1": 0.43931623931623937,
+      "rougeL_f1": 0.2854700854700855,
+      "bertscore_f1": 0.8531405925750732,
+      "gold_tokens": 360,
+      "candidate_tokens": 1060,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "71f658c49e5aaa46907fa103e7682c060bf95a21ebb749a6abe18ad75a515233": {
+      "bleu4": 0.1948257467331208,
+      "rouge1_f1": 0.423407917383821,
+      "rougeL_f1": 0.3132530120481928,
+      "bertscore_f1": 0.8362497091293335,
+      "gold_tokens": 360,
+      "candidate_tokens": 355,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "4ad4ad55c54dbab16a1d3e2d9b2197500f0d9661b22065c1a187db4e8907a932": {
+      "bleu4": 0.28801576994997435,
+      "rouge1_f1": 0.6040268456375838,
+      "rougeL_f1": 0.389261744966443,
+      "bertscore_f1": 0.8689592480659485,
+      "gold_tokens": 360,
+      "candidate_tokens": 530,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "cf9655078f9d535846ee3415fe35345d7c26a98f5a68b02daa6ab71bb6cc892b": {
+      "bleu4": 0.19136285698811295,
+      "rouge1_f1": 0.4525547445255475,
+      "rougeL_f1": 0.2937956204379562,
+      "bertscore_f1": 0.8529953360557556,
+      "gold_tokens": 360,
+      "candidate_tokens": 961,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "5592d76bdf2072d8a9c1cd5aaf0e82b191391ffcc323a0f86fe9b923d8eeb4b1": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 360,
+      "candidate_tokens": 360,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "83b4787f0dab91a98aee4edda452e4d5130381a5db7e74570cd789e7740a8780": {
+      "bleu4": 0.7111125192512231,
+      "rouge1_f1": 0.8845315904139434,
+      "rougeL_f1": 0.6993464052287581,
+      "bertscore_f1": 0.9500889778137207,
+      "gold_tokens": 468,
+      "candidate_tokens": 552,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "f7ca48282e55fc8f1b664d74d898b25d282b5541e0018dffcc02755d47c58952": {
+      "bleu4": 0.3369347445604403,
+      "rouge1_f1": 0.5596140592694693,
+      "rougeL_f1": 0.467263955892488,
+      "bertscore_f1": 0.9123530983924866,
+      "gold_tokens": 468,
+      "candidate_tokens": 1152,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "65d0b24234c8f4921a0bd925a1999508a46517670b5e7c6ee2c4c6cb19c42280": {
+      "bleu4": 0.34957061851660703,
+      "rouge1_f1": 0.6152570480928691,
+      "rougeL_f1": 0.41459369817578773,
+      "bertscore_f1": 0.9189186692237854,
+      "gold_tokens": 468,
+      "candidate_tokens": 859,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "8f76820210dd7afbfe40452283e43bfb057e3031e5ec4ed4dd0e4cf23370cf2a": {
+      "bleu4": 0.5167633984175282,
+      "rouge1_f1": 0.7311446317657498,
+      "rougeL_f1": 0.5803016858917479,
+      "bertscore_f1": 0.9518629908561707,
+      "gold_tokens": 468,
+      "candidate_tokens": 782,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "4a1f89e016bd52eec8fa1eaa67a4483e70def1c96edd50b67dfe4267fe5d979c": {
+      "bleu4": 0.7933773476131237,
+      "rouge1_f1": 0.9328703703703705,
+      "rougeL_f1": 0.7430555555555556,
+      "bertscore_f1": 0.9579398036003113,
+      "gold_tokens": 468,
+      "candidate_tokens": 494,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "f94a2df35fc1da338eaabca97b28bdf9f2dab2d2e5036834dba81e3f59e80137": {
+      "bleu4": 0.5979527745624191,
+      "rouge1_f1": 0.8051181102362205,
+      "rougeL_f1": 0.6338582677165355,
+      "bertscore_f1": 0.9263401627540588,
+      "gold_tokens": 468,
+      "candidate_tokens": 661,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "12a6a0b070dd4be91abac6ed96f558da3799891843d2f7fab4d7dbb9cf1bb441": {
+      "bleu4": 0.4972192497082809,
+      "rouge1_f1": 0.7530064754856615,
+      "rougeL_f1": 0.6105457909343202,
+      "bertscore_f1": 0.9189537167549133,
+      "gold_tokens": 468,
+      "candidate_tokens": 754,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "ec6d744a266a3644c0b278cab8b670b1130bf4b486a996f3b82d5ed634731a88": {
+      "bleu4": 0.43615793584443663,
+      "rouge1_f1": 0.7012025901942645,
+      "rougeL_f1": 0.5013876040703054,
+      "bertscore_f1": 0.9258926510810852,
+      "gold_tokens": 468,
+      "candidate_tokens": 737,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "79e720d3878fdbf2fe6f226e4ceaffbe0931b273d7c35f6bc94cf993d853f4c2": {
+      "bleu4": 0.41247421004356954,
+      "rouge1_f1": 0.6816546762589928,
+      "rougeL_f1": 0.4406474820143885,
+      "bertscore_f1": 0.9134031534194946,
+      "gold_tokens": 468,
+      "candidate_tokens": 769,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "a7a962cda5f152d7d2e11ab09e4ba79aba5aca119cb28692762a4eeaaa5b01de": {
+      "bleu4": 0.4361833580727425,
+      "rouge1_f1": 0.7621052631578947,
+      "rougeL_f1": 0.45263157894736844,
+      "bertscore_f1": 0.9101244807243347,
+      "gold_tokens": 468,
+      "candidate_tokens": 614,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "f05acdbeb3673de8ccbfaba6dae707a8db87a38bedf4c395a9b6191736bc03e0": {
+      "bleu4": 0.433096326935873,
+      "rouge1_f1": 0.7158308751229104,
+      "rougeL_f1": 0.43067846607669613,
+      "bertscore_f1": 0.9139130711555481,
+      "gold_tokens": 468,
+      "candidate_tokens": 683,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "ef0f3c06a14d524cbf92effbaafe0b8f36444af290dcba89d0db38ba166984a8": {
+      "bleu4": 0.685209252152321,
+      "rouge1_f1": 0.8820754716981133,
+      "rougeL_f1": 0.7264150943396226,
+      "bertscore_f1": 0.9480233192443848,
+      "gold_tokens": 468,
+      "candidate_tokens": 483,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "36cfbde0759006df9179a1a17655da642b34de910d7fe22f9e7e47ace749b7f5": {
+      "bleu4": 0.39918630477358746,
+      "rouge1_f1": 0.7543624161073825,
+      "rougeL_f1": 0.4966442953020134,
+      "bertscore_f1": 0.9021971821784973,
+      "gold_tokens": 468,
+      "candidate_tokens": 402,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "5e07f08b51c2cdba8af3a406bb0f892a2662e03bf6f8c8cd072ad5898f7ed80e": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 0.9999999403953552,
+      "gold_tokens": 468,
+      "candidate_tokens": 468,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "20d65e93e5f27f160acfb667f3fda329533b03265b71af6ebd9d24db3a0a988f": {
+      "bleu4": 0.5652128603277572,
+      "rouge1_f1": 0.7984111221449851,
+      "rougeL_f1": 0.5779543197616682,
+      "bertscore_f1": 0.9258726239204407,
+      "gold_tokens": 468,
+      "candidate_tokens": 651,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "0860d7c60f5547ac1a71a0bfe5b11157def5439560acdb21f20713d410f9a09c": {
+      "bleu4": 0.6089221029237636,
+      "rouge1_f1": 0.8327939590075512,
+      "rougeL_f1": 0.6796116504854369,
+      "bertscore_f1": 0.9455504417419434,
+      "gold_tokens": 468,
+      "candidate_tokens": 575,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "b0eb435e4fa1cb42a866f52bc9f2306e3fb6ba2003b64dad2ddec411bade9c9c": {
+      "bleu4": 0.1417217752971747,
+      "rouge1_f1": 0.4126074498567335,
+      "rougeL_f1": 0.2292263610315186,
+      "bertscore_f1": 0.8706008195877075,
+      "gold_tokens": 168,
+      "candidate_tokens": 369,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "71ce2f405546fec72dcb99a24dc2324965bfde683e0572443b27c8e3e491513b": {
+      "bleu4": 0.10382336018162627,
+      "rouge1_f1": 0.391812865497076,
+      "rougeL_f1": 0.19883040935672514,
+      "bertscore_f1": 0.8679991364479065,
+      "gold_tokens": 168,
+      "candidate_tokens": 362,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "4d0d98fd656cf5b0dbf50cbc717a456e48b7bfc57babf9e91beb5fcaae45bfa6": {
+      "bleu4": 0.07420524167413413,
+      "rouge1_f1": 0.3333333333333333,
+      "rougeL_f1": 0.18079096045197737,
+      "bertscore_f1": 0.8601897954940796,
+      "gold_tokens": 168,
+      "candidate_tokens": 442,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "e180c3a15de6f2dd8d6932ce23dcaf525d70376695610488863f5b5d61386ed7": {
+      "bleu4": 0.10929671853518129,
+      "rouge1_f1": 0.3815028901734104,
+      "rougeL_f1": 0.2080924855491329,
+      "bertscore_f1": 0.8656284809112549,
+      "gold_tokens": 168,
+      "candidate_tokens": 400,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "4769fca61ee0517c619e3a75515802f5745dad6f20253d6523ebd1dd2f4b5937": {
+      "bleu4": 0.10710072879228841,
+      "rouge1_f1": 0.3954802259887006,
+      "rougeL_f1": 0.22598870056497178,
+      "bertscore_f1": 0.8616995215415955,
+      "gold_tokens": 168,
+      "candidate_tokens": 415,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "d7a023b52605e856452ebb8fc1eb52aeeecbd21e9400399cf3f774165c83a240": {
+      "bleu4": 0.0884277735895842,
+      "rouge1_f1": 0.34383954154727797,
+      "rougeL_f1": 0.21203438395415472,
+      "bertscore_f1": 0.8562215566635132,
+      "gold_tokens": 168,
+      "candidate_tokens": 371,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "b6746cbeebe05c2860955c240bbb0a147791a4b195817d658e4084bc505a3142": {
+      "bleu4": 0.11282560641657513,
+      "rouge1_f1": 0.3988919667590028,
+      "rougeL_f1": 0.22160664819944598,
+      "bertscore_f1": 0.8640214800834656,
+      "gold_tokens": 168,
+      "candidate_tokens": 420,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "2bea2d85f2bdf76aec8e3e0d2fffa9cf3d05c07507795b406ad7c34b922ba968": {
+      "bleu4": 0.11731576439198638,
+      "rouge1_f1": 0.3951367781155015,
+      "rougeL_f1": 0.21276595744680854,
+      "bertscore_f1": 0.8697056174278259,
+      "gold_tokens": 168,
+      "candidate_tokens": 368,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "111288e89fa87dc77bb0570b078bb058a5e106062b90501713cd9cc46cf32506": {
+      "bleu4": 0.14072896299320242,
+      "rouge1_f1": 0.4102564102564103,
+      "rougeL_f1": 0.22792022792022795,
+      "bertscore_f1": 0.8645318150520325,
+      "gold_tokens": 168,
+      "candidate_tokens": 360,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "fb772a276ca15c499ee06d11a10690b0d4860104e406abbfba0428fe140318f8": {
+      "bleu4": 0.12909987043006896,
+      "rouge1_f1": 0.39882697947214074,
+      "rougeL_f1": 0.2228739002932551,
+      "bertscore_f1": 0.8661364912986755,
+      "gold_tokens": 168,
+      "candidate_tokens": 343,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 168,
+      "candidate_tokens": 168,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "d019c54cf1ecf052fc34a39d62a99705f5804cfbe58a3ea4a1a5eaadc9cc56e6": {
+      "bleu4": 0.13089219812148276,
+      "rouge1_f1": 0.391812865497076,
+      "rougeL_f1": 0.22222222222222224,
+      "bertscore_f1": 0.8692832589149475,
+      "gold_tokens": 168,
+      "candidate_tokens": 367,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "2bb8c76f5a5ba6441e1f6c2af4a62284e3497f3ef43c37083337ffb35e610be4": {
+      "bleu4": 0.14072896299320242,
+      "rouge1_f1": 0.4102564102564103,
+      "rougeL_f1": 0.22792022792022795,
+      "bertscore_f1": 0.8651161789894104,
+      "gold_tokens": 168,
+      "candidate_tokens": 360,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "a78e3e993917ea8955ef6dce879f6f37e3d90f052f989cd5bef3ea7bb49f981c": {
+      "bleu4": 0.6958167398665625,
+      "rouge1_f1": 0.8784860557768923,
+      "rougeL_f1": 0.8087649402390439,
+      "bertscore_f1": 0.9251495003700256,
+      "gold_tokens": 711,
+      "candidate_tokens": 617,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "df79e4ba38289272fd007d91072f705491abec99723c47c35e9069ee9ae8fe29": {
+      "bleu4": 0.6296604444743608,
+      "rouge1_f1": 0.8421052631578946,
+      "rougeL_f1": 0.7567030784508441,
+      "bertscore_f1": 0.9242626428604126,
+      "gold_tokens": 711,
+      "candidate_tokens": 617,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe": {
+      "bleu4": 0.5004883486211843,
+      "rouge1_f1": 0.7721393034825871,
+      "rougeL_f1": 0.6447761194029851,
+      "bertscore_f1": 0.9069183468818665,
+      "gold_tokens": 711,
+      "candidate_tokens": 621,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "dcd8e9dada60e08919475632031f5ac6582fb59c9a01911fa1ad52aa761ed4d6": {
+      "bleu4": 0.6689404227566014,
+      "rouge1_f1": 0.8683693516699411,
+      "rougeL_f1": 0.7838899803536347,
+      "bertscore_f1": 0.9243003129959106,
+      "gold_tokens": 711,
+      "candidate_tokens": 635,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "7688f9b0636bd34d9311a7cb1f36b87d3040af74f5f3d66cda1db8a84b6d52c1": {
+      "bleu4": 0.6958167398665625,
+      "rouge1_f1": 0.8784860557768923,
+      "rougeL_f1": 0.8087649402390439,
+      "bertscore_f1": 0.9245256185531616,
+      "gold_tokens": 711,
+      "candidate_tokens": 624,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "4eecbee8c5d9587453239cf2fabd0893276bed00d42a0192480e7fe257b5d10e": {
+      "bleu4": 0.6958167398665625,
+      "rouge1_f1": 0.8784860557768923,
+      "rougeL_f1": 0.8087649402390439,
+      "bertscore_f1": 0.9251495003700256,
+      "gold_tokens": 711,
+      "candidate_tokens": 617,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "8ad6a2c5d9f9dfc26d714e4abf5b435ddfe04a21009754923b13a4e2ae87263a": {
+      "bleu4": 0.6451104454131419,
+      "rouge1_f1": 0.829126213592233,
+      "rougeL_f1": 0.7300970873786407,
+      "bertscore_f1": 0.92405104637146,
+      "gold_tokens": 711,
+      "candidate_tokens": 669,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "868d5491a6f4df02aab3c0e3ffd4059773809627bf948c71df0bc1a7b07fc279": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 711,
+      "candidate_tokens": 711,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "2c6a41c4b5e5c12236a774eb7a0b69f5ac879fe34e0f372aa3f1633ad1e2d29d": {
+      "bleu4": 0.6942589140076875,
+      "rouge1_f1": 0.8787276341948311,
+      "rougeL_f1": 0.8071570576540755,
+      "bertscore_f1": 0.925208330154419,
+      "gold_tokens": 711,
+      "candidate_tokens": 619,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "b3011f0b3fe080b2a01c15cbf95b2a1bfc81138939443bfa19a1502e182a8050": {
+      "bleu4": 0.6975487495215584,
+      "rouge1_f1": 0.8832487309644669,
+      "rougeL_f1": 0.749238578680203,
+      "bertscore_f1": 0.9199455380439758,
+      "gold_tokens": 711,
+      "candidate_tokens": 618,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "4bd9e3781173776bf997d1bab2696c0de946578adc5eda960f5e1889418aa12f": {
+      "bleu4": 0.7428418332962146,
+      "rouge1_f1": 0.8593576965669989,
+      "rougeL_f1": 0.8150609080841639,
+      "bertscore_f1": 0.9309555888175964,
+      "gold_tokens": 567,
+      "candidate_tokens": 608,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "cc36a1b17a0d80303d3f711717d3cce856328915ccd05bd72e9aa4ed3df0148e": {
+      "bleu4": 0.679525603871442,
+      "rouge1_f1": 0.8291069459757443,
+      "rougeL_f1": 0.7761852260198457,
+      "bertscore_f1": 0.9242746829986572,
+      "gold_tokens": 567,
+      "candidate_tokens": 612,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "a37e106f272c3032d6c16e89761c5b77524503d431c74ec79430f1c473f6e9a4": {
+      "bleu4": 0.6380531174013693,
+      "rouge1_f1": 0.8208616780045352,
+      "rougeL_f1": 0.7210884353741497,
+      "bertscore_f1": 0.9184269309043884,
+      "gold_tokens": 567,
+      "candidate_tokens": 589,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "239ee19530efd1a775cf5df6bc807ea9e93d1e166ba02c90ef67cbab5c1a6fdf": {
+      "bleu4": 0.12778552844755472,
+      "rouge1_f1": 0.3521482729570345,
+      "rougeL_f1": 0.2358887952822241,
+      "bertscore_f1": 0.8074450492858887,
+      "gold_tokens": 567,
+      "candidate_tokens": 971,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "2473c8f7a8016043a73316b9cf0ca969d818db385eba36ef27dfd953fb96d3b8": {
+      "bleu4": 0.595073503387622,
+      "rouge1_f1": 0.7806925498426024,
+      "rougeL_f1": 0.7093389296956978,
+      "bertscore_f1": 0.8997133374214172,
+      "gold_tokens": 567,
+      "candidate_tokens": 672,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "8c41cc458ca0792310bbe4b274c4a25d50d00b4c65bf3e56b762a72ce47b79b2": {
+      "bleu4": 0.7428418332962146,
+      "rouge1_f1": 0.8593576965669989,
+      "rougeL_f1": 0.8150609080841639,
+      "bertscore_f1": 0.9289805293083191,
+      "gold_tokens": 567,
+      "candidate_tokens": 596,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "3b9b9eac8fb5bc0941b9ee54fd59d340365c2d9b032ae6a84060d5f419a900c4": {
+      "bleu4": 0.7428418332962146,
+      "rouge1_f1": 0.8593576965669989,
+      "rougeL_f1": 0.8150609080841639,
+      "bertscore_f1": 0.9309555888175964,
+      "gold_tokens": 567,
+      "candidate_tokens": 608,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "beb1011b2fcf53d12886301c3de0e9e6d3a6ac03429e0657020ea28695c71ce8": {
+      "bleu4": 0.7463549918592448,
+      "rouge1_f1": 0.861878453038674,
+      "rougeL_f1": 0.8176795580110499,
+      "bertscore_f1": 0.9294859766960144,
+      "gold_tokens": 567,
+      "candidate_tokens": 601,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "d520bc51af9af25f6c68ac66d852832ae53e57c0defd55775fba54932b5c8af6": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 567,
+      "candidate_tokens": 567,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "8efab5cc969cbba1b32f72e10cbbf24cf05e5d972a03c051f476a6a2a21eb896": {
+      "bleu4": 0.6407221333614735,
+      "rouge1_f1": 0.8387096774193548,
+      "rougeL_f1": 0.7630700778642937,
+      "bertscore_f1": 0.9277864694595337,
+      "gold_tokens": 567,
+      "candidate_tokens": 589,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "3c898b405858cb428ba567ab64aad9184af9edb617e04e8e9578d89b93a848ba": {
+      "bleu4": 0.4754996217021471,
+      "rouge1_f1": 0.7431693989071039,
+      "rougeL_f1": 0.6382513661202185,
+      "bertscore_f1": 0.9114459753036499,
+      "gold_tokens": 567,
+      "candidate_tokens": 627,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "1efa4b1773fa254e29fa0c258cee6f9c9c948d7fa67449298cec6d9862b874b9": {
+      "bleu4": 0.5616562521584428,
+      "rouge1_f1": 0.7560270009643201,
+      "rougeL_f1": 0.7078109932497589,
+      "bertscore_f1": 0.9014138579368591,
+      "gold_tokens": 567,
+      "candidate_tokens": 783,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "b81667227479483930ff81e1152d793af757cdcfa60e8ceecabdc84f0c426aaa": {
+      "bleu4": 0.17740382498113239,
+      "rouge1_f1": 0.4788177339901477,
+      "rougeL_f1": 0.29753694581280793,
+      "bertscore_f1": 0.8533286452293396,
+      "gold_tokens": 422,
+      "candidate_tokens": 838,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "5705f6c7846dff26a7f30f3dfb8d6ed051547f5067fdc7a0101a96604f146b74": {
+      "bleu4": 0.16347931996800388,
+      "rouge1_f1": 0.48844221105527635,
+      "rougeL_f1": 0.29547738693467335,
+      "bertscore_f1": 0.8497229218482971,
+      "gold_tokens": 422,
+      "candidate_tokens": 814,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "86239447ec614d8e25fc1ae4b61978d99aed9f8fce6f746a173135bc69f4790e": {
+      "bleu4": 0.17623739866257995,
+      "rouge1_f1": 0.4797630799605134,
+      "rougeL_f1": 0.2981243830207305,
+      "bertscore_f1": 0.8526744246482849,
+      "gold_tokens": 422,
+      "candidate_tokens": 837,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "5060bf8a4b0ec7c0e328423db7eb51f2c19dfe0582b484e3a2f08a5e9d43c91c": {
+      "bleu4": 0.17318898026600946,
+      "rouge1_f1": 0.46691176470588236,
+      "rougeL_f1": 0.2757352941176471,
+      "bertscore_f1": 0.878791868686676,
+      "gold_tokens": 422,
+      "candidate_tokens": 1040,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "b719408271cee6dc5c980c39e7bec0b55976365528a7dd3fc5b2e86429ae017a": {
+      "bleu4": 0.13954169200080713,
+      "rouge1_f1": 0.4096185737976783,
+      "rougeL_f1": 0.2570480928689884,
+      "bertscore_f1": 0.855158269405365,
+      "gold_tokens": 422,
+      "candidate_tokens": 1059,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "34201e72a832fab7988bf67b64af42ea6ab8e434c79c33d588ac379a6330c65e": {
+      "bleu4": 0.13595724530112235,
+      "rouge1_f1": 0.3946540880503145,
+      "rougeL_f1": 0.25471698113207547,
+      "bertscore_f1": 0.8611239194869995,
+      "gold_tokens": 422,
+      "candidate_tokens": 1137,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "90bc2fd057677e68399ecabad05adf56f0294ea73e212df52055320e405926e4": {
+      "bleu4": 0.18023770530826508,
+      "rouge1_f1": 0.47534516765285995,
+      "rougeL_f1": 0.2978303747534517,
+      "bertscore_f1": 0.8499278426170349,
+      "gold_tokens": 422,
+      "candidate_tokens": 835,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "a9694fd73e674085a6b75ebbc505917b1862dd38ebf260bf23ae368d13f6d310": {
+      "bleu4": 0.1752647713327154,
+      "rouge1_f1": 0.4803149606299212,
+      "rougeL_f1": 0.2992125984251969,
+      "bertscore_f1": 0.8511341214179993,
+      "gold_tokens": 422,
+      "candidate_tokens": 857,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "03cdaaf3afd87d8395f8176bdcd2a7f1f1f2161630306163d9863f785c399ddc": {
+      "bleu4": 0.19512812430637022,
+      "rouge1_f1": 0.5422943221320973,
+      "rougeL_f1": 0.3383545770567786,
+      "bertscore_f1": 0.8435550332069397,
+      "gold_tokens": 422,
+      "candidate_tokens": 651,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "4b7ff3aff485d9a820d2e6eb7af91b5f3a9c9e6faec6c49373534e6687bff1f2": {
+      "bleu4": 0.18301363485995656,
+      "rouge1_f1": 0.4616840113528855,
+      "rougeL_f1": 0.2857142857142857,
+      "bertscore_f1": 0.8663192987442017,
+      "gold_tokens": 422,
+      "candidate_tokens": 938,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "9ec2a6d68128a9855564e3fc91f6c36e30a3f63e221dfa3f839dfaceeddb7d42": {
+      "bleu4": 0.1831969942414149,
+      "rouge1_f1": 0.46212121212121204,
+      "rougeL_f1": 0.2859848484848485,
+      "bertscore_f1": 0.8666231036186218,
+      "gold_tokens": 422,
+      "candidate_tokens": 936,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "7106bc4e0ef0120a49404abaecbd2fb25397c5e64aba8b26b43a27debcd0d0da": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 422,
+      "candidate_tokens": 422,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "bde955bb5fc7f4421bbbac75c3135189369ecbb56875282fb35e615339ea1998": {
+      "bleu4": 0.18897545336516028,
+      "rouge1_f1": 0.6737967914438503,
+      "rougeL_f1": 0.5828877005347594,
+      "bertscore_f1": 0.9029532670974731,
+      "gold_tokens": 330,
+      "candidate_tokens": 165,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "2baf2f7e9bba5684b961a778cc1eb35bfc3e79fac454e8f51072a86d72b1c999": {
+      "bleu4": 0.1523315278437405,
+      "rouge1_f1": 0.6470588235294118,
+      "rougeL_f1": 0.5401069518716577,
+      "bertscore_f1": 0.8961681127548218,
+      "gold_tokens": 330,
+      "candidate_tokens": 163,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "e178fe9ed3dbeb703517361b6eabac65520da97d1bfcc562ad2cc0993e5fe063": {
+      "bleu4": 0.1389638558134229,
+      "rouge1_f1": 0.583554376657825,
+      "rougeL_f1": 0.4827586206896552,
+      "bertscore_f1": 0.8881126642227173,
+      "gold_tokens": 330,
+      "candidate_tokens": 168,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "bb2ea126f3253c5d3ea60bf0cbe2e11982f51b26c4da139e46f0130a0e764a35": {
+      "bleu4": 0.23680288157617738,
+      "rouge1_f1": 0.6561085972850679,
+      "rougeL_f1": 0.4977375565610859,
+      "bertscore_f1": 0.8852950930595398,
+      "gold_tokens": 330,
+      "candidate_tokens": 248,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "4e477caf51939eb0b06ad7098e5039b44371e06c891e12755908a9582ef23bb9": {
+      "bleu4": 0.3078145384442895,
+      "rouge1_f1": 0.6693386773547095,
+      "rougeL_f1": 0.4769539078156313,
+      "bertscore_f1": 0.8865758180618286,
+      "gold_tokens": 330,
+      "candidate_tokens": 295,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "f8b329796e7e93fc5437419760c0442487c1ab4121ca8f6f3781f25fb3a017fb": {
+      "bleu4": 0.287356889615821,
+      "rouge1_f1": 0.7092511013215859,
+      "rougeL_f1": 0.5066079295154186,
+      "bertscore_f1": 0.8886286020278931,
+      "gold_tokens": 330,
+      "candidate_tokens": 258,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "7c8fe86848ff667e100218cbc97f0f69e21979f2fb887e366abcb96b14d64f3e": {
+      "bleu4": 0.18897545336516028,
+      "rouge1_f1": 0.6737967914438503,
+      "rougeL_f1": 0.5828877005347594,
+      "bertscore_f1": 0.9014742970466614,
+      "gold_tokens": 330,
+      "candidate_tokens": 168,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "b6d5cec7a61482a29704eb50fae6944b2dd27307d3f0c5fa8025f0394de35a04": {
+      "bleu4": 0.2431392149700228,
+      "rouge1_f1": 0.668421052631579,
+      "rougeL_f1": 0.5736842105263158,
+      "bertscore_f1": 0.9133836030960083,
+      "gold_tokens": 330,
+      "candidate_tokens": 179,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "294b237f06ba9575486103eb199769de0e4035783d45d8a10a106c9c74a1d615": {
+      "bleu4": 0.24456739660933535,
+      "rouge1_f1": 0.6614173228346457,
+      "rougeL_f1": 0.5721784776902887,
+      "bertscore_f1": 0.9129949808120728,
+      "gold_tokens": 330,
+      "candidate_tokens": 183,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "9106ce679e0dd92510638fb3e5ba6a404015359b2769352be2c2f584dcfec7b8": {
+      "bleu4": 0.26062200671624824,
+      "rouge1_f1": 0.6728110599078342,
+      "rougeL_f1": 0.4976958525345622,
+      "bertscore_f1": 0.8904780745506287,
+      "gold_tokens": 330,
+      "candidate_tokens": 231,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "f5d751be54433642c1cc3789d8824d1dbd6dc363952a73a67f63bdba3dfd5e4f": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 330,
+      "candidate_tokens": 330,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "de67de0d9da0871832b241527ed25b6126fab86b13dc65f09e5887d4b19bf7b6": {
+      "bleu4": 0.16066858500073555,
+      "rouge1_f1": 0.6195652173913044,
+      "rougeL_f1": 0.5271739130434783,
+      "bertscore_f1": 0.8936086893081665,
+      "gold_tokens": 330,
+      "candidate_tokens": 156,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "9bee3b173edb57c1cdd62f5c7680018e068c2079f7473aec57a1204862cd7655": {
+      "bleu4": 0.5279751518085279,
+      "rouge1_f1": 0.8346456692913387,
+      "rougeL_f1": 0.7446569178852644,
+      "bertscore_f1": 0.9096782803535461,
+      "gold_tokens": 609,
+      "candidate_tokens": 502,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "6dc83ddd14d7d34167ca70718fbecf9ebc418acffb94bebff90e61e858cabe5e": {
+      "bleu4": 0.34714032170302456,
+      "rouge1_f1": 0.7556675062972292,
+      "rougeL_f1": 0.649874055415617,
+      "bertscore_f1": 0.895499587059021,
+      "gold_tokens": 609,
+      "candidate_tokens": 383,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "60de885b6de36551be767beebbaafee54ad3f5278b372b747bc0585566b359b7": {
+      "bleu4": 0.4728871118569645,
+      "rouge1_f1": 0.8118586088939568,
+      "rougeL_f1": 0.7046750285062714,
+      "bertscore_f1": 0.9187542796134949,
+      "gold_tokens": 609,
+      "candidate_tokens": 487,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "54501fcea217f0b44c795c2ed8bf03b3280d369845f88ec9e3c26e74c4660c7c": {
+      "bleu4": 0.42067638060780704,
+      "rouge1_f1": 0.7414141414141414,
+      "rougeL_f1": 0.595959595959596,
+      "bertscore_f1": 0.9075832366943359,
+      "gold_tokens": 609,
+      "candidate_tokens": 672,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "ee1b402a862bf89e110880e6f0367d8694445f603b73209616c9344ea0d93683": {
+      "bleu4": 0.3563734820475082,
+      "rouge1_f1": 0.6474576271186441,
+      "rougeL_f1": 0.4406779661016949,
+      "bertscore_f1": 0.8973214626312256,
+      "gold_tokens": 609,
+      "candidate_tokens": 892,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "304fbcfd8ce6b450dc328f18694eb9d9b21baa03576f422cffbf0c387602bb6b": {
+      "bleu4": 0.45207038640717523,
+      "rouge1_f1": 0.8250591016548464,
+      "rougeL_f1": 0.6595744680851064,
+      "bertscore_f1": 0.9154447913169861,
+      "gold_tokens": 609,
+      "candidate_tokens": 438,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "ca006b7b11ac590448693772e31c159996bf60fe2c0db0c71bc373fdbf1fc198": {
+      "bleu4": 0.42506309460255226,
+      "rouge1_f1": 0.7892376681614349,
+      "rougeL_f1": 0.5134529147982063,
+      "bertscore_f1": 0.9032880067825317,
+      "gold_tokens": 609,
+      "candidate_tokens": 496,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "a1642f400a25492c58b6992748e9291a0ddb747a0fb330079af0d70b1e047e70": {
+      "bleu4": 0.5603028629170287,
+      "rouge1_f1": 0.8041450777202073,
+      "rougeL_f1": 0.6507772020725388,
+      "bertscore_f1": 0.911737859249115,
+      "gold_tokens": 609,
+      "candidate_tokens": 579,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "a33fefda67c2f37f1edc9c30ed4234e80a866b8dd1811585fd1276eb75208add": {
+      "bleu4": 0.567103417671622,
+      "rouge1_f1": 0.8478015783540024,
+      "rougeL_f1": 0.7576099210823,
+      "bertscore_f1": 0.921097993850708,
+      "gold_tokens": 609,
+      "candidate_tokens": 493,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "37914e17911c383d6a53468ccc1b1a37d13c7b49fe04bc3c711d1e92505edab2": {
+      "bleu4": 0.49897922948248086,
+      "rouge1_f1": 0.8276643990929705,
+      "rougeL_f1": 0.7346938775510204,
+      "bertscore_f1": 0.9193275570869446,
+      "gold_tokens": 609,
+      "candidate_tokens": 491,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "b8105f4dfc5bda8fd7486d8ba0f823edd4af432df0b29d81b4b3526d54bab41e": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 609,
+      "candidate_tokens": 609,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "25332ceaa87da8c19787462324a95b06ffa9ea103d9acf9257254f29304e1d7b": {
+      "bleu4": 0.6661880811233241,
+      "rouge1_f1": 0.8751229105211407,
+      "rougeL_f1": 0.8751229105211407,
+      "bertscore_f1": 0.9364288449287415,
+      "gold_tokens": 688,
+      "candidate_tokens": 624,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "51a4f673779ff94632ea00a04c34eb0a683c04ccd9b02dd71b2cdcc582a6463e": {
+      "bleu4": 0.49172628097770604,
+      "rouge1_f1": 0.8194014447884417,
+      "rougeL_f1": 0.7739938080495357,
+      "bertscore_f1": 0.910863995552063,
+      "gold_tokens": 688,
+      "candidate_tokens": 565,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "eed96a0bb6e51d71fbd91d3a5e02fc6176e8af46580034c8c2817518129f3739": {
+      "bleu4": 0.4577150992529814,
+      "rouge1_f1": 0.7797979797979799,
+      "rougeL_f1": 0.7151515151515152,
+      "bertscore_f1": 0.8922677636146545,
+      "gold_tokens": 688,
+      "candidate_tokens": 670,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "b1874d548a5fca330780ae9fc4da1eb827051602a80e5f20d1f180a2a9a460d8": {
+      "bleu4": 0.6071135821455738,
+      "rouge1_f1": 0.8532019704433497,
+      "rougeL_f1": 0.8256157635467981,
+      "bertscore_f1": 0.909788191318512,
+      "gold_tokens": 688,
+      "candidate_tokens": 673,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "75ba8b7eb711ba75c07c8a03f36316c6c965665818663e0439a36882b7d54de8": {
+      "bleu4": 0.6661880811233241,
+      "rouge1_f1": 0.8751229105211407,
+      "rougeL_f1": 0.8751229105211407,
+      "bertscore_f1": 0.9342076778411865,
+      "gold_tokens": 688,
+      "candidate_tokens": 637,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "27b620660d700dcfd5c3b3d273854e666c2caf46b1e8ae2b9a4d9f5f339eb685": {
+      "bleu4": 0.6973581640135915,
+      "rouge1_f1": 0.8624031007751938,
+      "rougeL_f1": 0.8624031007751938,
+      "bertscore_f1": 0.9475622177124023,
+      "gold_tokens": 688,
+      "candidate_tokens": 664,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "619ac9e98d34a77628d3492f395c3ef6f22f1011ca25a3186ad84c3b347f0092": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 688,
+      "candidate_tokens": 688,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "5ac4bc319bfdc0a865adee12b32c1e05484c55d433f44e948d5f4a2f92020f79": {
+      "bleu4": 0.5639115198810225,
+      "rouge1_f1": 0.8516260162601625,
+      "rougeL_f1": 0.8170731707317073,
+      "bertscore_f1": 0.9076454639434814,
+      "gold_tokens": 688,
+      "candidate_tokens": 563,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "0e4d492303f7b14633d410753e5cf42d24f8e210f542d9fe6f46fc387ebc086d": {
+      "bleu4": 0.49336885841957917,
+      "rouge1_f1": 0.8212058212058212,
+      "rougeL_f1": 0.7047817047817048,
+      "bertscore_f1": 0.9078279137611389,
+      "gold_tokens": 688,
+      "candidate_tokens": 551,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "c433a9d92e50ca5c26c84148064af291eb7d1f291bec9dbef7117611d6f400d2": {
+      "bleu4": 0.6828434913436165,
+      "rouge1_f1": 0.8317757009345794,
+      "rougeL_f1": 0.8317757009345794,
+      "bertscore_f1": 0.9315741658210754,
+      "gold_tokens": 688,
+      "candidate_tokens": 768,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "fa02359384d5805b40bdc742f9cadcffadcaa25b379371a88a86c93bcd0d269e": {
+      "bleu4": 0.21782164867151252,
+      "rouge1_f1": 0.5262116716122651,
+      "rougeL_f1": 0.29277942631058357,
+      "bertscore_f1": 0.8654509782791138,
+      "gold_tokens": 480,
+      "candidate_tokens": 832,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "5515765e78455cd63c4c7cf3650f5a285cd4ae87ef1177fdb0ddc7955bfebf1f": {
+      "bleu4": 0.2108690506126144,
+      "rouge1_f1": 0.5306532663316583,
+      "rougeL_f1": 0.2914572864321608,
+      "bertscore_f1": 0.859379231929779,
+      "gold_tokens": 480,
+      "candidate_tokens": 806,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "44049da36ef00f7a0fcfac128074f5bdf7d76aca863287cbd2315caca4482b29": {
+      "bleu4": 0.20199192887622258,
+      "rouge1_f1": 0.5856209150326798,
+      "rougeL_f1": 0.27450980392156865,
+      "bertscore_f1": 0.8533965349197388,
+      "gold_tokens": 480,
+      "candidate_tokens": 528,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "75d72691e76f979e714f353aed0c7fc579ba690916853ff5afe462f0513a2546": {
+      "bleu4": 0.22226350543015566,
+      "rouge1_f1": 0.5530474040632054,
+      "rougeL_f1": 0.3250564334085779,
+      "bertscore_f1": 0.8620469570159912,
+      "gold_tokens": 480,
+      "candidate_tokens": 688,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "e153cad8557e952576e670defdec80a16f8d96b23d57b1b3e778584bb8dcdb78": {
+      "bleu4": 0.18884400150279435,
+      "rouge1_f1": 0.5269709543568465,
+      "rougeL_f1": 0.30705394190871366,
+      "bertscore_f1": 0.862815260887146,
+      "gold_tokens": 480,
+      "candidate_tokens": 791,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "53d71303c96bc7eff5c10fdd4b9658bb2b5415f28d54e968a888f9d9f48b1bb2": {
+      "bleu4": 0.22057369990536033,
+      "rouge1_f1": 0.5262116716122651,
+      "rougeL_f1": 0.29277942631058357,
+      "bertscore_f1": 0.8660863041877747,
+      "gold_tokens": 480,
+      "candidate_tokens": 845,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "1d0ec4c0bfb7e040a1fb67209d63938fb7ef4eecfd36686d92b14d42543258e0": {
+      "bleu4": 0.17378064559367057,
+      "rouge1_f1": 0.4730077120822622,
+      "rougeL_f1": 0.2707797772065124,
+      "bertscore_f1": 0.8648659586906433,
+      "gold_tokens": 480,
+      "candidate_tokens": 1037,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "2df31dcc7bb38336e17bdfcd72f5008290753350174a9e2f300cd003b1ff0e97": {
+      "bleu4": 0.05050138689424554,
+      "rouge1_f1": 0.2728842832469775,
+      "rougeL_f1": 0.1778929188255613,
+      "bertscore_f1": 0.8107171058654785,
+      "gold_tokens": 480,
+      "candidate_tokens": 909,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "763b5b4de6996a5d2ba6c2e9cc94aa075d0415099c6ec3d845476ec4b333a5c3": {
+      "bleu4": 0.21782164867151252,
+      "rouge1_f1": 0.5262116716122651,
+      "rougeL_f1": 0.29277942631058357,
+      "bertscore_f1": 0.8628581762313843,
+      "gold_tokens": 480,
+      "candidate_tokens": 819,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "a04a7ef108550aa457d3cb70ecb1c4036cb57640e27786381eef487d7da1a2ed": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 0.9999999403953552,
+      "gold_tokens": 480,
+      "candidate_tokens": 480,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "41810a9b88d813591fd4b0880fde6f43b8c35236263fadb8fafd77ffe20ede0b": {
+      "bleu4": 0.20557382219579143,
+      "rouge1_f1": 0.5458333333333332,
+      "rougeL_f1": 0.29375000000000007,
+      "bertscore_f1": 0.8629240393638611,
+      "gold_tokens": 480,
+      "candidate_tokens": 790,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "6290dacd90eb0ad6936c9a226ca4cfbe6d3b01c80dcadb153d64df90149a4501": {
+      "bleu4": 0.23026686500030355,
+      "rouge1_f1": 0.5544100801832761,
+      "rougeL_f1": 0.3253150057273768,
+      "bertscore_f1": 0.8526526689529419,
+      "gold_tokens": 480,
+      "candidate_tokens": 669,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "e92ea84de052cd04cfd04cd9426d5d7c0b003a353097bcfc54b6f0ae5e0effe7": {
+      "bleu4": 0.8451750994507478,
+      "rouge1_f1": 0.9369024856596557,
+      "rougeL_f1": 0.8718929254302104,
+      "bertscore_f1": 0.9730257391929626,
+      "gold_tokens": 369,
+      "candidate_tokens": 343,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "fb42ef08f4a8de6dd8363372f069d0cf1eb1094411e4e1f43d9af83de0846f45": {
+      "bleu4": 0.8130195862270906,
+      "rouge1_f1": 0.9310344827586207,
+      "rougeL_f1": 0.8620689655172413,
+      "bertscore_f1": 0.9689231514930725,
+      "gold_tokens": 369,
+      "candidate_tokens": 341,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "71cdd535a4956908a7c9ec8ebe64ff829f3a8d9501be1ab5fbbef394ea0b651d": {
+      "bleu4": 0.6171978245648272,
+      "rouge1_f1": 0.8181818181818182,
+      "rougeL_f1": 0.7509881422924901,
+      "bertscore_f1": 0.9459046125411987,
+      "gold_tokens": 369,
+      "candidate_tokens": 317,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "cb6b68b389f45f3175b5d9fe8eac0a01e990852b21e87a83fea6b209b6ab3be2": {
+      "bleu4": 0.8355108085119839,
+      "rouge1_f1": 0.9007352941176471,
+      "rougeL_f1": 0.8345588235294117,
+      "bertscore_f1": 0.9668385982513428,
+      "gold_tokens": 369,
+      "candidate_tokens": 367,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "9a31546b21b120b3cbaac28e4283e2563e66a76bd9d87e45d06dd1938296f90e": {
+      "bleu4": 0.4708588290767788,
+      "rouge1_f1": 0.6461538461538461,
+      "rougeL_f1": 0.5846153846153846,
+      "bertscore_f1": 0.9386749267578125,
+      "gold_tokens": 369,
+      "candidate_tokens": 661,
+      "gold_truncated": false,
+      "candidate_truncated": true
+    },
+    "0d73fe9eafc9cae64ee016429cb832946036380cb33e110b01cb536a09a0a7d0": {
+      "bleu4": 0.84291974938084,
+      "rouge1_f1": 0.9259962049335863,
+      "rougeL_f1": 0.8614800759013282,
+      "bertscore_f1": 0.969368577003479,
+      "gold_tokens": 369,
+      "candidate_tokens": 352,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "1fa9d2b9afce3ea867a76b8a476d1137b3216385e0374926a8fe48b64fcd482a": {
+      "bleu4": 0.8415393709375608,
+      "rouge1_f1": 0.9297912713472486,
+      "rougeL_f1": 0.8652751423149905,
+      "bertscore_f1": 0.9680474996566772,
+      "gold_tokens": 369,
+      "candidate_tokens": 359,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "ad03037f1182cce5795c1d6962a1c6a79991f50055791ad9bd5fd9c161e8de67": {
+      "bleu4": 0.8451750994507478,
+      "rouge1_f1": 0.9369024856596557,
+      "rougeL_f1": 0.8718929254302104,
+      "bertscore_f1": 0.9730257391929626,
+      "gold_tokens": 369,
+      "candidate_tokens": 343,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "25ec5ccd462769038e98cc86f54113f952cbb300cbd81021376aa2f87a8945e1": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 369,
+      "candidate_tokens": 369,
+      "gold_truncated": false,
+      "candidate_truncated": false
+    },
+    "a1d6f9bc9f6f152b5f72157dc0855adda716bc3bbe0b9383e0dc2bae19f9fa06": {
+      "bleu4": 0.41379975278252334,
+      "rouge1_f1": 0.839366515837104,
+      "rougeL_f1": 0.8257918552036199,
+      "bertscore_f1": 0.8963799476623535,
+      "gold_tokens": 704,
+      "candidate_tokens": 472,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "a2d5a520d233ebffe60443df17db7b62761516845df47e4897d077349e887e81": {
+      "bleu4": 0.36991305511775513,
+      "rouge1_f1": 0.8280542986425339,
+      "rougeL_f1": 0.8054298642533937,
+      "bertscore_f1": 0.8927161693572998,
+      "gold_tokens": 704,
+      "candidate_tokens": 465,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "45df2e832eb0ebfe7398ad787794513283c4ece11e2cab646b13893894c0993d": {
+      "bleu4": 0.47407601985080056,
+      "rouge1_f1": 0.8431590656284761,
+      "rougeL_f1": 0.8142380422691881,
+      "bertscore_f1": 0.9110493063926697,
+      "gold_tokens": 704,
+      "candidate_tokens": 510,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "0db7ca33b79d7f5a5d1b59e1c4c4f7c99961f148657dd751b99a60ef95290a3a": {
+      "bleu4": 0.35986927625619053,
+      "rouge1_f1": 0.7986425339366517,
+      "rougeL_f1": 0.7624434389140271,
+      "bertscore_f1": 0.8898850083351135,
+      "gold_tokens": 704,
+      "candidate_tokens": 471,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "71c637eb04846420f07d71487e79bc4ff29b076f140b9fcf42edfdcbd249f7ad": {
+      "bleu4": 0.39923855447782897,
+      "rouge1_f1": 0.817877094972067,
+      "rougeL_f1": 0.7932960893854748,
+      "bertscore_f1": 0.8925928473472595,
+      "gold_tokens": 704,
+      "candidate_tokens": 495,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "c8e30d32494b373ecb1111906dc2f2a4cb7698d33f3824b51e906f7037e9d9d6": {
+      "bleu4": 0.3356316053666273,
+      "rouge1_f1": 0.767590618336887,
+      "rougeL_f1": 0.6609808102345416,
+      "bertscore_f1": 0.8729194402694702,
+      "gold_tokens": 704,
+      "candidate_tokens": 527,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "af05bcef591a86fd46ccefe2db7855b4971d3742cab4a9c6a32fcfbf5d228d9f": {
+      "bleu4": 0.24814386544171196,
+      "rouge1_f1": 0.7176913425345044,
+      "rougeL_f1": 0.6976160602258469,
+      "bertscore_f1": 0.906132161617279,
+      "gold_tokens": 704,
+      "candidate_tokens": 370,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    },
+    "c84f87e0f797dbc68425d9019e56be79ad8e0a93f908006a0ef52cd97f4dd786": {
+      "bleu4": 0.5936834478890768,
+      "rouge1_f1": 0.7721123829344432,
+      "rougeL_f1": 0.7596253902185225,
+      "bertscore_f1": 0.9222736954689026,
+      "gold_tokens": 704,
+      "candidate_tokens": 679,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "b19393ad49c0f99e0cbb43e9057f9fb42e6ddc0e6e4e1380a0c297c05aa70e1a": {
+      "bleu4": 0.586497259397559,
+      "rouge1_f1": 0.7878151260504201,
+      "rougeL_f1": 0.6953781512605043,
+      "bertscore_f1": 0.9229382276535034,
+      "gold_tokens": 704,
+      "candidate_tokens": 670,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "6d8523559e52c64139f1585e57836e686319d0279f5e228c4c4d8d93e7b7d10d": {
+      "bleu4": 1.0,
+      "rouge1_f1": 1.0,
+      "rougeL_f1": 1.0,
+      "bertscore_f1": 1.0,
+      "gold_tokens": 704,
+      "candidate_tokens": 704,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "af3a818080dfe4a9e32d127ae2138a4aed5a79e763e335e113c570004c1f92a7": {
+      "bleu4": 0.4732644468251748,
+      "rouge1_f1": 0.7721280602636534,
+      "rougeL_f1": 0.6854990583804144,
+      "bertscore_f1": 0.8900374174118042,
+      "gold_tokens": 704,
+      "candidate_tokens": 695,
+      "gold_truncated": true,
+      "candidate_truncated": true
+    },
+    "fd947f4f2d000cc40374addada98136b4d0f8accaf0ee84fa9cb0ea46b4a801f": {
+      "bleu4": 0.4096988082572699,
+      "rouge1_f1": 0.8235294117647058,
+      "rougeL_f1": 0.7946725860155384,
+      "bertscore_f1": 0.8926085233688354,
+      "gold_tokens": 704,
+      "candidate_tokens": 505,
+      "gold_truncated": true,
+      "candidate_truncated": false
+    }
+  }
+}
