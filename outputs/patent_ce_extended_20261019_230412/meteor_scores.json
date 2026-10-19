@@ -1,0 +1,1963 @@
+{
+  "schema_version": 2,
+  "method": "meteor",
+  "input_sha256": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+  "settings_sha256": "5a1e8e54fe6ff230a9571a0473e68a2b81df2f76c8717daf41723395b38265cc",
+  "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+  "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+  "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+  "complete": true,
+  "smoke": false,
+  "settings": {
+    "method": "meteor",
+    "seed": 42,
+    "device": "cpu",
+    "threads": 4,
+    "batch_size": 1,
+    "smoke": false,
+    "normalization": "Raw source strings; upstream tokenizer behavior only",
+    "score_direction": "higher is better",
+    "orientation": "gold reference then candidate",
+    "tokenizer": "nltk.word_tokenize",
+    "alpha": 0.9,
+    "beta": 3,
+    "gamma": 0.5,
+    "matching": "NLTK lowercase, exact/stem/WordNet synonyms"
+  },
+  "provenance": {
+    "asset_entry": {
+      "module_revision": "9e0985c1200e367cce45605ce0ecb5ede079894e0f24f54613fca08eeb8aff76",
+      "source": "Pinned byte-identical Hugging Face evaluate / TensorFlow NMT BLEU implementation",
+      "upstream_files": {
+        "nmt_bleu.py": [
+          "https://raw.githubusercontent.com/tensorflow/nmt/0be864257a76c151eef20ea689755f08bc1faf4e/nmt/scripts/bleu.py",
+          "d35b20182f82f22f1c31232df1d25977328cf011178fcd381c2d82ee4116b40b"
+        ],
+        "tokenizer_13a.py": [
+          "https://raw.githubusercontent.com/huggingface/evaluate/a5db2ad54aaeadf15c7aa1f056bc6f7bbeeb7e5f/metrics/bleu/tokenizer_13a.py",
+          "496ba6b982897605ca52ac06595a0e59496c8563e26a28b47f14a0cfba725a91"
+        ],
+        "bleu.py": [
+          "https://raw.githubusercontent.com/huggingface/evaluate/a5db2ad54aaeadf15c7aa1f056bc6f7bbeeb7e5f/metrics/bleu/bleu.py",
+          "41aebd59ddb0306117c049edf6a2f71b978cf0c5cce1da63f0e1551987f34315"
+        ]
+      }
+    },
+    "validated_file_hashes": {
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/bleu.py": "41aebd59ddb0306117c049edf6a2f71b978cf0c5cce1da63f0e1551987f34315",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/nmt_bleu.py": "d35b20182f82f22f1c31232df1d25977328cf011178fcd381c2d82ee4116b40b",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/tokenizer_13a.py": "496ba6b982897605ca52ac06595a0e59496c8563e26a28b47f14a0cfba725a91",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/corpora/omw-1.4.zip": "3b941e664852f3297b6040236626065796a2aaf7d7f9eec8779a3beaa1096c2d",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/corpora/wordnet.zip": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/README": "d3251cae66a9359bd68c039e3a46172a05ca9df0b27dcdfa23ae594d68d27ec4",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/abbrev_types.txt": "8eb1feb5a6a46f9bd8f6a5ae58e218428a65b459b5ebd61668d83fa80acfc329",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/collocations.tab": "fd58f549658c8389be32577e232187be9376c79708f66c60388a84916c8f3f3d",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/ortho_context.tab": "451cb1a68a03ba88ced1247e6bb48c442e87dce1c9f463104618fac509866cd4",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/sent_starters.txt": "42f1de18ab29f9842113b87ec020202c0c25316c97d37f968435a7c7ee3018ca",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/abbrev_types.txt": "4a358b26b7ba372cab3cedeb43b4e99a76ae9d01150493964141eb42a62e4a6e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/collocations.tab": "b003d3b839afd47afa81d64620a1cf15b75b944212a7f3ee6a7571f041ae02ec",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/ortho_context.tab": "59d7ccda7b1eef6cbcddb6d2f1930c255a5d43600e66e32eff28eab8190c0727",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/sent_starters.txt": "f8dd41bdb1bb633574b22d38205e1c073639a0b80cb9591964bf92d84317527f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/abbrev_types.txt": "dcd4af07101692c986049ba07abcd6b7c1a2464ef4e46a932cf92d6e220388dd",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/collocations.tab": "9a013563bce4637595a6db9d2eeb0ab3f68685d704ae20d97ad718aa91afbe4a",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/ortho_context.tab": "e2077b5748564a9666e437c0a96ea9c5bed0fe3ab5c756535584785d3af20fc9",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/sent_starters.txt": "734454acc5952d91a1dfaca8cdfdabb715d8cdd35789c749528639d80751f45c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/abbrev_types.txt": "92a3e070f43d9b4c5534758ca40ad7343b04e7e29bfe0c2eb658a39445a4f779",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/collocations.tab": "8e2da1225e4dd2cc9dba261ee231ccb134859e21b46006e7f472c5ee269af0cf",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/ortho_context.tab": "4bbcca25ed3d3f06c02402abf8419b9f033b8adc06e7b482eca4e45f81a5dc4c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/sent_starters.txt": "f3f8535483e1dba487241b764945168123bca3209a9645e59acd1225dc76edac",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/abbrev_types.txt": "0307878fb32af1e21d8f3ba0644e39c89602f2f8aa4e4304943f7e9e0fd081b2",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/collocations.tab": "f1400a7ebf3c82a3d5aac886eb5bf06a1a840946cf052bb1532da7c25094797f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/ortho_context.tab": "768b7e6e2ba93ff096e244af175c343b1a73463c4a1b99beebe6a9aa57ea1d78",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/sent_starters.txt": "7ade7bb8ca7c527aac09517a6efbdf4f749e9a9fc0e43d2856c58be847030c83",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/abbrev_types.txt": "7829baabcb5d69e26232839a1f5b6bc6d12b0e59b7f0a65f6ab1c163acbeb800",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/collocations.tab": "4d717a1b4d1fb7108ca9c9ed2cc63f8b4813cfaf73819e96fce79495ddc48292",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/ortho_context.tab": "43e55a8bfa977561337a09105c570036df11346c6f91e57d8631520eefb26167",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/sent_starters.txt": "ab81cf3b774ef068ac98adb99fcb3b1a05caf0423bdfa302bdc285e15597567f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/abbrev_types.txt": "01747ecfed08830d582d8c94634b63a36da316c0a67feec2871cf03f0dd5c657",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/collocations.tab": "8ddf150ef5a0d22694e7c4d807f80b6d55da731ca81ea139633f560b378af990",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/ortho_context.tab": "7090ef4292647d4fe137159bd768a5304015d0614d59fdcfc30b2389634365ac",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/sent_starters.txt": "b45a1ebdae9cdf46cf2e8be016b4718bf4f825445fc783d445faf0cfb2d569f8",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/abbrev_types.txt": "259e5d78bc9d61a12d55ba47552c4e9c5ca08364d78a4669e864fd6de86818e3",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/collocations.tab": "f77bd513f42e8179f5c932111c312be353d5913387d0bfe90a95c109111bca25",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/ortho_context.tab": "023887e78cfb919f1a00f9a96a88f42131582748cf833fd469490ee66596307c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/sent_starters.txt": "fe4b63edbdd33f78ba0a755f035680a864948b145ae82fc99072440a62a77acd",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/abbrev_types.txt": "0d56253b7ebc83f0f2403479bcf2b8ea51ffdea89ee60e34018eb32e4750d683",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/collocations.tab": "0fd732534d56177c80874125ca894ae60aee7b052ee2865a405b454cfd737a6f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/ortho_context.tab": "a87e4467791f974f808c0d396f6c82cd3a014d4fb4458a2287e2fcbce7084e9c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/sent_starters.txt": "1a450aec85164e3fbfeb814768c9f120abd7139726af5bb5e2a577096739ca8e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/abbrev_types.txt": "5d406f6bfb35e55f6bea282bf148bdcc9e4677860eb01a8e67c34b894274ac50",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/collocations.tab": "8167b58a049bb04de8d692ed33d72963503a061717cd37cacb33bb2d00669caf",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/ortho_context.tab": "462ffd48bc1c9b86efe66d04d826cd1e7a5745be871b8121759ed2920a967370",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/sent_starters.txt": "4dc2cdfda34d4f286e5875d6b62b148771a799a71f0d45b504da23cb61b59d51",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/abbrev_types.txt": "1ea2cd01629c8cbeac0799d39383e10c4d6948734c255d37e3ceda550ba62464",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/collocations.tab": "71bc38e42133f288c660a338169d8858944135282ad4166a2c5d23cc8a06ed73",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/ortho_context.tab": "5289e43f46ef3679f4ebbed95ef1fad5b64dd7aa8957042adb2b661cc6ae4425",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/sent_starters.txt": "918c902aa9d0b72700410258274ae335da51148fee7fc27095ab4114b23a245c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/abbrev_types.txt": "beced74076edabe64f45effb823012d1396db41f35fa1d8be2ac6b69bf7bc40f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/collocations.tab": "9c815b01e2f7518552b53f09012644df1fa0d8c7642baff9dc5f61e85e0be422",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/ortho_context.tab": "57ea2aa129de6ae414cd0cbecba8b2399c4fde775a2145776a7e8f1023f3f183",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/sent_starters.txt": "2b49ef0f0c2e1b4e8b06aee1172e4d88ce6ad01486fe4182cff6fc443a73ddeb",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/abbrev_types.txt": "426ea37ca486d0dcc3653653c613d853d0bb3929037f8ee6bf6c12ddae873aa1",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/collocations.tab": "961653f0606d85ecb8a760cad4f69df123f010bc4b35de0253feb2d7869666b4",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/ortho_context.tab": "f770804067012ee5707ffc65d90523180e09bab09230a49251777be821a1a4f6",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/sent_starters.txt": "8564076ae22be3d549a3f097a18458ac2967d65bd28dad7cc223c53f5ce27d1b",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/abbrev_types.txt": "cd5c3cf9c4c8b766bc9edbc96444b0e2189b837b26c583aa2cce83a18e4285f5",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/collocations.tab": "a150d2ca3b8bd9d87cd25f2e1d2142607cdf9344efe914bd034af6017a16d841",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/ortho_context.tab": "2d9c143f7b322fc74738a21e0b2b04feed1668245ac93e5a8e5399e6e0d8ed8a",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/sent_starters.txt": "7b7f4a1586b1df8592bf294c8dd0d19aaf90740d78ce3b40a31eff2b9669d15e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/abbrev_types.txt": "75191526be516a9918948fe3ad46f6c2c4dee14314359a899b8c2ebf496cb631",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/collocations.tab": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/ortho_context.tab": "b296cba91006569d3ef79eb2cff2378bf5be5b75e9e83ea119b883d3c3ee69b6",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/sent_starters.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/abbrev_types.txt": "b1d6b16d1d2b3c0c4132c1528b9843d1557f7f544044db27f4e8d2d6985faf2b",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/collocations.tab": "4c10daafdff496e369f3a8809bebf187abc851df630457ae93c7ca4fda350651",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/ortho_context.tab": "3ba826bdd7e5543af7af8e317d4652ba8b47fd812157855a6274ec1387a46b3e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/sent_starters.txt": "85ae14dadef3c4c9f753491d84919abb10e09003adfe248794d4a597fabc5793",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/abbrev_types.txt": "246a4b3efbad45b63eb9672b718574b535acef6d656f24dc17a46d13a38efba1",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/collocations.tab": "fa5ea7dbf61f2b1c12180d660a3012c9faaf4962eb12549d77af95e2a40be65d",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/ortho_context.tab": "1346ecfc57b26174987ffa9bd4a2558a66f46592a513da3859648790351df370",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/sent_starters.txt": "4d4f7380ba16380b6158e9e8ead6973c52f27e3c9c88af63f15a41c490998319",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/abbrev_types.txt": "1e1a78bd5e7fd6e7eb4b15b751a23d441cda845d5fc0b631958177b2f504da00",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/collocations.tab": "bd2260433c94617ba7cf6102e4c1035099a72e5a2f6b60734639252e41633c04",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/ortho_context.tab": "d48c5705d0570993628e539ca211f05cdb5aad7adfcc6ed7b24310941bfac9f8",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/sent_starters.txt": "6f0f7a6773f7488a23bafc6c29e7d4554e792d89c6b7a89fbd6a83bec85ef767",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/abbrev_types.txt": "de56078c5eeb3fe07e24eab67c4aaf44e2181cbe80edd976cb1622819599d6fd",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/collocations.tab": "061ce2981776a8f875da4f24bebd7e138f8da1d9057b43d07f580148ec106a33",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/ortho_context.tab": "fc214227f99d5ea3ee70d208df16b1984eab375d1946ed379061c6cf5c1718be",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/sent_starters.txt": "93239fb55b5d2ae6d945a84a94e118ba8a816326b17cdc11ba8111bea0c97828",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab.zip": "e57f64187974277726a3417ca6f181ec5403676c717672eef6a748a7b20e0106"
+    },
+    "environment_lock_semantic_sha256": "b96be69ccf57507b0e08a04ddb2ee901b5c6bb32687c5da863627fbe4b4766e2",
+    "source_adapters": [],
+    "algorithm_changes": [],
+    "source_file": "/home/agent/.venvs/patent-ce-13methods-py310/lib/python3.10/site-packages/nltk/translate/meteor_score.py",
+    "source_sha256": "542ad48b34b6981a0b570d729fae7c32376cdad743af0049d71391600a4a04ac",
+    "assets_manifest_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+    "input_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/pairs.json"
+  },
+  "environment": {
+    "python": "3.10.20 (main, Aug  7 2026, 02:25:15) [Clang 22.1.3 ]",
+    "python_executable": "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "versions": {
+      "torch": "1.13.1+cpu",
+      "transformers": "4.26.1",
+      "numpy": "1.23.5",
+      "nltk": "3.9.2",
+      "rouge-score": "0.1.2",
+      "pyemd": "1.0.0",
+      "scikit-learn": "1.3.2",
+      "scipy": "1.10.1",
+      "pytorch-lightning": "1.9.5",
+      "spacy": "3.7.5",
+      "sentencepiece": "0.1.99",
+      "tokenizers": "0.13.3"
+    },
+    "device": "cpu",
+    "threads": 4,
+    "seed": 42,
+    "offline": true
+  },
+  "scores": {
+    "d2d7b7b9e4291ab3abdc45976c388455ba31c4c0c9146c22cb150fb101547229": {
+      "score": 0.7014651501475357,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 464,
+        "truncated": false
+      }
+    },
+    "b7cdb982dd348c4ad5a43cfdc495233ee76c9c10f4f4b9db10ff0962c523d3e3": {
+      "score": 0.5402955915977536,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 959,
+        "truncated": false
+      }
+    },
+    "4d4962bcf5a8508bfd68a24401540491582e901ead404e43938f1bdd4031098e": {
+      "score": 0.6199451834581313,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 365,
+        "truncated": false
+      }
+    },
+    "a56fb24cd026eae446e94d0cf0042451caabe09e2756476bda91c88c9a6d1a76": {
+      "score": 0.5506694188356912,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 423,
+        "truncated": false
+      }
+    },
+    "0940802de6f63be5bc7c57270524562d9424de88538a6aad24c84c601b7f3d58": {
+      "score": 0.621170077465603,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 737,
+        "truncated": false
+      }
+    },
+    "6cdd60b4479a87c26edd8aa767d6630c497981bdfc8a5ae91f77b58e13d2f7e9": {
+      "score": 0.5636163203618222,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 735,
+        "truncated": false
+      }
+    },
+    "8d1c4f8b195cb076a92b2159888e01e94a889a5464b2c109ac174317966b8b79": {
+      "score": 0.6761485707987971,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 501,
+        "truncated": false
+      }
+    },
+    "280a50c25ca63b3d2b07cf85ae20b906f108f2c8e896c64dc27b482715745e38": {
+      "score": 0.5892754153060923,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 724,
+        "truncated": false
+      }
+    },
+    "93ca682ad9bc3a9ca37e1503b1fadc5a3b6bdd7deba790a7de99c5a9097c992b": {
+      "score": 0.9999999945855456,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 452,
+        "truncated": false
+      }
+    },
+    "5ef3d89ac2429e536b89e16a15621e1fe107b33263a24e08f1f521c2dd03fb34": {
+      "score": 0.6020792629952081,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 885,
+        "truncated": false
+      }
+    },
+    "de0d0b822ecb3fd0251f05b885c11c8aedf19458bceca35ec237c05a220155b9": {
+      "score": 0.481338070984711,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 1017,
+        "truncated": false
+      }
+    },
+    "7b81996b2c97d0ca98c9edbe644ff42711b9e654a60b77ad5e28b3357d589400": {
+      "score": 0.4442643943126072,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 593,
+        "truncated": false
+      }
+    },
+    "9a330a74d0cf47c1aabd20a5c9710e5b7f5cf61185903e98220598ef9db714e4": {
+      "score": 0.5805453826697867,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 779,
+        "truncated": false
+      }
+    },
+    "cd88270927fd64128223040f57126655a951b197ad099f95d7160a4a5bf82820": {
+      "score": 0.40952800743287676,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 560,
+        "truncated": false
+      }
+    },
+    "5e2bf9397879ae107f5109bbf0a3f99b1a8c17b134d8717c567e62318bfdec27": {
+      "score": 0.5420698849309483,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 689,
+        "truncated": false
+      }
+    },
+    "fbdbbaed8abc0eda7dd3a2d432918d9949fcaad071e6da305c11088c468b2e2f": {
+      "score": 0.9999999991858335,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 850,
+        "truncated": false
+      }
+    },
+    "2c8733d3c30375dee01d7b9ebcc811d952725a9e8985b5c75fdfe574525ee120": {
+      "score": 0.6466238134412647,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 738,
+        "truncated": false
+      }
+    },
+    "1bc5d63e6217fd3a63b506c87dccba6ec9dad4b50b1afd79fc547b301f634b85": {
+      "score": 0.3512773714793649,
+      "metadata": {
+        "gold_tokens": 850,
+        "candidate_tokens": 485,
+        "truncated": false
+      }
+    },
+    "78945c5ef16cc0d133ce795e522a1e55c5fa4f84f1e3abb209f57a52c890e22c": {
+      "score": 0.39539493029078043,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 975,
+        "truncated": false
+      }
+    },
+    "e79e5a7b8f4b22e45961da8de21f4a0585671eb9cc1f13ad80025b545072448f": {
+      "score": 0.35724113961108034,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 818,
+        "truncated": false
+      }
+    },
+    "234091dcf9a5c2fddf3b57d878542e4f0dfa3861b3de89224f6f863fe5bade19": {
+      "score": 0.26272793254643395,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 337,
+        "truncated": false
+      }
+    },
+    "44007cfb65d7d9e3d4436696bc69a23ff56ed0656d39be0db59597c1fd2c3392": {
+      "score": 0.5113959239471665,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 1254,
+        "truncated": false
+      }
+    },
+    "09c412b9a6870a2663bfe81fc0ec7e83e92916937585f873f378c59a465ed771": {
+      "score": 0.38224611675355696,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 598,
+        "truncated": false
+      }
+    },
+    "0ce21f067cb46657535e12b8ec6c03eafc0e13ca8e8d9a2258d244fd03e2d896": {
+      "score": 0.3995153006081547,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 792,
+        "truncated": false
+      }
+    },
+    "5618c2517ee96b30acd65ffdcd480f77f7b329edc593e3c2ec85174de75bb8ec": {
+      "score": 0.9999999984976529,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 693,
+        "truncated": false
+      }
+    },
+    "a5b5125c6d5037a79c12b4c854fe7ee3eab814b73ace8a8c1b241193b5de0f81": {
+      "score": 0.46677443186124284,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 942,
+        "truncated": false
+      }
+    },
+    "2afd1b36e0e442fe34f8faa6993c91f2960a00c0322020d1edb53ba4619f128f": {
+      "score": 0.47479588477192275,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 708,
+        "truncated": false
+      }
+    },
+    "93efab6f4f2137424d913fe540bb19a0641e512dbe3afb4eafe55f940f37ef49": {
+      "score": 0.6040335178647717,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 1012,
+        "truncated": false
+      }
+    },
+    "cd793635a188e2f17c96a55606b39119471d66369de291e98b42e7e2ae34988c": {
+      "score": 0.3070617958209076,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 363,
+        "truncated": false
+      }
+    },
+    "6b94540b476013c1e7ef5438add1c7baa415ff5b0ca17d9c4b4ea7f09cccd41a": {
+      "score": 0.44468879944791406,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 849,
+        "truncated": false
+      }
+    },
+    "6d6664aa5708cdd6a168611999f4de3471395113215ad72d2703b9ce56dba85b": {
+      "score": 0.2149402983278705,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 262,
+        "truncated": false
+      }
+    },
+    "5df3d64a07226df5314c1e7d80e5b096d66d6341f5bd758d787559ae00f36f74": {
+      "score": 0.24831246181372243,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 385,
+        "truncated": false
+      }
+    },
+    "5c5481963b392d25d06378328f977d9db02c7aa690600543a0092055076ce643": {
+      "score": 0.9999999987407615,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 735,
+        "truncated": false
+      }
+    },
+    "6cccadf00d99c3c69b0e5c7aa17194f3587eaa3c9f47633829431a6308b8ba51": {
+      "score": 0.39141590461620807,
+      "metadata": {
+        "gold_tokens": 735,
+        "candidate_tokens": 880,
+        "truncated": false
+      }
+    },
+    "b9369b38409a627439d1047e15ecd4950bfbf77391c13d38e77a5cfb36f9d895": {
+      "score": 0.3732794834373611,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 706,
+        "truncated": false
+      }
+    },
+    "9de53c65927fb773bf8b43e05cfab063c936af375a5c2d64927e6cc8ef496bef": {
+      "score": 0.3638326117841744,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 598,
+        "truncated": false
+      }
+    },
+    "79cc62f75367e209c418a75c262ce5e9b4a95e40bd25c1220ec53436d31a04fe": {
+      "score": 0.4052688819089634,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 658,
+        "truncated": false
+      }
+    },
+    "1dd04a7f42bb818f8b03def86a7ad24ee2217d3f9437d1ef2e083bc60c97a2a4": {
+      "score": 0.3620538685739533,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 697,
+        "truncated": false
+      }
+    },
+    "73276f35c2b6f1ad9af8075721e50da6612695952971760a11ff8c9fc31b50f2": {
+      "score": 0.3899025536538762,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 616,
+        "truncated": false
+      }
+    },
+    "b8b7e31a100f72b0358a34c09630a5dac5cae8841a2e7c8e983c5d942d104672": {
+      "score": 0.37687184995331696,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 679,
+        "truncated": false
+      }
+    },
+    "955d2b814be75d3d72d1630d61b4ccfbe9352d3a967768eb541daf49fd413452": {
+      "score": 0.44668328367517907,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 848,
+        "truncated": false
+      }
+    },
+    "e2aff65dbea8d883045bf93b471fa62dbd6b0045dfa1efe9755bd78d9c38b76e": {
+      "score": 0.3620126904246871,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 622,
+        "truncated": false
+      }
+    },
+    "948e2b0375e5ed48d746158c83dd3994ad1c35dd844131289f4a6b7c7ad96ef5": {
+      "score": 0.37645321519667074,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 790,
+        "truncated": false
+      }
+    },
+    "8ed18613a0fbe562b130cfd4d10655da60fca4a792af37cdb41bbca4a97dc894": {
+      "score": 0.38308014850404026,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 403,
+        "truncated": false
+      }
+    },
+    "abbfa1e2107af52000523157a8545010a5d9395cc6181c56c59a803c473325c7": {
+      "score": 0.9999999949948619,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 464,
+        "truncated": false
+      }
+    },
+    "db9c9f2588a023f6d5b8cd1afcfec474ab07d6250df306923eae438fe42a9a6f": {
+      "score": 0.4060890027546277,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 529,
+        "truncated": false
+      }
+    },
+    "d0836aba6048ab5da075d0537ef567fcd6bb34357dc4053f3779a470983a5348": {
+      "score": 0.3975841158329747,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 916,
+        "truncated": false
+      }
+    },
+    "fbc597f43d7725466be29a63cfb32b3f37440cfe3897b511ccd85362e1d6cc32": {
+      "score": 0.4392008425994485,
+      "metadata": {
+        "gold_tokens": 464,
+        "candidate_tokens": 759,
+        "truncated": false
+      }
+    },
+    "77c903319adbc37333018abdb82ca3eba5811ec8c6ced632f83708771b2c6f48": {
+      "score": 0.7282470860887341,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 764,
+        "truncated": false
+      }
+    },
+    "215dc8b89d6db7704ad316ffebd4b84516eba8cd91a340dc224476f55c211cc3": {
+      "score": 0.55590115649237,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 988,
+        "truncated": false
+      }
+    },
+    "75fa9d65c8c5e45cdeeb56d505e3a479e0766e469c094c26a0cc3de0ef02cd34": {
+      "score": 0.9798536228522671,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 327,
+        "truncated": false
+      }
+    },
+    "7e58597e936894adcdf21c1e0ddac95ff8648692907cb2cad0631b22c2172c44": {
+      "score": 0.5461082375465021,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 899,
+        "truncated": false
+      }
+    },
+    "0426befd6fc1d2b946147fbb9ff991d24af9abc7faec1a8f44f42d8881a475ef": {
+      "score": 0.9999999843038834,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 317,
+        "truncated": false
+      }
+    },
+    "fd3771d661f2c81155b6c5ca0b4110b312474e481d399e59ae6f7a0df27ac9dc": {
+      "score": 0.9971518974701292,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 316,
+        "truncated": false
+      }
+    },
+    "9b1871099f07c3971b98d7e7d29a327101780eb9e173ea500a3745311b6cb697": {
+      "score": 0.9999999843038834,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 317,
+        "truncated": false
+      }
+    },
+    "a641c2c24c4acc8172411e3850c1876fa8c2c7ac3651633d01fc3efd1a0eff77": {
+      "score": 0.986101988619915,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 328,
+        "truncated": false
+      }
+    },
+    "0f6d2af563e26e7c728658911c02b0769c4624f5224a2a28e1d5d76d2a94da08": {
+      "score": 0.8888862961078279,
+      "metadata": {
+        "gold_tokens": 317,
+        "candidate_tokens": 317,
+        "truncated": false
+      }
+    },
+    "30d52ad58d71efa9e7793650762279070267509e26b950ef68b14873fb852f32": {
+      "score": 0.4401412147057999,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 1315,
+        "truncated": false
+      }
+    },
+    "697a51d310729641e3d532c44a8847937bb8e0812cfa863851f66ded316b9bd0": {
+      "score": 0.4218385912148025,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 405,
+        "truncated": false
+      }
+    },
+    "0d41149ab85809dc546a25f231b7099bb7aa93ce3bfb05ddf602de8bf09ce20a": {
+      "score": 0.4551112907605239,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 861,
+        "truncated": false
+      }
+    },
+    "d65a42f84a273614cdfe70e15c806813e74f05109acf35427d3e9ee06c43ae4a": {
+      "score": 0.46095729430360105,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 931,
+        "truncated": false
+      }
+    },
+    "b06f94acd54bfde0c69f190223eb67c383bccbeb92e6d1ed7ee23512eea2c4aa": {
+      "score": 0.45572964898788176,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 589,
+        "truncated": false
+      }
+    },
+    "8318ea895d61ea99adc0b8add1e13568f28049f51f33d8633548a8c3d6f9632a": {
+      "score": 0.428974714654057,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 1048,
+        "truncated": false
+      }
+    },
+    "30217ea74b4a4d75f9e1422f532e03229b73850e6180322022bd44b080581cd4": {
+      "score": 0.48565635862497686,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 908,
+        "truncated": false
+      }
+    },
+    "1ac14bcf59c5e234b927dea9acb017ef8a73349810e61fe6876665c3dddc8f7b": {
+      "score": 0.5024602675765467,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 428,
+        "truncated": false
+      }
+    },
+    "3bd8d15f15e60e30f28eac5be3db4502025feb4c238b15e407095c1a223faa3f": {
+      "score": 0.5017244520804724,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 521,
+        "truncated": false
+      }
+    },
+    "f03f1aa38468596fcab84a7edd0bcd8bfcea0ca03ed83dbf92e9193195c55c2a": {
+      "score": 0.9999999825495864,
+      "metadata": {
+        "gold_tokens": 306,
+        "candidate_tokens": 306,
+        "truncated": false
+      }
+    },
+    "03c8cc96b9ff6692fde4cb7eba6afc1438cc8052e663b31d4a7c4023348c68d2": {
+      "score": 0.49020383887537167,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 446,
+        "truncated": false
+      }
+    },
+    "acc550cd2a1649c6a73e62d2f35abfdf55b8fb831948e01cc4e87d2f19c78dce": {
+      "score": 0.5153684803050398,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 790,
+        "truncated": false
+      }
+    },
+    "8fa2671a0184027702083314d41e0114079e5c21d68b6e44a50ba4adb75783b9": {
+      "score": 0.5206515248149313,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 901,
+        "truncated": false
+      }
+    },
+    "53d110a405562671de2ae04192c7946ebe5dd1a7e71811a893913e97f8652d9c": {
+      "score": 0.5042207706239734,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 676,
+        "truncated": false
+      }
+    },
+    "560cb04f56b7cbdf072dbc82abb6dc99a02dd090f8392b6d008dda998935f6af": {
+      "score": 0.5214903250403863,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 638,
+        "truncated": false
+      }
+    },
+    "92c24f74c1e0d6d4bc3079023132ce04f56b79c1d513dec2ca6cfdf8bdc4052e": {
+      "score": 0.4960190565930435,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 528,
+        "truncated": false
+      }
+    },
+    "28561c7ba4d16bcb6ba3da868c4353cafb650b92a166d53328075c0fddef4f22": {
+      "score": 0.4942027292668512,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 628,
+        "truncated": false
+      }
+    },
+    "2cb7d619a33658f2876ed922117672e2a027138f5f402c4e6ef6e2f2c244f2ae": {
+      "score": 0.5293138009373747,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 707,
+        "truncated": false
+      }
+    },
+    "54e122f058ca8e4c95e031b5be8bf570ae58724091c85c78d920e0bb63c73648": {
+      "score": 0.4606459231697233,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 622,
+        "truncated": false
+      }
+    },
+    "81e58b1be62753bf8023d526ea62385348a3073b1760e79b2c790c6266bceeb1": {
+      "score": 0.4933140186980083,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 451,
+        "truncated": false
+      }
+    },
+    "c3eaed3a658df78440257f3c1cb2b5bac3a3a38e54becd7be8be89f04d00b3a9": {
+      "score": 0.46213117099133094,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 823,
+        "truncated": false
+      }
+    },
+    "544cb41f03c819f7d4237d66e28215ce1e89b759e9d80dc3f279c466ef591101": {
+      "score": 0.4191776482070738,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 857,
+        "truncated": false
+      }
+    },
+    "2d3574022e26df6110b3768901bada36a7fdd37ed570b8665c6c8531395a686a": {
+      "score": 0.44238273807092315,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 771,
+        "truncated": false
+      }
+    },
+    "7206b4b2c74c3254e1a20a3e043bc5f4cc4cd42ab1120d7246890420fa4affb3": {
+      "score": 0.4266425965717927,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 388,
+        "truncated": false
+      }
+    },
+    "bd7ca8efcc1a5e2b59f8d44db6f01d8781840f0ffe615b25dd5141f42d012a05": {
+      "score": 0.9999999862124842,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 331,
+        "truncated": false
+      }
+    },
+    "47c6b6f0b80a07fc551b93f17e204eec3f9a483d5be3b63740be74a403738dd1": {
+      "score": 0.48481253084266995,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 592,
+        "truncated": false
+      }
+    },
+    "921c4e07284af45d303a3a432a19e6e84861637e8158e49dd0c6ce8c6a01e8c9": {
+      "score": 0.47382946308597823,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 764,
+        "truncated": false
+      }
+    },
+    "3013114acdf650d76d915792d6b7d131e6fc8e93b9e276f18c720000d12a6082": {
+      "score": 0.40673143934312245,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 596,
+        "truncated": false
+      }
+    },
+    "7cd7512f8b6d3581c04d6dd77e2a8b69bbe9f7e62fad946e7ac38b689c5bde1a": {
+      "score": 0.5031626459249584,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 837,
+        "truncated": false
+      }
+    },
+    "7db952b81ceef810aa2237e2284cc8010c7d0b18b1bd072e7dbb68d5c28b3930": {
+      "score": 0.4844222010550731,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 623,
+        "truncated": false
+      }
+    },
+    "19d473f089c143dda0249ccdf67fc19b94f06310cfd5ccc9ab3dbf80707254fd": {
+      "score": 0.4567276224457767,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 954,
+        "truncated": false
+      }
+    },
+    "34a56835edfda55d46ba93042368b096601262d93c300f2eb6b3b324cb070d4d": {
+      "score": 0.38068323126030923,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 644,
+        "truncated": false
+      }
+    },
+    "c2d26fa94d42c38a8039fe4579c6e31881bac47d23f42a22968935bc50463ccc": {
+      "score": 0.45896429052827314,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 934,
+        "truncated": false
+      }
+    },
+    "a78b9ebac4620eb353da820d774aed0df415afdf4d07cc9a6625534556c4b779": {
+      "score": 0.5278886759262365,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 938,
+        "truncated": false
+      }
+    },
+    "71f658c49e5aaa46907fa103e7682c060bf95a21ebb749a6abe18ad75a515233": {
+      "score": 0.31089338526382665,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 296,
+        "truncated": false
+      }
+    },
+    "4ad4ad55c54dbab16a1d3e2d9b2197500f0d9661b22065c1a187db4e8907a932": {
+      "score": 0.5301796434606436,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 470,
+        "truncated": false
+      }
+    },
+    "cf9655078f9d535846ee3415fe35345d7c26a98f5a68b02daa6ab71bb6cc892b": {
+      "score": 0.4998616057949265,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 848,
+        "truncated": false
+      }
+    },
+    "5592d76bdf2072d8a9c1cd5aaf0e82b191391ffcc323a0f86fe9b923d8eeb4b1": {
+      "score": 0.9999999883381924,
+      "metadata": {
+        "gold_tokens": 350,
+        "candidate_tokens": 350,
+        "truncated": false
+      }
+    },
+    "83b4787f0dab91a98aee4edda452e4d5130381a5db7e74570cd789e7740a8780": {
+      "score": 0.7410813601289595,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 550,
+        "truncated": false
+      }
+    },
+    "f7ca48282e55fc8f1b664d74d898b25d282b5541e0018dffcc02755d47c58952": {
+      "score": 0.5839128744969836,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 1145,
+        "truncated": false
+      }
+    },
+    "65d0b24234c8f4921a0bd925a1999508a46517670b5e7c6ee2c4c6cb19c42280": {
+      "score": 0.532475905919923,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 855,
+        "truncated": false
+      }
+    },
+    "8f76820210dd7afbfe40452283e43bfb057e3031e5ec4ed4dd0e4cf23370cf2a": {
+      "score": 0.6089414390339455,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 777,
+        "truncated": false
+      }
+    },
+    "4a1f89e016bd52eec8fa1eaa67a4483e70def1c96edd50b67dfe4267fe5d979c": {
+      "score": 0.7969727185487399,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 492,
+        "truncated": false
+      }
+    },
+    "f94a2df35fc1da338eaabca97b28bdf9f2dab2d2e5036834dba81e3f59e80137": {
+      "score": 0.6960866505063888,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 657,
+        "truncated": false
+      }
+    },
+    "12a6a0b070dd4be91abac6ed96f558da3799891843d2f7fab4d7dbb9cf1bb441": {
+      "score": 0.6258434880999533,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 738,
+        "truncated": false
+      }
+    },
+    "ec6d744a266a3644c0b278cab8b670b1130bf4b486a996f3b82d5ed634731a88": {
+      "score": 0.5873216686216635,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 734,
+        "truncated": false
+      }
+    },
+    "79e720d3878fdbf2fe6f226e4ceaffbe0931b273d7c35f6bc94cf993d853f4c2": {
+      "score": 0.573923552709831,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 753,
+        "truncated": false
+      }
+    },
+    "a7a962cda5f152d7d2e11ab09e4ba79aba5aca119cb28692762a4eeaaa5b01de": {
+      "score": 0.5504509016139114,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 599,
+        "truncated": false
+      }
+    },
+    "f05acdbeb3673de8ccbfaba6dae707a8db87a38bedf4c395a9b6191736bc03e0": {
+      "score": 0.5486618350098873,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 665,
+        "truncated": false
+      }
+    },
+    "ef0f3c06a14d524cbf92effbaafe0b8f36444af290dcba89d0db38ba166984a8": {
+      "score": 0.6601941080729979,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 472,
+        "truncated": false
+      }
+    },
+    "36cfbde0759006df9179a1a17655da642b34de910d7fe22f9e7e47ace749b7f5": {
+      "score": 0.4862709284945542,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 352,
+        "truncated": false
+      }
+    },
+    "5e07f08b51c2cdba8af3a406bb0f892a2662e03bf6f8c8cd072ad5898f7ed80e": {
+      "score": 0.9999999948295071,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 459,
+        "truncated": false
+      }
+    },
+    "20d65e93e5f27f160acfb667f3fda329533b03265b71af6ebd9d24db3a0a988f": {
+      "score": 0.6357690649755258,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 647,
+        "truncated": false
+      }
+    },
+    "0860d7c60f5547ac1a71a0bfe5b11157def5439560acdb21f20713d410f9a09c": {
+      "score": 0.6532509808150292,
+      "metadata": {
+        "gold_tokens": 459,
+        "candidate_tokens": 559,
+        "truncated": false
+      }
+    },
+    "b0eb435e4fa1cb42a866f52bc9f2306e3fb6ba2003b64dad2ddec411bade9c9c": {
+      "score": 0.4687080283846599,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 285,
+        "truncated": false
+      }
+    },
+    "71ce2f405546fec72dcb99a24dc2324965bfde683e0572443b27c8e3e491513b": {
+      "score": 0.38822330178514974,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 282,
+        "truncated": false
+      }
+    },
+    "4d0d98fd656cf5b0dbf50cbc717a456e48b7bfc57babf9e91beb5fcaae45bfa6": {
+      "score": 0.34225489272138976,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 311,
+        "truncated": false
+      }
+    },
+    "e180c3a15de6f2dd8d6932ce23dcaf525d70376695610488863f5b5d61386ed7": {
+      "score": 0.34228267703520565,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 299,
+        "truncated": false
+      }
+    },
+    "4769fca61ee0517c619e3a75515802f5745dad6f20253d6523ebd1dd2f4b5937": {
+      "score": 0.4469492910124812,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 324,
+        "truncated": false
+      }
+    },
+    "d7a023b52605e856452ebb8fc1eb52aeeecbd21e9400399cf3f774165c83a240": {
+      "score": 0.4273577098067729,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 297,
+        "truncated": false
+      }
+    },
+    "b6746cbeebe05c2860955c240bbb0a147791a4b195817d658e4084bc505a3142": {
+      "score": 0.44935077113282096,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 315,
+        "truncated": false
+      }
+    },
+    "2bea2d85f2bdf76aec8e3e0d2fffa9cf3d05c07507795b406ad7c34b922ba968": {
+      "score": 0.3974031725901361,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 275,
+        "truncated": false
+      }
+    },
+    "111288e89fa87dc77bb0570b078bb058a5e106062b90501713cd9cc46cf32506": {
+      "score": 0.4679790889937041,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 287,
+        "truncated": false
+      }
+    },
+    "fb772a276ca15c499ee06d11a10690b0d4860104e406abbfba0428fe140318f8": {
+      "score": 0.4439346579033246,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 284,
+        "truncated": false
+      }
+    },
+    "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858": {
+      "score": 0.9999996344043094,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 111,
+        "truncated": false
+      }
+    },
+    "d019c54cf1ecf052fc34a39d62a99705f5804cfbe58a3ea4a1a5eaadc9cc56e6": {
+      "score": 0.46907335030857633,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 284,
+        "truncated": false
+      }
+    },
+    "2bb8c76f5a5ba6441e1f6c2af4a62284e3497f3ef43c37083337ffb35e610be4": {
+      "score": 0.4679790889937041,
+      "metadata": {
+        "gold_tokens": 111,
+        "candidate_tokens": 287,
+        "truncated": false
+      }
+    },
+    "a78e3e993917ea8955ef6dce879f6f37e3d90f052f989cd5bef3ea7bb49f981c": {
+      "score": 0.7599985417245736,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 572,
+        "truncated": false
+      }
+    },
+    "df79e4ba38289272fd007d91072f705491abec99723c47c35e9069ee9ae8fe29": {
+      "score": 0.7092374011158756,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 574,
+        "truncated": false
+      }
+    },
+    "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe": {
+      "score": 0.6137340864191559,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 572,
+        "truncated": false
+      }
+    },
+    "dcd8e9dada60e08919475632031f5ac6582fb59c9a01911fa1ad52aa761ed4d6": {
+      "score": 0.7408896217769718,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 587,
+        "truncated": false
+      }
+    },
+    "7688f9b0636bd34d9311a7cb1f36b87d3040af74f5f3d66cda1db8a84b6d52c1": {
+      "score": 0.7599985417245736,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 572,
+        "truncated": false
+      }
+    },
+    "4eecbee8c5d9587453239cf2fabd0893276bed00d42a0192480e7fe257b5d10e": {
+      "score": 0.7599985417245736,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 572,
+        "truncated": false
+      }
+    },
+    "8ad6a2c5d9f9dfc26d714e4abf5b435ddfe04a21009754923b13a4e2ae87263a": {
+      "score": 0.7326898497649699,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 623,
+        "truncated": false
+      }
+    },
+    "868d5491a6f4df02aab3c0e3ffd4059773809627bf948c71df0bc1a7b07fc279": {
+      "score": 0.9999999983957172,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 678,
+        "truncated": false
+      }
+    },
+    "2c6a41c4b5e5c12236a774eb7a0b69f5ac879fe34e0f372aa3f1633ad1e2d29d": {
+      "score": 0.7619491335214956,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 574,
+        "truncated": false
+      }
+    },
+    "b3011f0b3fe080b2a01c15cbf95b2a1bfc81138939443bfa19a1502e182a8050": {
+      "score": 0.6956918078948328,
+      "metadata": {
+        "gold_tokens": 678,
+        "candidate_tokens": 575,
+        "truncated": false
+      }
+    },
+    "4bd9e3781173776bf997d1bab2696c0de946578adc5eda960f5e1889418aa12f": {
+      "score": 0.84163793795848,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 531,
+        "truncated": false
+      }
+    },
+    "cc36a1b17a0d80303d3f711717d3cce856328915ccd05bd72e9aa4ed3df0148e": {
+      "score": 0.7996043459585954,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 535,
+        "truncated": false
+      }
+    },
+    "a37e106f272c3032d6c16e89761c5b77524503d431c74ec79430f1c473f6e9a4": {
+      "score": 0.7237660649082286,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 507,
+        "truncated": false
+      }
+    },
+    "239ee19530efd1a775cf5df6bc807ea9e93d1e166ba02c90ef67cbab5c1a6fdf": {
+      "score": 0.2822084589572602,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 845,
+        "truncated": false
+      }
+    },
+    "2473c8f7a8016043a73316b9cf0ca969d818db385eba36ef27dfd953fb96d3b8": {
+      "score": 0.769732230806781,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 580,
+        "truncated": false
+      }
+    },
+    "8c41cc458ca0792310bbe4b274c4a25d50d00b4c65bf3e56b762a72ce47b79b2": {
+      "score": 0.84163793795848,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 531,
+        "truncated": false
+      }
+    },
+    "3b9b9eac8fb5bc0941b9ee54fd59d340365c2d9b032ae6a84060d5f419a900c4": {
+      "score": 0.84163793795848,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 531,
+        "truncated": false
+      }
+    },
+    "beb1011b2fcf53d12886301c3de0e9e6d3a6ac03429e0657020ea28695c71ce8": {
+      "score": 0.8437423717472767,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 532,
+        "truncated": false
+      }
+    },
+    "d520bc51af9af25f6c68ac66d852832ae53e57c0defd55775fba54932b5c8af6": {
+      "score": 0.9999999958016882,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 492,
+        "truncated": false
+      }
+    },
+    "8efab5cc969cbba1b32f72e10cbbf24cf05e5d972a03c051f476a6a2a21eb896": {
+      "score": 0.6985722721865236,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 515,
+        "truncated": false
+      }
+    },
+    "3c898b405858cb428ba567ab64aad9184af9edb617e04e8e9578d89b93a848ba": {
+      "score": 0.6420572243551976,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 545,
+        "truncated": false
+      }
+    },
+    "1efa4b1773fa254e29fa0c258cee6f9c9c948d7fa67449298cec6d9862b874b9": {
+      "score": 0.7636540460122285,
+      "metadata": {
+        "gold_tokens": 492,
+        "candidate_tokens": 676,
+        "truncated": false
+      }
+    },
+    "b81667227479483930ff81e1152d793af757cdcfa60e8ceecabdc84f0c426aaa": {
+      "score": 0.39576843823939806,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 755,
+        "truncated": false
+      }
+    },
+    "5705f6c7846dff26a7f30f3dfb8d6ed051547f5067fdc7a0101a96604f146b74": {
+      "score": 0.39039565733508447,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 739,
+        "truncated": false
+      }
+    },
+    "86239447ec614d8e25fc1ae4b61978d99aed9f8fce6f746a173135bc69f4790e": {
+      "score": 0.3935434049919947,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 755,
+        "truncated": false
+      }
+    },
+    "5060bf8a4b0ec7c0e328423db7eb51f2c19dfe0582b484e3a2f08a5e9d43c91c": {
+      "score": 0.450695285331486,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 974,
+        "truncated": false
+      }
+    },
+    "b719408271cee6dc5c980c39e7bec0b55976365528a7dd3fc5b2e86429ae017a": {
+      "score": 0.36426510660063705,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 963,
+        "truncated": false
+      }
+    },
+    "34201e72a832fab7988bf67b64af42ea6ab8e434c79c33d588ac379a6330c65e": {
+      "score": 0.3758241187403574,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 1031,
+        "truncated": false
+      }
+    },
+    "90bc2fd057677e68399ecabad05adf56f0294ea73e212df52055320e405926e4": {
+      "score": 0.3938018616940472,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 752,
+        "truncated": false
+      }
+    },
+    "a9694fd73e674085a6b75ebbc505917b1862dd38ebf260bf23ae368d13f6d310": {
+      "score": 0.39533599894936383,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 760,
+        "truncated": false
+      }
+    },
+    "03cdaaf3afd87d8395f8176bdcd2a7f1f1f2161630306163d9863f785c399ddc": {
+      "score": 0.405788116974014,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 592,
+        "truncated": false
+      }
+    },
+    "4b7ff3aff485d9a820d2e6eb7af91b5f3a9c9e6faec6c49373534e6687bff1f2": {
+      "score": 0.4544075976351875,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 881,
+        "truncated": false
+      }
+    },
+    "9ec2a6d68128a9855564e3fc91f6c36e30a3f63e221dfa3f839dfaceeddb7d42": {
+      "score": 0.45469801578450686,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 878,
+        "truncated": false
+      }
+    },
+    "7106bc4e0ef0120a49404abaecbd2fb25397c5e64aba8b26b43a27debcd0d0da": {
+      "score": 0.9999999934404743,
+      "metadata": {
+        "gold_tokens": 424,
+        "candidate_tokens": 424,
+        "truncated": false
+      }
+    },
+    "bde955bb5fc7f4421bbbac75c3135189369ecbb56875282fb35e615339ea1998": {
+      "score": 0.36670709488200376,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 151,
+        "truncated": false
+      }
+    },
+    "2baf2f7e9bba5684b961a778cc1eb35bfc3e79fac454e8f51072a86d72b1c999": {
+      "score": 0.3467556328559148,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 148,
+        "truncated": false
+      }
+    },
+    "e178fe9ed3dbeb703517361b6eabac65520da97d1bfcc562ad2cc0993e5fe063": {
+      "score": 0.29406954276961644,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 157,
+        "truncated": false
+      }
+    },
+    "bb2ea126f3253c5d3ea60bf0cbe2e11982f51b26c4da139e46f0130a0e764a35": {
+      "score": 0.35902258560006267,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 223,
+        "truncated": false
+      }
+    },
+    "4e477caf51939eb0b06ad7098e5039b44371e06c891e12755908a9582ef23bb9": {
+      "score": 0.3683868940088869,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 281,
+        "truncated": false
+      }
+    },
+    "f8b329796e7e93fc5437419760c0442487c1ab4121ca8f6f3781f25fb3a017fb": {
+      "score": 0.40881766177793577,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 240,
+        "truncated": false
+      }
+    },
+    "7c8fe86848ff667e100218cbc97f0f69e21979f2fb887e366abcb96b14d64f3e": {
+      "score": 0.36670709488200376,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 151,
+        "truncated": false
+      }
+    },
+    "b6d5cec7a61482a29704eb50fae6944b2dd27307d3f0c5fa8025f0394de35a04": {
+      "score": 0.38817132533248766,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 169,
+        "truncated": false
+      }
+    },
+    "294b237f06ba9575486103eb199769de0e4035783d45d8a10a106c9c74a1d615": {
+      "score": 0.3895945731513805,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 172,
+        "truncated": false
+      }
+    },
+    "9106ce679e0dd92510638fb3e5ba6a404015359b2769352be2c2f584dcfec7b8": {
+      "score": 0.38188890275121656,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 217,
+        "truncated": false
+      }
+    },
+    "f5d751be54433642c1cc3789d8824d1dbd6dc363952a73a67f63bdba3dfd5e4f": {
+      "score": 0.9999999862124842,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 331,
+        "truncated": false
+      }
+    },
+    "de67de0d9da0871832b241527ed25b6126fab86b13dc65f09e5887d4b19bf7b6": {
+      "score": 0.34445124519241244,
+      "metadata": {
+        "gold_tokens": 331,
+        "candidate_tokens": 145,
+        "truncated": false
+      }
+    },
+    "9bee3b173edb57c1cdd62f5c7680018e068c2079f7473aec57a1204862cd7655": {
+      "score": 0.5735597995942461,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 474,
+        "truncated": false
+      }
+    },
+    "6dc83ddd14d7d34167ca70718fbecf9ebc418acffb94bebff90e61e858cabe5e": {
+      "score": 0.4743109935178759,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 364,
+        "truncated": false
+      }
+    },
+    "60de885b6de36551be767beebbaafee54ad3f5278b372b747bc0585566b359b7": {
+      "score": 0.511636852007134,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 463,
+        "truncated": false
+      }
+    },
+    "54501fcea217f0b44c795c2ed8bf03b3280d369845f88ec9e3c26e74c4660c7c": {
+      "score": 0.4618072844458095,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 594,
+        "truncated": false
+      }
+    },
+    "ee1b402a862bf89e110880e6f0367d8694445f603b73209616c9344ea0d93683": {
+      "score": 0.48013688147416134,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 821,
+        "truncated": false
+      }
+    },
+    "304fbcfd8ce6b450dc328f18694eb9d9b21baa03576f422cffbf0c387602bb6b": {
+      "score": 0.49847095567510297,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 415,
+        "truncated": false
+      }
+    },
+    "ca006b7b11ac590448693772e31c159996bf60fe2c0db0c71bc373fdbf1fc198": {
+      "score": 0.4366120428563037,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 474,
+        "truncated": false
+      }
+    },
+    "a1642f400a25492c58b6992748e9291a0ddb747a0fb330079af0d70b1e047e70": {
+      "score": 0.5527012491972845,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 549,
+        "truncated": false
+      }
+    },
+    "a33fefda67c2f37f1edc9c30ed4234e80a866b8dd1811585fd1276eb75208add": {
+      "score": 0.6005160842827068,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 482,
+        "truncated": false
+      }
+    },
+    "37914e17911c383d6a53468ccc1b1a37d13c7b49fe04bc3c711d1e92505edab2": {
+      "score": 0.5709259606005452,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 467,
+        "truncated": false
+      }
+    },
+    "b8105f4dfc5bda8fd7486d8ba0f823edd4af432df0b29d81b4b3526d54bab41e": {
+      "score": 0.9999999975530555,
+      "metadata": {
+        "gold_tokens": 589,
+        "candidate_tokens": 589,
+        "truncated": false
+      }
+    },
+    "25332ceaa87da8c19787462324a95b06ffa9ea103d9acf9257254f29304e1d7b": {
+      "score": 0.737842559661435,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 577,
+        "truncated": false
+      }
+    },
+    "51a4f673779ff94632ea00a04c34eb0a683c04ccd9b02dd71b2cdcc582a6463e": {
+      "score": 0.5994063529580355,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 519,
+        "truncated": false
+      }
+    },
+    "eed96a0bb6e51d71fbd91d3a5e02fc6176e8af46580034c8c2817518129f3739": {
+      "score": 0.594801133127436,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 560,
+        "truncated": false
+      }
+    },
+    "b1874d548a5fca330780ae9fc4da1eb827051602a80e5f20d1f180a2a9a460d8": {
+      "score": 0.7189357776767897,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 571,
+        "truncated": false
+      }
+    },
+    "75ba8b7eb711ba75c07c8a03f36316c6c965665818663e0439a36882b7d54de8": {
+      "score": 0.7521856081577364,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 579,
+        "truncated": false
+      }
+    },
+    "27b620660d700dcfd5c3b3d273854e666c2caf46b1e8ae2b9a4d9f5f339eb685": {
+      "score": 0.7817525531417309,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 624,
+        "truncated": false
+      }
+    },
+    "619ac9e98d34a77628d3492f395c3ef6f22f1011ca25a3186ad84c3b347f0092": {
+      "score": 0.9999999982125383,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 654,
+        "truncated": false
+      }
+    },
+    "5ac4bc319bfdc0a865adee12b32c1e05484c55d433f44e948d5f4a2f92020f79": {
+      "score": 0.6558081733118764,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 527,
+        "truncated": false
+      }
+    },
+    "0e4d492303f7b14633d410753e5cf42d24f8e210f542d9fe6f46fc387ebc086d": {
+      "score": 0.5311185680427838,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 504,
+        "truncated": false
+      }
+    },
+    "c433a9d92e50ca5c26c84148064af291eb7d1f291bec9dbef7117611d6f400d2": {
+      "score": 0.8208197310761414,
+      "metadata": {
+        "gold_tokens": 654,
+        "candidate_tokens": 736,
+        "truncated": false
+      }
+    },
+    "fa02359384d5805b40bdc742f9cadcffadcaa25b379371a88a86c93bcd0d269e": {
+      "score": 0.4127535782553702,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 746,
+        "truncated": false
+      }
+    },
+    "5515765e78455cd63c4c7cf3650f5a285cd4ae87ef1177fdb0ddc7955bfebf1f": {
+      "score": 0.4171558282631069,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 722,
+        "truncated": false
+      }
+    },
+    "44049da36ef00f7a0fcfac128074f5bdf7d76aca863287cbd2315caca4482b29": {
+      "score": 0.35048637578769826,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 466,
+        "truncated": false
+      }
+    },
+    "75d72691e76f979e714f353aed0c7fc579ba690916853ff5afe462f0513a2546": {
+      "score": 0.3748596151325356,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 594,
+        "truncated": false
+      }
+    },
+    "e153cad8557e952576e670defdec80a16f8d96b23d57b1b3e778584bb8dcdb78": {
+      "score": 0.40245497584912776,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 692,
+        "truncated": false
+      }
+    },
+    "53d71303c96bc7eff5c10fdd4b9658bb2b5415f28d54e968a888f9d9f48b1bb2": {
+      "score": 0.4126632996949469,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 747,
+        "truncated": false
+      }
+    },
+    "1d0ec4c0bfb7e040a1fb67209d63938fb7ef4eecfd36686d92b14d42543258e0": {
+      "score": 0.3923952672088194,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 907,
+        "truncated": false
+      }
+    },
+    "2df31dcc7bb38336e17bdfcd72f5008290753350174a9e2f300cd003b1ff0e97": {
+      "score": 0.23089384433536062,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 893,
+        "truncated": false
+      }
+    },
+    "763b5b4de6996a5d2ba6c2e9cc94aa075d0415099c6ec3d845476ec4b333a5c3": {
+      "score": 0.4127535782553702,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 746,
+        "truncated": false
+      }
+    },
+    "a04a7ef108550aa457d3cb70ecb1c4036cb57640e27786381eef487d7da1a2ed": {
+      "score": 0.999999993486668,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 425,
+        "truncated": false
+      }
+    },
+    "41810a9b88d813591fd4b0880fde6f43b8c35236263fadb8fafd77ffe20ede0b": {
+      "score": 0.41601605682069426,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 698,
+        "truncated": false
+      }
+    },
+    "6290dacd90eb0ad6936c9a226ca4cfbe6d3b01c80dcadb153d64df90149a4501": {
+      "score": 0.3934265912125976,
+      "metadata": {
+        "gold_tokens": 425,
+        "candidate_tokens": 590,
+        "truncated": false
+      }
+    },
+    "e92ea84de052cd04cfd04cd9426d5d7c0b003a353097bcfc54b6f0ae5e0effe7": {
+      "score": 0.9026208144378787,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 319,
+        "truncated": false
+      }
+    },
+    "fb42ef08f4a8de6dd8363372f069d0cf1eb1094411e4e1f43d9af83de0846f45": {
+      "score": 0.8789606130660562,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 316,
+        "truncated": false
+      }
+    },
+    "71cdd535a4956908a7c9ec8ebe64ff829f3a8d9501be1ab5fbbef394ea0b651d": {
+      "score": 0.7410899806500425,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 301,
+        "truncated": false
+      }
+    },
+    "cb6b68b389f45f3175b5d9fe8eac0a01e990852b21e87a83fea6b209b6ab3be2": {
+      "score": 0.7993950045721133,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 342,
+        "truncated": false
+      }
+    },
+    "9a31546b21b120b3cbaac28e4283e2563e66a76bd9d87e45d06dd1938296f90e": {
+      "score": 0.5823118282768783,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 617,
+        "truncated": false
+      }
+    },
+    "0d73fe9eafc9cae64ee016429cb832946036380cb33e110b01cb536a09a0a7d0": {
+      "score": 0.8920260520496802,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 323,
+        "truncated": false
+      }
+    },
+    "1fa9d2b9afce3ea867a76b8a476d1137b3216385e0374926a8fe48b64fcd482a": {
+      "score": 0.9096019189888085,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 329,
+        "truncated": false
+      }
+    },
+    "ad03037f1182cce5795c1d6962a1c6a79991f50055791ad9bd5fd9c161e8de67": {
+      "score": 0.9026208144378787,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 319,
+        "truncated": false
+      }
+    },
+    "25ec5ccd462769038e98cc86f54113f952cbb300cbd81021376aa2f87a8945e1": {
+      "score": 0.9999999876095339,
+      "metadata": {
+        "gold_tokens": 343,
+        "candidate_tokens": 343,
+        "truncated": false
+      }
+    },
+    "a1d6f9bc9f6f152b5f72157dc0855adda716bc3bbe0b9383e0dc2bae19f9fa06": {
+      "score": 0.5743173572527801,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 428,
+        "truncated": false
+      }
+    },
+    "a2d5a520d233ebffe60443df17db7b62761516845df47e4897d077349e887e81": {
+      "score": 0.5131838773171177,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 423,
+        "truncated": false
+      }
+    },
+    "45df2e832eb0ebfe7398ad787794513283c4ece11e2cab646b13893894c0993d": {
+      "score": 0.5870887759236653,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 469,
+        "truncated": false
+      }
+    },
+    "0db7ca33b79d7f5a5d1b59e1c4c4f7c99961f148657dd751b99a60ef95290a3a": {
+      "score": 0.5380777129906307,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 430,
+        "truncated": false
+      }
+    },
+    "71c637eb04846420f07d71487e79bc4ff29b076f140b9fcf42edfdcbd249f7ad": {
+      "score": 0.5500469891071752,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 442,
+        "truncated": false
+      }
+    },
+    "c8e30d32494b373ecb1111906dc2f2a4cb7698d33f3824b51e906f7037e9d9d6": {
+      "score": 0.492506599949116,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 475,
+        "truncated": false
+      }
+    },
+    "af05bcef591a86fd46ccefe2db7855b4971d3742cab4a9c6a32fcfbf5d228d9f": {
+      "score": 0.3195118224448906,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 328,
+        "truncated": false
+      }
+    },
+    "c84f87e0f797dbc68425d9019e56be79ad8e0a93f908006a0ef52cd97f4dd786": {
+      "score": 0.6618786253671612,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 659,
+        "truncated": false
+      }
+    },
+    "b19393ad49c0f99e0cbb43e9057f9fb42e6ddc0e6e4e1380a0c297c05aa70e1a": {
+      "score": 0.633108117186892,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 646,
+        "truncated": false
+      }
+    },
+    "6d8523559e52c64139f1585e57836e686319d0279f5e228c4c4d8d93e7b7d10d": {
+      "score": 0.9999999983074274,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 666,
+        "truncated": false
+      }
+    },
+    "af3a818080dfe4a9e32d127ae2138a4aed5a79e763e335e113c570004c1f92a7": {
+      "score": 0.48159506123131685,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 614,
+        "truncated": false
+      }
+    },
+    "fd947f4f2d000cc40374addada98136b4d0f8accaf0ee84fa9cb0ea46b4a801f": {
+      "score": 0.5545109848683523,
+      "metadata": {
+        "gold_tokens": 666,
+        "candidate_tokens": 448,
+        "truncated": false
+      }
+    }
+  },
+  "evaluated_pairs": 224,
+  "total_input_pairs": 224,
+  "started_at": "2026-10-19T15:45:59+00:00",
+  "completed_at": "2026-10-19T15:46:07+00:00",
+  "elapsed_seconds": 11.636,
+  "runtime_diagnostics": {},
+  "smoke_validation": null
+}

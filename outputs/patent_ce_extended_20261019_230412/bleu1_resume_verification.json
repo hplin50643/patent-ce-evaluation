@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "bleu1",
+  "verified_at": "2026-10-19T15:45:48+00:00",
+  "pairs": 224,
+  "inference_calls": 0,
+  "actual_run_resume_only_guard": true,
+  "scores_identical": true,
+  "original_output_unchanged": true,
+  "original_output_sha256": "bbb035765f4225f87cca6a0d4b3e2fed0288afab8236592d460c27453ffc5f7a",
+  "preserved_first_run_elapsed_seconds": 5.274
+}

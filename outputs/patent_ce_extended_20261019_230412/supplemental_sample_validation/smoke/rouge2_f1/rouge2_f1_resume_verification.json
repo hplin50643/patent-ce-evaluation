@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "rouge2_f1",
+  "verified_at": "2026-10-19T18:16:39+00:00",
+  "pairs": 2,
+  "inference_calls": 0,
+  "actual_run_resume_only_guard": true,
+  "scores_identical": true,
+  "original_output_unchanged": true,
+  "original_output_sha256": "0978eb45372bcf5650fcca576120d051b22fbb6aaea1f6dd955c9cbc4eebf3e2",
+  "preserved_first_run_elapsed_seconds": 3.212
+}

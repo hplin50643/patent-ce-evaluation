@@ -1,0 +1,42 @@
+{
+  "status": "complete",
+  "created_at_utc": "2026-10-19T15:28:08.836746+00:00",
+  "model_inference_performed": false,
+  "tokenizer_model_max_length": 512,
+  "pairs_scanned": 224,
+  "smoke_pair_ids": [
+    "93ca682ad9bc3a9ca37e1503b1fadc5a3b6bdd7deba790a7de99c5a9097c992b",
+    "d2d7b7b9e4291ab3abdc45976c388455ba31c4c0c9146c22cb150fb101547229",
+    "44007cfb65d7d9e3d4436696bc69a23ff56ed0656d39be0db59597c1fd2c3392"
+  ],
+  "unique_candidate_sentences": 2058,
+  "candidate_sentence_tokens_max": 493,
+  "pairs_with_fallback": 0,
+  "smoke_pairs_with_fallback": 0,
+  "records": [
+    {
+      "pair_id": "d2d7b7b9e4291ab3abdc45976c388455ba31c4c0c9146c22cb150fb101547229",
+      "smoke_selected": true,
+      "candidate_sentence_count": 10,
+      "maximum_candidate_sentence_tokens": 164,
+      "candidate_sentences_over509": 0,
+      "actual_only_first_fallback_subpairs": []
+    },
+    {
+      "pair_id": "93ca682ad9bc3a9ca37e1503b1fadc5a3b6bdd7deba790a7de99c5a9097c992b",
+      "smoke_selected": true,
+      "candidate_sentence_count": 9,
+      "maximum_candidate_sentence_tokens": 245,
+      "candidate_sentences_over509": 0,
+      "actual_only_first_fallback_subpairs": []
+    },
+    {
+      "pair_id": "44007cfb65d7d9e3d4436696bc69a23ff56ed0656d39be0db59597c1fd2c3392",
+      "smoke_selected": true,
+      "candidate_sentence_count": 54,
+      "maximum_candidate_sentence_tokens": 199,
+      "candidate_sentences_over509": 0,
+      "actual_only_first_fallback_subpairs": []
+    }
+  ]
+}

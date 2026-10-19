@@ -1,0 +1,16 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "python-docx": "1.2.0",
+    "matplotlib": "3.11.2",
+    "numpy": "2.3.5",
+    "pypdf": "6.10.0",
+    "pdfplumber": "0.11.9",
+    "Pillow": "12.3.0"
+  },
+  "chinese_font": "C:\\Windows\\Fonts\\msjh.ttc",
+  "chinese_font_sha256": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac",
+  "renderer": "canonical render_docx.py with isolated Word COM PDF export and bundled Poppler",
+  "source_renderer_sha256": "3d3d780f6234beda86ffac10cbe6774bf232e5aad0cc27a2629f562a04317865"
+}

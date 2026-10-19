@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "method": "alignscore",
+  "verified_at": "2026-10-19T18:23:34+00:00",
+  "schema_version": 2,
+  "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+  "settings_sha256": "34f14917b7316843362dd96f9b523ac96361cf91b72f0e626eaaf58bb0f17370",
+  "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+  "assets_sha256": "5753424c7e466fda4c76018b9f9beb1b8a9475a42518c7493f81d914484e9226",
+  "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+  "head_absolute_tolerance": 1e-07,
+  "all_head_tensors_exactly_equal": true,
+  "native_forward_unmodified": true,
+  "native_reference_bypasses_cache": true,
+  "checkpoint_restoration": "strict full state; modules and parameters retained",
+  "subpair_comparisons": [
+    {
+      "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+      "subpairs": 10,
+      "heads": [
+        {
+          "head": "regression",
+          "torch_equal": true,
+          "maximum_absolute_error": 0.0,
+          "shape": [
+            10
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "head": "binary",
+          "torch_equal": true,
+          "maximum_absolute_error": 0.0,
+          "shape": [
+            10
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "head": "nli",
+          "torch_equal": true,
+          "maximum_absolute_error": 0.0,
+          "shape": [
+            10,
+            3
+          ],
+          "dtype": "torch.float32"
+        }
+      ],
+      "original_unmodified_forward_seconds": 16.9095152280006,
+      "optimized_forward_seconds": 14.539299058000324,
+      "speedup_ratio": 1.163021350654181
+    },
+    {
+      "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+      "subpairs": 32,
+      "heads": [
+        {
+          "head": "regression",
+          "torch_equal": true,
+          "maximum_absolute_error": 0.0,
+          "shape": [
+            32
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "head": "binary",
+          "torch_equal": true,
+          "maximum_absolute_error": 0.0,
+          "shape": [
+            32
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "head": "nli",
+          "torch_equal": true,
+          "maximum_absolute_error": 0.0,
+          "shape": [
+            32,
+            3
+          ],
+          "dtype": "torch.float32"
+        }
+      ],
+      "original_unmodified_forward_seconds": 55.68852830400101,
+      "optimized_forward_seconds": 49.81438553299995,
+      "speedup_ratio": 1.1179206108466335
+    }
+  ],
+  "optimization": {
+    "source_path": "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/alignscore/src/alignscore/model.py",
+    "source_file_sha256": "59ee0f17b40cb7521d3c07010a42253e524418940bfb840f006b6cee9148ee55",
+    "original_forward_source_sha256": "4f428893be098f5eaa0672a8b404f82da9df60d666f2c7ca74988e4a213da5ca",
+    "optimized_forward_source_sha256": "e212247ef8177dd7621d810e1e53a26db0754abf8eedb00afe768bbdbd2e8845",
+    "patch": {
+      "before": "prediction_scores = self.mlm_head(base_model_output.last_hidden_state)",
+      "after": "prediction_scores = self.mlm_head(base_model_output.last_hidden_state) if self.training or 'mlm_label' in batch else None",
+      "matches": 1
+    },
+    "reason": "Native inference never reads prediction_logits; backbone and all three score heads are unchanged",
+    "mlm_module_and_checkpoint_parameters_retained": true,
+    "state_dict_keys_sha256": "b385ef121615d5a13c343e3f33e6979bc01aad5f4b2a8463a5e20bc21ab97471",
+    "smoke_reference": "original unmodified forward; compare all three head tensors on identical subpairs"
+  }
+}

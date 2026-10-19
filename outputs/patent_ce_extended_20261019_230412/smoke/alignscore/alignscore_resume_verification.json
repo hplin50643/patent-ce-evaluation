@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "alignscore",
+  "verified_at": "2026-10-19T15:41:52+00:00",
+  "pairs": 3,
+  "inference_calls": 0,
+  "actual_run_resume_only_guard": true,
+  "scores_identical": true,
+  "original_output_unchanged": true,
+  "original_output_sha256": "ef2a2adcadd1b95aa49be53b783d6a273d88753ef4055d13bf63ea8d1188057e",
+  "preserved_first_run_elapsed_seconds": 761.298
+}

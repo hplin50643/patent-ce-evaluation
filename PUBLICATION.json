@@ -1,10 +1,11 @@
 {
   "repository": "root50643/patent-ce-evaluation",
   "visibility": "public",
-  "prepared_at_taipei": "2026-10-19T22:22:24+08:00",
-  "source_run": "patent_ce_evaluation_20261019_203847",
-  "source_delivery_manifest_sha256": "be147eb57819ecfb060c84c960450d87cdf50b10cd282aa5cd2c56021782ef78",
+  "prepared_at_taipei": "2026-10-20T02:26:25+08:00",
+  "source_run": "patent_ce_extended_20261019_230412",
+  "source_delivery_manifest_sha256": "1e750eef989f6846fe94454fddc9f3e52db78f8470a3fca36157f2066107af7f",
   "original_result_files_preserved": true,
   "model_weights_included": false,
-  "original_archive_included": true
+  "original_archive_included": true,
+  "primary_methods": 13
 }

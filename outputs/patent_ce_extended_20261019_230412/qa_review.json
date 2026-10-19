@@ -1,0 +1,406 @@
+{
+  "status": "passed",
+  "reviewed_at_utc": "2026-10-19T18:26:13+00:00",
+  "docx_sha256": "7cb854666cd8163881987e427cf9d4050c2a25715ffa52623c47dcec6bee8514",
+  "pdf_sha256": "c84662a3c544ab277b6cf956247d1b7e598ad3e70ddb4031209dc2560407c705",
+  "page_count": 30,
+  "reviewers": [
+    "root",
+    "dataset_audit",
+    "patclaimeval_audit",
+    "metric_protocol"
+  ],
+  "scope": "Every final rendered page inspected visually at original image resolution; Traditional Chinese glyphs, tables, charts, wrapping, and pagination checked",
+  "pages": [
+    {
+      "page": 1,
+      "image": "page-1.png",
+      "png_sha256": "0bbc358a5bd6e2f82723676564e4515032b9aedbfbb6b7f9f2f524b905dc4fdf",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 1,
+          "png_sha256": "0bbc358a5bd6e2f82723676564e4515032b9aedbfbb6b7f9f2f524b905dc4fdf",
+          "observation": "封面與研究摘要繁體中文字形完整，標題層級清楚，正確率與信賴區間未裁切，頁尾正常。"
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "image": "page-2.png",
+      "png_sha256": "eefb22cb70464696f275126d9fbafbac16faf9743499ba7328a2512bf323dee9",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 2,
+          "png_sha256": "eefb22cb70464696f275126d9fbafbac16faf9743499ba7328a2512bf323dee9",
+          "observation": "資料切分及重複稽核兩表欄線完整，類別方向與數字清楚；正文、頁碼無重疊。"
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "image": "page-3.png",
+      "png_sha256": "e3f47532c4e44461a61033f64f778e0cb92ed6be2cfb8c1a1f14640957e83cbf",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 3,
+          "png_sha256": "e3f47532c4e44461a61033f64f778e0cb92ed6be2cfb8c1a1f14640957e83cbf",
+          "observation": "十三項固定設定表完整置於單頁，長模型名稱與設定均正常換行，中文及特殊符號可讀，底部說明未碰頁尾。"
+        }
+      ]
+    },
+    {
+      "page": 4,
+      "image": "page-4.png",
+      "png_sha256": "b89b56667070249d3af498eaf38ffcd84c3fce99cd62dab6dc80cd43a1456774",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 4,
+          "png_sha256": "b89b56667070249d3af498eaf38ffcd84c3fce99cd62dab6dc80cd43a1456774",
+          "observation": "各方法分數原理的九段說明均完整，英文與中文混排及希臘符號正常，段落未截斷。"
+        }
+      ]
+    },
+    {
+      "page": 5,
+      "image": "page-5.png",
+      "png_sha256": "e669766ac5607ccd3f632a89907f052428ca67e7c7515d88e43ca3169d0c4102",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 5,
+          "png_sha256": "e669766ac5607ccd3f632a89907f052428ca67e7c7515d88e43ca3169d0c4102",
+          "observation": "相容性、原始分數匯入與補驗時序說明清晰，長檔名完整顯示，正文與頁尾間距正常。"
+        }
+      ]
+    },
+    {
+      "page": 6,
+      "image": "page-6.png",
+      "png_sha256": "1089c961fa3f7b21cca5521affccb2410db6c82bee4547a783c85911e6309fb6",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 6,
+          "png_sha256": "1089c961fa3f7b21cca5521affccb2410db6c82bee4547a783c85911e6309fb6",
+          "observation": "八項執行時間及峰值記憶體表欄位與小數清楚，資源量測範圍說明及公式完整，底部仍有安全間隔。"
+        }
+      ]
+    },
+    {
+      "page": 7,
+      "image": "page-7.png",
+      "png_sha256": "090dbec151909f7e2c5e8de46f4c1f80632f29d84464c7a0942da189b7e4ca4f",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 7,
+          "png_sha256": "090dbec151909f7e2c5e8de46f4c1f80632f29d84464c7a0942da189b7e4ca4f",
+          "observation": "十三項測試集結果全表完整，101/184與54.89%及區間可讀，多數類基準說明正常；無表格裁切。"
+        }
+      ]
+    },
+    {
+      "page": 8,
+      "image": "page-8.png",
+      "png_sha256": "02dc8dc9c3278cd18bc5b3d3159f437dfe96f6d7e69f8cab99abe1e4e92ab1ca",
+      "reviews": [
+        {
+          "reviewer": "root",
+          "page": 8,
+          "png_sha256": "02dc8dc9c3278cd18bc5b3d3159f437dfe96f6d7e69f8cab99abe1e4e92ab1ca",
+          "observation": "正確率圖所有方法名稱、數值、誤差棒與基準線圖例可讀；十二項成對差距表完整，底部探索性比較說明與頁碼沒有重疊。"
+        }
+      ]
+    },
+    {
+      "page": 9,
+      "image": "page-9.png",
+      "png_sha256": "4f0051cfe1c8ecd002ecef3b263556768f624b7619c0cc1482f07097bcb9a368",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 9,
+          "png_sha256": "4f0051cfe1c8ecd002ecef3b263556768f624b7619c0cc1482f07097bcb9a368",
+          "observation": "已以原始解析度逐頁檢視。連續與離散相關係數表五欄完整；兩個 Spearman 長條圖的繁中標題、方法標籤、數值與軸標均清楚，無裁切、重疊或缺字，頁尾完整。"
+        }
+      ]
+    },
+    {
+      "page": 10,
+      "image": "page-10.png",
+      "png_sha256": "6d44be1e044047646db830c9007ab6e362f8f987ed505c564ab0da6285cb78fc",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 10,
+          "png_sha256": "6d44be1e044047646db830c9007ab6e362f8f987ed505c564ab0da6285cb78fc",
+          "observation": "已以原始解析度逐頁檢視。訓練集十三方法表含正確筆數、Accuracy、95% 區間及兩種 F1，欄位與數字完整可讀；下方描述性結果與資料重疊說明換行正常，無跨頁斷列。"
+        }
+      ]
+    },
+    {
+      "page": 11,
+      "image": "page-11.png",
+      "png_sha256": "5adc3fe8ea14f7ecf16c24db80255f42e847b0d4f5cf4963d3749c8a840bafaa",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 11,
+          "png_sha256": "5adc3fe8ea14f7ecf16c24db80255f42e847b0d4f5cf4963d3749c8a840bafaa",
+          "observation": "已以原始解析度逐頁檢視。測試與訓練 Macro-F1 及各自 95% 區間五欄排列清楚，十三方法名稱與上下界完整；下方分群抽樣與 results.json 說明無裁切。"
+        }
+      ]
+    },
+    {
+      "page": 12,
+      "image": "page-12.png",
+      "png_sha256": "e197d25be27ebff85fcd9f9b48b113c7f3a3f545ab664e8b943e955e086173e1",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 12,
+          "png_sha256": "e197d25be27ebff85fcd9f9b48b113c7f3a3f545ab664e8b943e955e086173e1",
+          "observation": "已以原始解析度逐頁檢視。平手與方向性錯誤表十三列完整，錯誤率、平手召回、非平手正確率、完全判反率清楚；49 與135筆分母說明可讀，頁碼正常。"
+        }
+      ]
+    },
+    {
+      "page": 13,
+      "image": "page-13.png",
+      "png_sha256": "195293234bf47de1185c566a4888ae782702fc4777574e69a6e2a5d5b9bbb5c1",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 13,
+          "png_sha256": "195293234bf47de1185c566a4888ae782702fc4777574e69a6e2a5d5b9bbb5c1",
+          "observation": "已以原始解析度逐頁檢視。候選分數與差分位數七欄完整，BARTScore 負號及 UniEval 負零清楚；四位小數顯示與全精度判斷說明換行正常，無欄位擠壓。"
+        }
+      ]
+    },
+    {
+      "page": 14,
+      "image": "page-14.png",
+      "png_sha256": "d80cc1341c9bd942e9bf25b8fbd56cbdcca9a066a71cd7a6253f1f96677f76fa",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 14,
+          "png_sha256": "d80cc1341c9bd942e9bf25b8fbd56cbdcca9a066a71cd7a6253f1f96677f76fa",
+          "observation": "已以原始解析度逐頁檢視。第一組五張混淆矩陣皆完整顯示，專家答案與指標預測軸向、B較佳／平手／A較佳類別與格內數值清楚；下方十五類別成效列均在本頁完整可讀，未碰觸頁尾。"
+        }
+      ]
+    },
+    {
+      "page": 15,
+      "image": "page-15.png",
+      "png_sha256": "81f7eadbdfbc555423d6228be5b4b2f52908d4d0219af4e971542509971ca73b",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 15,
+          "png_sha256": "81f7eadbdfbc555423d6228be5b4b2f52908d4d0219af4e971542509971ca73b",
+          "observation": "已以原始解析度逐頁檢視。第二組四張混淆矩陣的標題、軸標及格內黑白數字可辨識；METEOR、BERTScore、BARTScore、MoverScore 十二類別成效列完整，圖說、表格與頁尾無重疊。"
+        }
+      ]
+    },
+    {
+      "page": 16,
+      "image": "page-16.png",
+      "png_sha256": "86f97a14234dcfb693e33b7b85f4d13c6fe9d1b49dea3236d408dfdbd8679b5d",
+      "reviews": [
+        {
+          "reviewer": "dataset_audit",
+          "page": 16,
+          "png_sha256": "86f97a14234dcfb693e33b7b85f4d13c6fe9d1b49dea3236d408dfdbd8679b5d",
+          "observation": "已以原始解析度逐頁檢視。第三組 SimCSE、UniEval、AlignScore 與 PatClaimEval 四張混淆矩陣及格內數值清楚；下方十二類別成效列完整，繁中類別與方法名稱未裁切，分頁及頁碼正常。"
+        }
+      ]
+    },
+    {
+      "page": 17,
+      "image": "page-17.png",
+      "png_sha256": "bc0b24c9c1b458968055b88c1b6d4bd6c81da1c84ec31dcd838c30d469edd860",
+      "reviews": [
+        {
+          "reviewer": "patclaimeval_audit",
+          "page": 17,
+          "png_sha256": "bc0b24c9c1b458968055b88c1b6d4bd6c81da1c84ec31dcd838c30d469edd860",
+          "observation": "已以view_image原始解析度逐頁檢視。資料重複與gold-copy敏感度表的十三項方法及四欄百分比完整清楚，表頭與交替底色一致；說明段落自然換行，繁中字型正常，頁碼17清楚，無文字重疊或裁切。"
+        }
+      ]
+    },
+    {
+      "page": 18,
+      "image": "page-18.png",
+      "png_sha256": "7f2bbeae97ffca81adac1b208b36439089eec413665f684008d37a79000642b1",
+      "reviews": [
+        {
+          "reviewer": "patclaimeval_audit",
+          "page": 18,
+          "png_sha256": "7f2bbeae97ffca81adac1b208b36439089eec413665f684008d37a79000642b1",
+          "observation": "已以view_image原始解析度逐頁檢視。長文本截斷計數表、未知數標示及下方截斷群組正確率表均完整留在頁內；十三列方法及0筆不適用內容可讀，底部限制說明與頁尾保持距離，繁中無缺字，無表格裁切或重疊。"
+        }
+      ]
+    },
+    {
+      "page": 19,
+      "image": "page-19.png",
+      "png_sha256": "46a8abb63a723eec6d90b905c40c53285ae1a9730b75bafcf6aaafa3dc31e5d4",
+      "reviews": [
+        {
+          "reviewer": "patclaimeval_audit",
+          "page": 19,
+          "png_sha256": "46a8abb63a723eec6d90b905c40c53285ae1a9730b75bafcf6aaafa3dc31e5d4",
+          "observation": "已以view_image原始解析度逐頁檢視。PatClaimEval長度敏感度標題、2048與4096兩列四欄表格及2.50×10⁻⁶差異文字均清楚，數字及上標無缺字。獨立短節使頁面下方留白較多，但內容沒有溢出、孤立表頭或錯誤分頁，頁碼19正常。"
+        }
+      ]
+    },
+    {
+      "page": 20,
+      "image": "page-20.png",
+      "png_sha256": "3d7c55bf701dbff243e3cad8ec15f51fd891cf1cda2d7730c4f00e7622b6c502",
+      "reviews": [
+        {
+          "reviewer": "patclaimeval_audit",
+          "page": 20,
+          "png_sha256": "3d7c55bf701dbff243e3cad8ec15f51fd891cf1cda2d7730c4f00e7622b6c502",
+          "observation": "已以view_image原始解析度逐頁檢視。原論文與本次Accuracy比較表完整顯示十三方法與G-Eval僅引用列，正負差距數字置中且清晰；兩段來源與取位限制說明無裁切，繁中及英文混排正常，頁碼20清楚。"
+        }
+      ]
+    },
+    {
+      "page": 21,
+      "image": "page-21.png",
+      "png_sha256": "e0eea0c3bfd64f86d8b53590cefbb73cfbc21016afa1728b1ba0736b2478a18a",
+      "reviews": [
+        {
+          "reviewer": "patclaimeval_audit",
+          "page": 21,
+          "png_sha256": "e0eea0c3bfd64f86d8b53590cefbb73cfbc21016afa1728b1ba0736b2478a18a",
+          "observation": "已以view_image原始解析度逐頁檢視。F1外部參照表與七欄相關係數表均完整，τ、ρ及τ-b字形正常，全部方法及G-Eval未執行列可讀；表格較密但未跨出頁面，底部解讀段落完整且與頁尾分離，無重疊或缺字。"
+        }
+      ]
+    },
+    {
+      "page": 22,
+      "image": "page-22.png",
+      "png_sha256": "9feab43bbfe24173caa57b7988292700336acdd5e773e268c63aea205cbc153c",
+      "reviews": [
+        {
+          "reviewer": "patclaimeval_audit",
+          "page": 22,
+          "png_sha256": "9feab43bbfe24173caa57b7988292700336acdd5e773e268c63aea205cbc153c",
+          "observation": "已以view_image原始解析度逐頁檢視。案例1的專家平手標示、英文參考與A/B節錄、原文觀察及十三方法判斷表都完整呈現；英文長句自然換行，負BART分數清楚，表頭與十三列不分裂，繁中無缺字，頁碼22正常。"
+        }
+      ]
+    },
+    {
+      "page": 23,
+      "image": "page-23.png",
+      "png_sha256": "8a797488cdc6e6fab1a869d46eb7896ce8b2f921f4ac8bce80fc6debbe83d34e",
+      "reviews": [
+        {
+          "reviewer": "patclaimeval_audit",
+          "page": 23,
+          "png_sha256": "8a797488cdc6e6fab1a869d46eb7896ce8b2f921f4ac8bce80fc6debbe83d34e",
+          "observation": "已以view_image原始解析度逐頁檢視。案例2的專家A較佳標示、來源節錄與中文觀察清晰，英文light-emitting等斷行未造成裁切；十三方法五欄分數及是否一致表完整同頁顯示，A/B方向和負數可讀，無文字重疊、表格溢出或頁尾衝突。"
+        }
+      ]
+    },
+    {
+      "page": 24,
+      "image": "page-24.png",
+      "png_sha256": "575c7e60fba1d3bfe8e0c95eacd3ecd182a352e1549e82c91fe4edf005b9732b",
+      "reviews": [
+        {
+          "reviewer": "metric_protocol",
+          "page": 24,
+          "png_sha256": "575c7e60fba1d3bfe8e0c95eacd3ecd182a352e1549e82c91fe4edf005b9732b",
+          "observation": "以原始解析度逐張檢視：案例3 test_0027 標題、專家答案、英語節錄與繁中原文觀察均清晰；13方法表格完整落在同頁，B較佳與否欄逐列對齊，無裁切、重疊或缺字，頁尾第24頁正常。"
+        }
+      ]
+    },
+    {
+      "page": 25,
+      "image": "page-25.png",
+      "png_sha256": "211770a400f646443cc23e7a26d6e1306c69a62d49968299b379bc8d0b7e3e94",
+      "reviews": [
+        {
+          "reviewer": "metric_protocol",
+          "page": 25,
+          "png_sha256": "211770a400f646443cc23e7a26d6e1306c69a62d49968299b379bc8d0b7e3e94",
+          "observation": "以原始解析度逐張檢視：案例4 test_0026 的平手答案、兩段英語節錄及繁中分析字型正常；13方法表格含BARTScore負分完整可讀，表格末列與頁尾之間留白充分，無跨頁斷列或遮擋。"
+        }
+      ]
+    },
+    {
+      "page": 26,
+      "image": "page-26.png",
+      "png_sha256": "59a8dafdb95d666d5a3089f2240d0bfce52d75d922fe099c71f3b747aeea175f",
+      "reviews": [
+        {
+          "reviewer": "metric_protocol",
+          "page": 26,
+          "png_sha256": "59a8dafdb95d666d5a3089f2240d0bfce52d75d922fe099c71f3b747aeea175f",
+          "observation": "以原始解析度逐張檢視：案例5 test_0028 的原文差異與部件編號清晰，繁中段落未超出頁邊；13方法分數、預測與一致欄均完整，負數小數點與細表線清楚，頁尾第26頁無重疊。"
+        }
+      ]
+    },
+    {
+      "page": 27,
+      "image": "page-27.png",
+      "png_sha256": "9e0283fb260a8df83c5e3cc994a36b9ebd8abdd291047eafd586f07c61cc1bfc",
+      "reviews": [
+        {
+          "reviewer": "metric_protocol",
+          "page": 27,
+          "png_sha256": "9e0283fb260a8df83c5e3cc994a36b9ebd8abdd291047eafd586f07c61cc1bfc",
+          "observation": "以原始解析度逐張檢視：案例6 test_0001 的金標逐字相同說明、英語節錄及方法／系統差異分析排版正常；13行方法表格全部保留，1.0000與負分均可讀，無裁切、缺字或表格分裂。"
+        }
+      ]
+    },
+    {
+      "page": 28,
+      "image": "page-28.png",
+      "png_sha256": "56957c5b14dc2975171754eed6746b1d57e88fb65e3f26b41a81e236dcd8f4dd",
+      "reviews": [
+        {
+          "reviewer": "metric_protocol",
+          "page": 28,
+          "png_sha256": "56957c5b14dc2975171754eed6746b1d57e88fb65e3f26b41a81e236dcd8f4dd",
+          "observation": "以原始解析度逐張檢視：案例7 test_0003 的第3071字元附近節錄與省略符號可辨；13方法表格完整，BERTScore、MoverScore、SimCSE及PatClaimEval的平手列清晰，與專家A較佳答案區分明確，頁尾與表格未重疊。"
+        }
+      ]
+    },
+    {
+      "page": 29,
+      "image": "page-29.png",
+      "png_sha256": "01e7d16b06816f08c64c0698338fcdca84b684e7653c1ad94df374fe72074ae5",
+      "reviews": [
+        {
+          "reviewer": "metric_protocol",
+          "page": 29,
+          "png_sha256": "01e7d16b06816f08c64c0698338fcdca84b684e7653c1ad94df374fe72074ae5",
+          "observation": "以原始解析度逐張檢視：限制與研究解讀的八段繁中及混排英文清晰；20群組、訓練內容重疊、輸入上限、缺少其他人工構面及G-Eval未執行等段落完整，行距正常，無截斷或孤立跨頁文字。"
+        }
+      ]
+    },
+    {
+      "page": 30,
+      "image": "page-30.png",
+      "png_sha256": "d2dd400b69d7017dcc831e187aaebd203113256fe217f6aacda3c7fdc8bae2e0",
+      "reviews": [
+        {
+          "reviewer": "metric_protocol",
+          "page": 30,
+          "png_sha256": "d2dd400b69d7017dcc831e187aaebd203113256fe217f6aacda3c7fdc8bae2e0",
+          "observation": "以原始解析度逐張檢視：驗證與重跑方式的命令行自然換行且未超出頁邊；附件五列表格與十三條藍色來源連結均完整可讀，繁中字型、最後來源及第30頁頁尾正常，沒有裁切、重疊或意外空白頁。"
+        }
+      ]
+    }
+  ]
+}

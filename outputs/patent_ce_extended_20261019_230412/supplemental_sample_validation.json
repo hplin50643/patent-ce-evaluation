@@ -1,0 +1,902 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "complete": true,
+  "started_at": "2026-10-19T18:16:30+00:00",
+  "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+  "helper_sha256": "ba85be9860292b6c794af1147cdb7a6e00687bc1b38caa3952e074ecb83c76ae",
+  "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+  "original_input_sha256": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+  "assets_manifest_sha256": "b0956cc0e51fc618b653e402c849954f567f7258c0e95ab494edb7674922dd38",
+  "assets_manifest_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+  "original_pairs_sha256": "85fcc2a84666cb1b8b79ff98b2b62342a59e731a1e09ebd1c0ad7f71020558e9",
+  "subset_input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+  "subset_pairs_sha256": "7be233046a261b0f7029bbab683f9b46e62160511c980768b177c7bf6ab7ecc5",
+  "selection": {
+    "length_definition": "len(raw gold_claim)+len(raw candidate), Unicode code points; no normalization",
+    "rule": "minimum combined length and minimum absolute distance to the population median; ties use original pair order",
+    "population_pairs": 224,
+    "median_combined_characters": 5752.0,
+    "samples": [
+      {
+        "role": "shortest",
+        "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+        "original_pair_index_zero_based": 121,
+        "combined_characters": 1354,
+        "gold_characters": 677,
+        "candidate_characters": 677,
+        "gold_copy": true
+      },
+      {
+        "role": "closest_to_median",
+        "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+        "original_pair_index_zero_based": 126,
+        "combined_characters": 5746,
+        "gold_characters": 2981,
+        "candidate_characters": 2765,
+        "gold_copy": false
+      }
+    ]
+  },
+  "full_methods_finished_before_supplemental": [
+    "bleu1",
+    "rouge2_f1",
+    "meteor",
+    "bartscore",
+    "moverscore_v2",
+    "simcse",
+    "unieval_relevance",
+    "alignscore"
+  ],
+  "training_records_retained_exactly": true,
+  "retained_records": 1228,
+  "retained_training_records": 1044,
+  "retained_records_sha256": "2d5b2087ffa8945f1d4fa9787ff98da613df75c1d972f28e86552fa119dc0c8c",
+  "training_records_sha256": "f32f86b01bfc015b4d41470275bb27b398046ace75616c6f19f6c7cd767fdec2",
+  "mover_training_population": {
+    "gold_documents": 20,
+    "candidate_documents": 224,
+    "population_sha256": "b2aaecd8aead33cc8e68bd5a8a3d69ba92f81b6ab0facb9c0d326c24062cfab3"
+  },
+  "execution": "all methods sequential after formal completion; independent subset/checkpoints; frozen worker",
+  "methods": {
+    "bleu1": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": 0.6884955976170282,
+          "supplemental_score": 0.6884955976170282,
+          "official_reference": 0.6884955976170282,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": 1.0,
+          "supplemental_score": 1.0,
+          "official_reference": 1.0,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 228660,
+        "initial_peak_rss_kbytes": 228660,
+        "initial_wall_seconds": 4.43,
+        "latest_wall_seconds": 4.43,
+        "all_measured_invocations_wall_seconds": 4.43,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 228660,
+            "wall_seconds": 4.43,
+            "user_cpu_seconds": 1.44,
+            "system_cpu_seconds": 0.7,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/bleu1_resources_1792433790921470493_329.txt",
+            "raw_sha256": "bb6bfd84afdfddfb4c3ecf1d357163b4a67e24949a75f3cb9284b3813373cedc",
+            "measured_at": "2026-10-19T18:16:35+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/bleu1_resources_1792433790921470493_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "bleu1",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "bleu1",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/bleu1/bleu1_scores.json",
+      "result_sha256": "ea71459acfa42dd23e2369ad32047111efa45d63f16cec61e6cb0c075b3521f7",
+      "formal_result_sha256": "bbb035765f4225f87cca6a0d4b3e2fed0288afab8236592d460c27453ffc5f7a",
+      "formal_resume_proof_sha256": "c60ba3a5dc4f8cfb33a3a9659ca7581c2415e2a676e24e03003e1c1b3687c5d6",
+      "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "bleu1",
+        "verified_at": "2026-10-19T18:16:35+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "ea71459acfa42dd23e2369ad32047111efa45d63f16cec61e6cb0c075b3521f7",
+        "preserved_first_run_elapsed_seconds": 2.821
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/bleu1/bleu1_resume_verification.json",
+      "resume_proof_sha256": "7884ffb67a347be163defe269ae34c55069e98449b6d921785fbe197600fda49"
+    },
+    "rouge2_f1": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": 0.5503489531405782,
+          "supplemental_score": 0.5503489531405782,
+          "official_reference": 0.5503489531405782,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": 1.0,
+          "supplemental_score": 1.0,
+          "official_reference": 1.0,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 299836,
+        "initial_peak_rss_kbytes": 299836,
+        "initial_wall_seconds": 4.73,
+        "latest_wall_seconds": 4.73,
+        "all_measured_invocations_wall_seconds": 4.73,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 299836,
+            "wall_seconds": 4.73,
+            "user_cpu_seconds": 1.86,
+            "system_cpu_seconds": 0.98,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/rouge2_f1_resources_1792433795431962877_329.txt",
+            "raw_sha256": "1b45d82ca74a6fba6c5113c03d432aed808a8e84de974adfb00954ba7d93ec32",
+            "measured_at": "2026-10-19T18:16:40+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/rouge2_f1_resources_1792433795431962877_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "rouge2_f1",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "rouge2_f1",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/rouge2_f1/rouge2_f1_scores.json",
+      "result_sha256": "0978eb45372bcf5650fcca576120d051b22fbb6aaea1f6dd955c9cbc4eebf3e2",
+      "formal_result_sha256": "4ce723b02e712fcd6656059ecf43df9c29cde508e6046de4f75c11c0b395881e",
+      "formal_resume_proof_sha256": "bbfe85af5121e29ff3680d91731183457c36cf90daafbec66905d93a51fda135",
+      "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "rouge2_f1",
+        "verified_at": "2026-10-19T18:16:39+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "0978eb45372bcf5650fcca576120d051b22fbb6aaea1f6dd955c9cbc4eebf3e2",
+        "preserved_first_run_elapsed_seconds": 3.212
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/rouge2_f1/rouge2_f1_resume_verification.json",
+      "resume_proof_sha256": "86f9c7c89bfc7f68c916e9e15d6e9d90556fedb32fd658297d7aecb712db15de"
+    },
+    "meteor": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": 0.6137340864191559,
+          "supplemental_score": 0.6137340864191559,
+          "official_reference": 0.6137340864191559,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": 0.9999996344043094,
+          "supplemental_score": 0.9999996344043094,
+          "official_reference": 0.9999996344043094,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 480012,
+        "initial_peak_rss_kbytes": 480012,
+        "initial_wall_seconds": 6.55,
+        "latest_wall_seconds": 6.55,
+        "all_measured_invocations_wall_seconds": 6.55,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 480012,
+            "wall_seconds": 6.55,
+            "user_cpu_seconds": 4.03,
+            "system_cpu_seconds": 1.0,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/meteor_resources_1792433800243565437_329.txt",
+            "raw_sha256": "f1b5e22814b46872ff4a7653cc00a8e0a5cc17afb87aac3f6ef4e66301e16357",
+            "measured_at": "2026-10-19T18:16:46+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/meteor_resources_1792433800243565437_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "meteor",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "meteor",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/meteor/meteor_scores.json",
+      "result_sha256": "2e62a22720be50972780fafe65888b71a25deb5d3b6fcf5c38a38bed5fffa8c3",
+      "formal_result_sha256": "be96a5ef041be0beaf6e2ce3446f0d87065c40d3dd4ffcaf929b3a1c4634fd32",
+      "formal_resume_proof_sha256": "5bcef09c629ed3ac3718d49f86cf1b207ea581b1b8ba64694415383713fc9691",
+      "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "meteor",
+        "verified_at": "2026-10-19T18:16:46+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "2e62a22720be50972780fafe65888b71a25deb5d3b6fcf5c38a38bed5fffa8c3",
+        "preserved_first_run_elapsed_seconds": 4.824
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/meteor/meteor_resume_verification.json",
+      "resume_proof_sha256": "691a3fc07d721b4e44b1653b5b8b0f12873dfb896789f9c18aa62a8efedd6334"
+    },
+    "bartscore": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": -1.4948225021362305,
+          "supplemental_score": -1.4948225021362305,
+          "official_reference": -1.4948225021362305,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": -0.2391808032989502,
+          "supplemental_score": -0.2391808032989502,
+          "official_reference": -0.2391808032989502,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 3637540,
+        "initial_peak_rss_kbytes": 3637540,
+        "initial_wall_seconds": 38.24,
+        "latest_wall_seconds": 38.24,
+        "all_measured_invocations_wall_seconds": 38.24,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 3637540,
+            "wall_seconds": 38.24,
+            "user_cpu_seconds": 34.53,
+            "system_cpu_seconds": 7.26,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/bartscore_resources_1792433806905920888_329.txt",
+            "raw_sha256": "fb0963cd7440f18d04365adf4c557cb031bdf1c0f6520b974e253fd0d6446ffb",
+            "measured_at": "2026-10-19T18:17:25+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/bartscore_resources_1792433806905920888_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "bartscore",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "bartscore",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "c3843aa03da34cee9e68c221b4534c52f2449f414af926154d4d47f1ffa577c8",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/bartscore/bartscore_scores.json",
+      "result_sha256": "6f99b9611655d8066b2cbdf5b301070e81cc91f8c2121ae43238ec139720ce8a",
+      "formal_result_sha256": "524ac5944d019f15659578647ba65a44f28bce8917327b27623c6dfcd918859a",
+      "formal_resume_proof_sha256": "dac44dce6e3c9b0f7c767f05edac1700b80778433f3abc4477d2d602f4c2e2e4",
+      "assets_sha256": "c3843aa03da34cee9e68c221b4534c52f2449f414af926154d4d47f1ffa577c8",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "bartscore",
+        "verified_at": "2026-10-19T18:17:24+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "6f99b9611655d8066b2cbdf5b301070e81cc91f8c2121ae43238ec139720ce8a",
+        "preserved_first_run_elapsed_seconds": 29.203
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/bartscore/bartscore_resume_verification.json",
+      "resume_proof_sha256": "fb36633e9c7ad1639915ecfb6ef81643db5f875191a3bef71600c2308440ffcd"
+    },
+    "moverscore_v2": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": 0.6462108679887213,
+          "supplemental_score": 0.6462108679887213,
+          "official_reference": 0.6462108679887213,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": 0.9170868594115467,
+          "supplemental_score": 0.9170868594115467,
+          "official_reference": 0.9170868594115467,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 764660,
+        "initial_peak_rss_kbytes": 764660,
+        "initial_wall_seconds": 20.18,
+        "latest_wall_seconds": 20.18,
+        "all_measured_invocations_wall_seconds": 20.18,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 764660,
+            "wall_seconds": 20.18,
+            "user_cpu_seconds": 20.43,
+            "system_cpu_seconds": 1.45,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/moverscore_v2_resources_1792433845230283566_329.txt",
+            "raw_sha256": "afd5b77e31ed0e685f86ce5354f6bc09a8269fd217749e50897b7d14766122ad",
+            "measured_at": "2026-10-19T18:17:45+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/moverscore_v2_resources_1792433845230283566_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "moverscore_v2",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "moverscore_v2",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "127ae745263cf952d5ab4ee1aa809f1956686be54ace689b43c24ad3405bc524",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/moverscore_v2/moverscore_v2_scores.json",
+      "result_sha256": "fa5b3ccef8abc1353b8c2c1c573ae7042aa109929de3f484588da38900987a4a",
+      "formal_result_sha256": "4e7817802bee5dd89bc6429927416dc7bbe8392c7a3b35bbdd735c62c6bd8d9e",
+      "formal_resume_proof_sha256": "8056c96b0bba3ae458e42d2849c0afcf664fb58c164494dccbefec5cb59be206",
+      "assets_sha256": "127ae745263cf952d5ab4ee1aa809f1956686be54ace689b43c24ad3405bc524",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "moverscore_v2",
+        "verified_at": "2026-10-19T18:17:45+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "fa5b3ccef8abc1353b8c2c1c573ae7042aa109929de3f484588da38900987a4a",
+        "preserved_first_run_elapsed_seconds": 17.98
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/moverscore_v2/moverscore_v2_resume_verification.json",
+      "resume_proof_sha256": "0d83d4cdb2db92cd85b4b71d222cc8bbc9db0aa9899903d7b5919b884dad2f4e",
+      "idf": {
+        "identical_to_formal": true,
+        "population_sha256": "b2aaecd8aead33cc8e68bd5a8a3d69ba92f81b6ab0facb9c0d326c24062cfab3",
+        "formal_file_sha256": "838172aff50af88ce3ad275e57c5c8d097aa8cd1c310ec33c1e709fbdb075baf",
+        "supplemental_file_sha256": "838172aff50af88ce3ad275e57c5c8d097aa8cd1c310ec33c1e709fbdb075baf",
+        "canonical_content_sha256": "87ae55ded59c4bd1db8ab55d1de96d8341949e779dd88dfceea424b75e3b7a89"
+      }
+    },
+    "simcse": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": 0.9607910513877869,
+          "supplemental_score": 0.9607910513877869,
+          "official_reference": 0.9607910513877869,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": 1.0000001192092896,
+          "supplemental_score": 1.0000001192092896,
+          "official_reference": 0.9999997615814209,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 3.5762786865234375e-07,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 1145548,
+        "initial_peak_rss_kbytes": 1145548,
+        "initial_wall_seconds": 12.04,
+        "latest_wall_seconds": 12.04,
+        "all_measured_invocations_wall_seconds": 12.04,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 1145548,
+            "wall_seconds": 12.04,
+            "user_cpu_seconds": 6.36,
+            "system_cpu_seconds": 1.34,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/simcse_resources_1792433865537983933_329.txt",
+            "raw_sha256": "112c7ac8e3eb223b5aa9b420c720abcab8a5fa7132a1f78dc57c3b57d61d044f",
+            "measured_at": "2026-10-19T18:17:57+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/simcse_resources_1792433865537983933_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "simcse",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "simcse",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "acc3c560dde6c979980c0b31c87a52ebae4dd3f8c59048d31fcaa7d08c8062ac",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/simcse/simcse_scores.json",
+      "result_sha256": "4db193447816f7e4161e934d0c5c9333fa1c24feb1ee7b714e34d22435daa140",
+      "formal_result_sha256": "2b8518e91f4091da6ac5a2dff25ad4589db51046d5572bb4a49e9efc822849da",
+      "formal_resume_proof_sha256": "8e9edc7ba8bf9fdb8abf20fb40279f6f4bc08d084920747429a89599db44d228",
+      "assets_sha256": "acc3c560dde6c979980c0b31c87a52ebae4dd3f8c59048d31fcaa7d08c8062ac",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "simcse",
+        "verified_at": "2026-10-19T18:17:57+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "4db193447816f7e4161e934d0c5c9333fa1c24feb1ee7b714e34d22435daa140",
+        "preserved_first_run_elapsed_seconds": 9.002
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/simcse/simcse_resume_verification.json",
+      "resume_proof_sha256": "d7da4b38617d4450fe57fe615f1557f7ace3554067ec68a871951609717f73c5"
+    },
+    "unieval_relevance": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": 0.9761121641275063,
+          "supplemental_score": 0.9761121641275063,
+          "official_reference": 0.9761121641275063,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": 0.992285748808267,
+          "supplemental_score": 0.992285748808267,
+          "official_reference": 0.992285748808267,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 6380616,
+        "initial_peak_rss_kbytes": 6380616,
+        "initial_wall_seconds": 71.1,
+        "latest_wall_seconds": 71.1,
+        "all_measured_invocations_wall_seconds": 71.1,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 6380616,
+            "wall_seconds": 71.1,
+            "user_cpu_seconds": 56.0,
+            "system_cpu_seconds": 5.54,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/unieval_relevance_resources_1792433877678762329_329.txt",
+            "raw_sha256": "abe01c7236c24dc01fe1e9e81038ca6648af7f1c83fdbd8f80ea851ef1bb9859",
+            "measured_at": "2026-10-19T18:19:08+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/unieval_relevance_resources_1792433877678762329_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "unieval_relevance",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "unieval_relevance",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "5dc815528380e214f1edd6c1749f798c6268934b2a6b6c7dcb71b21361c22d5d",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/unieval_relevance/unieval_relevance_scores.json",
+      "result_sha256": "b271a7e24368859945e730574ed39560308fa2d697792b1bb49975b4aec7e14e",
+      "formal_result_sha256": "d4e6ce1cc9bd20df9173495d73e259d512cf3b47c3d496b3d4bef43fbb23f64b",
+      "formal_resume_proof_sha256": "93f765178d74e398c912bd5e8bb15986f8e8519951bdb46e2e18b1506acda632",
+      "assets_sha256": "5dc815528380e214f1edd6c1749f798c6268934b2a6b6c7dcb71b21361c22d5d",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "unieval_relevance",
+        "verified_at": "2026-10-19T18:19:08+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "b271a7e24368859945e730574ed39560308fa2d697792b1bb49975b4aec7e14e",
+        "preserved_first_run_elapsed_seconds": 54.208
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/unieval_relevance/unieval_relevance_resume_verification.json",
+      "resume_proof_sha256": "d3bae09212d72300bf71247d85dbbbdcdd68286f9ac6fa86536b2702d3bf150b"
+    },
+    "alignscore": {
+      "status": "passed",
+      "signatures_identical": [
+        "worker_sha256",
+        "assets_sha256",
+        "environment_sha256"
+      ],
+      "settings_identical_except_smoke": true,
+      "absolute_tolerance": 1e-05,
+      "comparisons": [
+        {
+          "pair_id": "66bfbbaf69c851ef8209f06ea7e4172683d5175a729513e7f7db3427a7683ebe",
+          "formal_score": 0.7015395164489746,
+          "supplemental_score": 0.7015395164489746,
+          "official_reference": 0.7015395164489746,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        },
+        {
+          "pair_id": "8e62bb63b83d490ca29f80254a8831ea6160eabe321e5b96135bfe46385ea858",
+          "formal_score": 0.7212262153625488,
+          "supplemental_score": 0.7212262153625488,
+          "official_reference": 0.7212262153625488,
+          "formal_absolute_error": 0.0,
+          "official_absolute_error": 0.0,
+          "metadata_identical": true
+        }
+      ],
+      "resources": {
+        "measurement": "GNU /usr/bin/time -v",
+        "scope": "entire independent supplemental worker subprocess: loading, two samples, official parity, and resume proof; not a full-224 peak",
+        "rss_accounting": "GNU time Maximum resident set size (kbytes); not summed simultaneous process-tree RAM",
+        "peak_rss_kbytes": 8111956,
+        "initial_peak_rss_kbytes": 8111956,
+        "initial_wall_seconds": 292.12,
+        "latest_wall_seconds": 292.12,
+        "all_measured_invocations_wall_seconds": 292.12,
+        "measurements": [
+          {
+            "peak_rss_kbytes": 8111956,
+            "wall_seconds": 292.12,
+            "user_cpu_seconds": 815.7,
+            "system_cpu_seconds": 7.92,
+            "exit_status": 0,
+            "raw_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/alignscore_resources_1792433948901437982_329.txt",
+            "raw_sha256": "239e79aadbb33c974b3b27ec11a12e171ae2ed05f7d51b16ffbf1b83503ee409",
+            "measured_at": "2026-10-19T18:24:01+00:00",
+            "completed_output_existed_before_invocation": false,
+            "timed_command": [
+              "/usr/bin/time",
+              "-v",
+              "-o",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/alignscore_resources_1792433948901437982_329.txt",
+              "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+              "-u",
+              "/mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py",
+              "--method",
+              "alignscore",
+              "--input",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json",
+              "--output-dir",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation",
+              "--assets",
+              "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+              "--threads",
+              "4",
+              "--batch-size",
+              "1",
+              "--smoke"
+            ],
+            "context": {
+              "method": "alignscore",
+              "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+              "input_sha256": "8aa73c87f3fc53dd0f35f5824a97a98182fd207ecb343356722bc667ae25005d",
+              "assets_sha256": "5753424c7e466fda4c76018b9f9beb1b8a9475a42518c7493f81d914484e9226",
+              "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+            }
+          }
+        ]
+      },
+      "result_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/alignscore/alignscore_scores.json",
+      "result_sha256": "c7cf703f0bb2b0c71ac0c116a4a4e176c1807ad756d4972956f3ad93687b380b",
+      "formal_result_sha256": "a4d9cafdccd6a8f8bdbd46d3b825d7b7b75433d6d0a4c6d44c323107fd2f9644",
+      "formal_resume_proof_sha256": "83e2a348b73932ae553817b308b5df63b3e84e71c7d82ea906d367b9e199c659",
+      "assets_sha256": "5753424c7e466fda4c76018b9f9beb1b8a9475a42518c7493f81d914484e9226",
+      "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+      "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+      "zero_inference_resume": {
+        "status": "passed",
+        "method": "alignscore",
+        "verified_at": "2026-10-19T18:24:00+00:00",
+        "pairs": 2,
+        "inference_calls": 0,
+        "actual_run_resume_only_guard": true,
+        "scores_identical": true,
+        "original_output_unchanged": true,
+        "original_output_sha256": "c7cf703f0bb2b0c71ac0c116a4a4e176c1807ad756d4972956f3ad93687b380b",
+        "preserved_first_run_elapsed_seconds": 265.047
+      },
+      "resume_proof_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/alignscore/alignscore_resume_verification.json",
+      "resume_proof_sha256": "6dbb22a799c710cafb874020cf2caf1662314676cb6b9dfe6ca1fc799c4720d1",
+      "align_optimization_proof": {
+        "path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/smoke/alignscore/alignscore_optimization_parity.json",
+        "sha256": "ad5edb8172276be58c783eb00279b46010f49371c5ce1ca844cc6aea6adbbe9e",
+        "all_head_tensors_exactly_equal": true
+      }
+    }
+  },
+  "completed_at": "2026-10-19T18:24:01+00:00",
+  "elapsed_seconds": 451.72090215999924
+}

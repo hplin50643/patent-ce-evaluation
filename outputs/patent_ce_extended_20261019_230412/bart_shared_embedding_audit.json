@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "verified_at_utc": "2026-10-19T15:19:42.505892+00:00",
+  "verification": "Independent BartForConditionalGeneration.from_pretrained(...,local_files_only=True,output_loading_info=True), then torch.equal and maximum absolute difference against safetensors model.decoder.embed_tokens.weight; no forward inference",
+  "environment": {
+    "transformers": "4.26.1",
+    "torch": "1.13.1+cpu"
+  },
+  "checkpoint_sha256": "40041830399afb5348525ef8354b007ecec4286fdf3524f7e6b54377e17096cb",
+  "loader_missing_keys": [
+    "model.shared.weight"
+  ],
+  "loader_unexpected_keys": [],
+  "safetensors_aliases": {
+    "model.encoder.embed_tokens.weight": "model.decoder.embed_tokens.weight",
+    "model.shared.weight": "model.decoder.embed_tokens.weight"
+  },
+  "tensor_checks": {
+    "model.shared.weight": {
+      "equals_checkpoint": true,
+      "max_abs_error": 0.0
+    },
+    "model.encoder.embed_tokens.weight": {
+      "equals_checkpoint": true,
+      "max_abs_error": 0.0
+    },
+    "model.decoder.embed_tokens.weight": {
+      "equals_checkpoint": true,
+      "max_abs_error": 0.0
+    },
+    "lm_head.weight": {
+      "equals_checkpoint": true,
+      "max_abs_error": 0.0
+    }
+  },
+  "all_four_share_same_storage": true,
+  "model_inference_performed": false,
+  "conclusion": "The missing shared-weight warning is alias bookkeeping; every tied embedding equals the pinned saved weight."
+}

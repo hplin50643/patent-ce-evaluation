@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "meteor",
+  "verified_at": "2026-10-19T18:16:46+00:00",
+  "pairs": 2,
+  "inference_calls": 0,
+  "actual_run_resume_only_guard": true,
+  "scores_identical": true,
+  "original_output_unchanged": true,
+  "original_output_sha256": "2e62a22720be50972780fafe65888b71a25deb5d3b6fcf5c38a38bed5fffa8c3",
+  "preserved_first_run_elapsed_seconds": 4.824
+}

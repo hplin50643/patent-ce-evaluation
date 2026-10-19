@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "simcse",
+  "verified_at": "2026-10-19T15:56:08+00:00",
+  "pairs": 224,
+  "inference_calls": 0,
+  "actual_run_resume_only_guard": true,
+  "scores_identical": true,
+  "original_output_unchanged": true,
+  "original_output_sha256": "2b8518e91f4091da6ac5a2dff25ad4589db51046d5572bb4a49e9efc822849da",
+  "preserved_first_run_elapsed_seconds": 33.111
+}

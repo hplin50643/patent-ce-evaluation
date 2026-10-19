@@ -1,0 +1,123 @@
+{
+  "signatures": {
+    "schema_version": 2,
+    "method": "moverscore_v2",
+    "input_sha256": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+    "settings_sha256": "6bfecaffd91328b164c4f7ee871f25008c11e1bd3f5898cb7dd5778cef106a46",
+    "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+    "assets_sha256": "127ae745263cf952d5ab4ee1aa809f1956686be54ace689b43c24ad3405bc524",
+    "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371"
+  },
+  "settings": {
+    "method": "moverscore_v2",
+    "seed": 42,
+    "device": "cpu",
+    "threads": 4,
+    "batch_size": 1,
+    "smoke": true,
+    "normalization": "Raw source strings; upstream tokenizer behavior only",
+    "score_direction": "higher is better",
+    "orientation": "gold reference then candidate",
+    "model": "distilbert-base-uncased",
+    "version": "moverscore_v2",
+    "n_gram": 1,
+    "stop_words": [],
+    "remove_subwords": true,
+    "max_length": 512,
+    "idf": "separate de-duplicated raw training gold/candidate populations",
+    "idf_training_population_sha256": "b2aaecd8aead33cc8e68bd5a8a3d69ba92f81b6ab0facb9c0d326c24062cfab3",
+    "idf_reference_documents": 20,
+    "idf_candidate_documents": 224
+  },
+  "environment": {
+    "python": "3.10.20 (main, Aug  7 2026, 02:25:15) [Clang 22.1.3 ]",
+    "python_executable": "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "versions": {
+      "torch": "1.13.1+cpu",
+      "transformers": "4.26.1",
+      "numpy": "1.23.5",
+      "nltk": "3.9.2",
+      "rouge-score": "0.1.2",
+      "pyemd": "1.0.0",
+      "scikit-learn": "1.3.2",
+      "scipy": "1.10.1",
+      "pytorch-lightning": "1.9.5",
+      "spacy": "3.7.5",
+      "sentencepiece": "0.1.99",
+      "tokenizers": "0.13.3"
+    },
+    "device": "cpu",
+    "threads": 4,
+    "seed": 42,
+    "offline": true
+  },
+  "provenance": {
+    "asset_entry": {
+      "model_dir": "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2",
+      "source_dir": "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/moverscore_v2",
+      "repository": "distilbert/distilbert-base-uncased",
+      "revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+      "source_commit": "0459a3b3b3bd73baa0cc515a355228ee5a2887e0"
+    },
+    "validated_file_hashes": {
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/moverscore_v2/LICENSE": "381b59d49fa5327750de2bca31a61e3c00fe8d650457279e84d2f819bebf2f76",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/moverscore_v2/README.md": "637a2339142a83b2a94b87c611462b1667277b5c54eb6800edd1633e88eab5b4",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/moverscore_v2/moverscore_v2.py": "5354488eb5d3018603dd7e9b19d6f44a73c2df5794ded58da6f4c4209a0dfc77",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2/LICENSE": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2/README.md": "b925a22d8efd7a29608a0e10d3f2fb33d5d80df7de4ac6e34093853cd8e0274e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2/config.json": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2/model.safetensors": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2/tokenizer.json": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2/tokenizer_config.json": "a025160ef0431f1a392f6f050c1310f4c5d9fb6f275932dbccba73c4d214bf10",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2/vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    },
+    "environment_lock_semantic_sha256": "b96be69ccf57507b0e08a04ddb2ee901b5c6bb32687c5da863627fbe4b4766e2",
+    "source_adapters": [
+      {
+        "path": "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/moverscore_v2/moverscore_v2.py",
+        "original_sha256": "5354488eb5d3018603dd7e9b19d6f44a73c2df5794ded58da6f4c4209a0dfc77",
+        "runtime_source_sha256": "91ec7a3e12fc0bad3eaee1ec0b59f86ad302aa37b1be44b5cbf5f689626862a3",
+        "patches": [
+          {
+            "before": "device = 'cuda'",
+            "after": "device = 'cpu'",
+            "matches": 1
+          },
+          {
+            "before": "AutoTokenizer.from_pretrained(model_name, do_lower_case=True)",
+            "after": "AutoTokenizer.from_pretrained('/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2', do_lower_case=True, local_files_only=True)",
+            "matches": 1
+          },
+          {
+            "before": "AutoModel.from_pretrained(model_name, output_hidden_states=True, output_attentions=True)",
+            "after": "AutoModel.from_pretrained('/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/weights/moverscore_v2', output_hidden_states=True, output_attentions=True, local_files_only=True)",
+            "matches": 1
+          },
+          {
+            "before": "dtype=np.float)",
+            "after": "dtype=np.float64)",
+            "matches": 4
+          },
+          {
+            "before": "import matplotlib.pyplot as plt",
+            "after": "plt = None  # Visualization-only dependency is not used by scoring.",
+            "matches": 1
+          }
+        ]
+      }
+    ],
+    "algorithm_changes": [],
+    "idf": {
+      "path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/smoke/moverscore_v2/moverscore_v2_idf.json",
+      "sha256": "838172aff50af88ce3ad275e57c5c8d097aa8cd1c310ec33c1e709fbdb075baf",
+      "population_sha256": "b2aaecd8aead33cc8e68bd5a8a3d69ba92f81b6ab0facb9c0d326c24062cfab3",
+      "reference_documents": 20,
+      "candidate_documents": 224
+    },
+    "assets_manifest_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+    "input_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/pairs.json"
+  },
+  "started_at": "2026-10-19T15:41:57+00:00",
+  "state_sha256": "bc1f2794e188c39003fac42047b304e9c8a87ee4d3492866d47045761e8ac877"
+}

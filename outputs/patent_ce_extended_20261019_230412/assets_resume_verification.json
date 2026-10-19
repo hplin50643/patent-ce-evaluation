@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "verified_at_utc": "2026-10-19T15:17:24.169558+00:00",
+  "assets_manifest_sha256_before": "b0956cc0e51fc618b653e402c849954f567f7258c0e95ab494edb7674922dd38",
+  "assets_manifest_sha256_after": "b0956cc0e51fc618b653e402c849954f567f7258c0e95ab494edb7674922dd38",
+  "preserved_manifest_bytes": true,
+  "environment_lock_sha256": "9e0f824524d2c06de014b8b81710bcfa6eeb5f2803001bbdd6efa82e0dac6d82",
+  "verified_file_count": 136,
+  "inference_performed": false,
+  "downloads_performed": false
+}

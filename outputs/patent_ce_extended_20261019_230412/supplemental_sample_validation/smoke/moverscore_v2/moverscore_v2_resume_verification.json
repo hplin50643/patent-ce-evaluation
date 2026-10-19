@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "moverscore_v2",
+  "verified_at": "2026-10-19T18:17:45+00:00",
+  "pairs": 2,
+  "inference_calls": 0,
+  "actual_run_resume_only_guard": true,
+  "scores_identical": true,
+  "original_output_unchanged": true,
+  "original_output_sha256": "fa5b3ccef8abc1353b8c2c1c573ae7042aa109929de3f484588da38900987a4a",
+  "preserved_first_run_elapsed_seconds": 17.98
+}

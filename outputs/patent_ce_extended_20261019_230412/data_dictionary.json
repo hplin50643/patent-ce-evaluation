@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "encoding": "UTF-8 BOM CSV with standard multiline quoting",
+  "scores_csv_rows": 1228,
+  "predictions_csv_rows": 17192,
+  "primary_prediction_rows": 15964,
+  "supplementary_prediction_rows": 1228,
+  "pair_metadata_rows": 3136,
+  "metadata": "Per candidate/reference pair and method; exact worker JSON retained; unknown truncation stays null/blank",
+  "human_label": "Quality only: -1 B preferred, 0 tie, 1 A preferred",
+  "is_primary": "False for patclaimeval_4096 sensitivity only",
+  "confusion_matrix": "Rows expert, columns predicted, fixed order [-1,0,1]",
+  "score_policy": "Higher scores are better; negative BART log scores are valid; no score-to-probability interpretation"
+}

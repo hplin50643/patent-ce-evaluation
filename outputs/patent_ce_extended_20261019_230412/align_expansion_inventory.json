@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "created_at_utc": "2026-10-19T15:20:50.537421+00:00",
+  "candidate_pairs": 224,
+  "expanded_subpair_instances": 8256,
+  "unique_exact_raw_subpairs": 3919,
+  "repeated_instances_avoidable": 4337,
+  "avoidable_fraction": 0.5253149224806202,
+  "unique_reference_chunks": 33,
+  "unique_candidate_sentences": 2058,
+  "subpairs_per_candidate_min": 2,
+  "subpairs_per_candidate_max": 150,
+  "subpairs_per_candidate_mean": 36.857142857142854,
+  "maximum_duplicate_multiplicity": 17,
+  "counted_with": "NLTK3.9.2 official AlignScore nli_sp referencechunk/candidate-sentence algorithm; exact raw subpair tuple identity",
+  "model_inference_performed": false,
+  "memoization_precondition": "Fixed model, same tokenization/settings, batch_size=1, preserve per-sentence max/mean aggregation and all three output heads."
+}

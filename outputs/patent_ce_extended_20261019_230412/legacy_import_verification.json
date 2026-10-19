@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "source_manifest_sha256": "be147eb57819ecfb060c84c960450d87cdf50b10cd282aa5cd2c56021782ef78",
+  "original_files_verified": 50,
+  "source_worker_hashes": {
+    "similarity_scores.json": "9c11e7a4d2aab31e43ab81d2c9a7796e71e3176006188661e49efff3c42eacd8",
+    "patclaim_scores.json": "af464dfe6ec67337f89336322e3f03c37f60f83d986c60025ff7e25b86ce18ce"
+  },
+  "models_checked": {
+    "bertscore": "all recorded model files verified locally",
+    "patclaimeval": "all recorded model files verified locally"
+  },
+  "imported_methods": 6,
+  "unique_pairs": 224,
+  "source_rows": 1228,
+  "all_scores_copied_without_rounding": true
+}

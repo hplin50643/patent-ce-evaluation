@@ -1,0 +1,36 @@
+Patent-CE extended local evaluator: third-party provenance
+
+Model weights and downloaded source snapshots are stored outside this code
+directory under public-programs/models/patent-ce-extended and are excluded from
+publication. Exact URLs, fixed revisions, SHA-256 hashes and file sizes are
+recorded in the run's asset_downloads.jsonl and assets.json.
+
+BARTScore: https://github.com/neulab/BARTScore
+  source commit 248f511cb34ae3753fc81f7d7a945de5bfe33458
+  model facebook/bart-large-cnn, revision 37f520fa929c961707657b28798b30c003dd100b
+MoverScore: https://github.com/AIPHES/emnlp19-moverscore
+  source commit 0459a3b3b3bd73baa0cc515a355228ee5a2887e0
+  selected variant moverscore_v2 with distilbert/distilbert-base-uncased
+  model revision 12040accade4e8a0f71eabdb258fecc2e7e948be
+SimCSE: https://github.com/princeton-nlp/SimCSE
+  source commit 49fa580a853752ede55b8c76d9debf748e214d3f
+  model princeton-nlp/sup-simcse-bert-base-uncased
+  model revision 2d82fab19ac3a73a20dd20333d27eb8a52d6e97f
+UniEval: https://github.com/maszhongming/UniEval
+  source commit d33e7b6cfebe97b2bafe435adbd818230d5a416a
+  model MingZhong/unieval-sum, revision ed8da5a8aa01b19d49a5f8738d382ced54b73ad0
+AlignScore: https://github.com/yuh-zha/AlignScore
+  source commit a0936d5afee642a46b22f6c02a163478447aa493
+  checkpoint yzha/AlignScore, revision 8509e78d25bb914939fc585c626500c9b2944249
+  backbone FacebookAI/roberta-large, revision 722cf37b1afa9454edce342e7895e588b6ff1d59
+
+Downloaded upstream source bytes are unmodified. Upstream README and license
+files are retained where provided. CPU/offline compatibility adaptations are
+implemented and recorded separately by the evaluation worker.
+
+The copied BLEU source module originates from Hugging Face Evaluate (Apache
+License 2.0), module hash 9e0985c1200e367cce45605ce0ecb5ede079894e0f24f54613fca08eeb8aff76.
+NLTK resources WordNet, Open Multilingual WordNet and Punkt tables retain their
+individual resource licenses, included in the downloaded resource directories.
+spaCy en_core_web_sm 3.7.1 is installed from its fixed upstream release wheel;
+its package metadata and license remain in the isolated environment.

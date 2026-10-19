@@ -1,0 +1,23 @@
+	Command being timed: "/home/agent/.venvs/patent-ce-13methods-py310/bin/python -u /mnt/c/Users/agent/Project/專利挑戰/public-programs/verification/patent_ce_extended/worker.py --method alignscore --input /mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation/pairs.json --output-dir /mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/supplemental_sample_validation --assets /mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json --threads 4 --batch-size 1 --smoke"
+	User time (seconds): 815.70
+	System time (seconds): 7.92
+	Percent of CPU this job got: 281%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:52.12
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8111956
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 62
+	Minor (reclaiming a frame) page faults: 2012582
+	Voluntary context switches: 264959
+	Involuntary context switches: 843
+	Swaps: 0
+	File system inputs: 29148397
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

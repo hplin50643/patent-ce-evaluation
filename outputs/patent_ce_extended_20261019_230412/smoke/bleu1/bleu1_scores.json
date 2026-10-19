@@ -1,0 +1,228 @@
+{
+  "schema_version": 2,
+  "method": "bleu1",
+  "input_sha256": "324ad4be83b70ba304df7556a104380b0306fe3844b0e41726129804609da947",
+  "settings_sha256": "3fbcef465031b9ec47d48737c132035f7953abfa6589a3be4c44d80ea04b8fee",
+  "worker_sha256": "83b0d0d8cd7cf8dec2f66574cba8c8fbfe9a582f192d3a87a5339ee69777815d",
+  "assets_sha256": "e4bf089d14e0c2fa36ea601993a8d922c464c255dcb675b63639a5bd77cce4b0",
+  "environment_sha256": "57c918c44400d6c291414350f0e8c909b1487a56a02146c1ace4b14d5d76d371",
+  "complete": true,
+  "smoke": true,
+  "settings": {
+    "method": "bleu1",
+    "seed": 42,
+    "device": "cpu",
+    "threads": 4,
+    "batch_size": 1,
+    "smoke": true,
+    "normalization": "Raw source strings; upstream tokenizer behavior only",
+    "score_direction": "higher is better",
+    "orientation": "gold reference then candidate",
+    "tokenizer": "Tokenizer13a",
+    "max_order": 1,
+    "smooth": false
+  },
+  "provenance": {
+    "asset_entry": {
+      "module_revision": "9e0985c1200e367cce45605ce0ecb5ede079894e0f24f54613fca08eeb8aff76",
+      "source": "Pinned byte-identical Hugging Face evaluate / TensorFlow NMT BLEU implementation",
+      "upstream_files": {
+        "nmt_bleu.py": [
+          "https://raw.githubusercontent.com/tensorflow/nmt/0be864257a76c151eef20ea689755f08bc1faf4e/nmt/scripts/bleu.py",
+          "d35b20182f82f22f1c31232df1d25977328cf011178fcd381c2d82ee4116b40b"
+        ],
+        "tokenizer_13a.py": [
+          "https://raw.githubusercontent.com/huggingface/evaluate/a5db2ad54aaeadf15c7aa1f056bc6f7bbeeb7e5f/metrics/bleu/tokenizer_13a.py",
+          "496ba6b982897605ca52ac06595a0e59496c8563e26a28b47f14a0cfba725a91"
+        ],
+        "bleu.py": [
+          "https://raw.githubusercontent.com/huggingface/evaluate/a5db2ad54aaeadf15c7aa1f056bc6f7bbeeb7e5f/metrics/bleu/bleu.py",
+          "41aebd59ddb0306117c049edf6a2f71b978cf0c5cce1da63f0e1551987f34315"
+        ]
+      }
+    },
+    "validated_file_hashes": {
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/bleu.py": "41aebd59ddb0306117c049edf6a2f71b978cf0c5cce1da63f0e1551987f34315",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/nmt_bleu.py": "d35b20182f82f22f1c31232df1d25977328cf011178fcd381c2d82ee4116b40b",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/tokenizer_13a.py": "496ba6b982897605ca52ac06595a0e59496c8563e26a28b47f14a0cfba725a91",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/corpora/omw-1.4.zip": "3b941e664852f3297b6040236626065796a2aaf7d7f9eec8779a3beaa1096c2d",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/corpora/wordnet.zip": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/README": "d3251cae66a9359bd68c039e3a46172a05ca9df0b27dcdfa23ae594d68d27ec4",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/abbrev_types.txt": "8eb1feb5a6a46f9bd8f6a5ae58e218428a65b459b5ebd61668d83fa80acfc329",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/collocations.tab": "fd58f549658c8389be32577e232187be9376c79708f66c60388a84916c8f3f3d",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/ortho_context.tab": "451cb1a68a03ba88ced1247e6bb48c442e87dce1c9f463104618fac509866cd4",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/czech/sent_starters.txt": "42f1de18ab29f9842113b87ec020202c0c25316c97d37f968435a7c7ee3018ca",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/abbrev_types.txt": "4a358b26b7ba372cab3cedeb43b4e99a76ae9d01150493964141eb42a62e4a6e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/collocations.tab": "b003d3b839afd47afa81d64620a1cf15b75b944212a7f3ee6a7571f041ae02ec",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/ortho_context.tab": "59d7ccda7b1eef6cbcddb6d2f1930c255a5d43600e66e32eff28eab8190c0727",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/danish/sent_starters.txt": "f8dd41bdb1bb633574b22d38205e1c073639a0b80cb9591964bf92d84317527f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/abbrev_types.txt": "dcd4af07101692c986049ba07abcd6b7c1a2464ef4e46a932cf92d6e220388dd",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/collocations.tab": "9a013563bce4637595a6db9d2eeb0ab3f68685d704ae20d97ad718aa91afbe4a",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/ortho_context.tab": "e2077b5748564a9666e437c0a96ea9c5bed0fe3ab5c756535584785d3af20fc9",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/dutch/sent_starters.txt": "734454acc5952d91a1dfaca8cdfdabb715d8cdd35789c749528639d80751f45c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/abbrev_types.txt": "92a3e070f43d9b4c5534758ca40ad7343b04e7e29bfe0c2eb658a39445a4f779",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/collocations.tab": "8e2da1225e4dd2cc9dba261ee231ccb134859e21b46006e7f472c5ee269af0cf",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/ortho_context.tab": "4bbcca25ed3d3f06c02402abf8419b9f033b8adc06e7b482eca4e45f81a5dc4c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/english/sent_starters.txt": "f3f8535483e1dba487241b764945168123bca3209a9645e59acd1225dc76edac",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/abbrev_types.txt": "0307878fb32af1e21d8f3ba0644e39c89602f2f8aa4e4304943f7e9e0fd081b2",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/collocations.tab": "f1400a7ebf3c82a3d5aac886eb5bf06a1a840946cf052bb1532da7c25094797f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/ortho_context.tab": "768b7e6e2ba93ff096e244af175c343b1a73463c4a1b99beebe6a9aa57ea1d78",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/estonian/sent_starters.txt": "7ade7bb8ca7c527aac09517a6efbdf4f749e9a9fc0e43d2856c58be847030c83",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/abbrev_types.txt": "7829baabcb5d69e26232839a1f5b6bc6d12b0e59b7f0a65f6ab1c163acbeb800",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/collocations.tab": "4d717a1b4d1fb7108ca9c9ed2cc63f8b4813cfaf73819e96fce79495ddc48292",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/ortho_context.tab": "43e55a8bfa977561337a09105c570036df11346c6f91e57d8631520eefb26167",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/finnish/sent_starters.txt": "ab81cf3b774ef068ac98adb99fcb3b1a05caf0423bdfa302bdc285e15597567f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/abbrev_types.txt": "01747ecfed08830d582d8c94634b63a36da316c0a67feec2871cf03f0dd5c657",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/collocations.tab": "8ddf150ef5a0d22694e7c4d807f80b6d55da731ca81ea139633f560b378af990",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/ortho_context.tab": "7090ef4292647d4fe137159bd768a5304015d0614d59fdcfc30b2389634365ac",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/french/sent_starters.txt": "b45a1ebdae9cdf46cf2e8be016b4718bf4f825445fc783d445faf0cfb2d569f8",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/abbrev_types.txt": "259e5d78bc9d61a12d55ba47552c4e9c5ca08364d78a4669e864fd6de86818e3",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/collocations.tab": "f77bd513f42e8179f5c932111c312be353d5913387d0bfe90a95c109111bca25",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/ortho_context.tab": "023887e78cfb919f1a00f9a96a88f42131582748cf833fd469490ee66596307c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/german/sent_starters.txt": "fe4b63edbdd33f78ba0a755f035680a864948b145ae82fc99072440a62a77acd",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/abbrev_types.txt": "0d56253b7ebc83f0f2403479bcf2b8ea51ffdea89ee60e34018eb32e4750d683",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/collocations.tab": "0fd732534d56177c80874125ca894ae60aee7b052ee2865a405b454cfd737a6f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/ortho_context.tab": "a87e4467791f974f808c0d396f6c82cd3a014d4fb4458a2287e2fcbce7084e9c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/greek/sent_starters.txt": "1a450aec85164e3fbfeb814768c9f120abd7139726af5bb5e2a577096739ca8e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/abbrev_types.txt": "5d406f6bfb35e55f6bea282bf148bdcc9e4677860eb01a8e67c34b894274ac50",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/collocations.tab": "8167b58a049bb04de8d692ed33d72963503a061717cd37cacb33bb2d00669caf",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/ortho_context.tab": "462ffd48bc1c9b86efe66d04d826cd1e7a5745be871b8121759ed2920a967370",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/italian/sent_starters.txt": "4dc2cdfda34d4f286e5875d6b62b148771a799a71f0d45b504da23cb61b59d51",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/abbrev_types.txt": "1ea2cd01629c8cbeac0799d39383e10c4d6948734c255d37e3ceda550ba62464",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/collocations.tab": "71bc38e42133f288c660a338169d8858944135282ad4166a2c5d23cc8a06ed73",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/ortho_context.tab": "5289e43f46ef3679f4ebbed95ef1fad5b64dd7aa8957042adb2b661cc6ae4425",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/malayalam/sent_starters.txt": "918c902aa9d0b72700410258274ae335da51148fee7fc27095ab4114b23a245c",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/abbrev_types.txt": "beced74076edabe64f45effb823012d1396db41f35fa1d8be2ac6b69bf7bc40f",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/collocations.tab": "9c815b01e2f7518552b53f09012644df1fa0d8c7642baff9dc5f61e85e0be422",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/ortho_context.tab": "57ea2aa129de6ae414cd0cbecba8b2399c4fde775a2145776a7e8f1023f3f183",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/norwegian/sent_starters.txt": "2b49ef0f0c2e1b4e8b06aee1172e4d88ce6ad01486fe4182cff6fc443a73ddeb",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/abbrev_types.txt": "426ea37ca486d0dcc3653653c613d853d0bb3929037f8ee6bf6c12ddae873aa1",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/collocations.tab": "961653f0606d85ecb8a760cad4f69df123f010bc4b35de0253feb2d7869666b4",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/ortho_context.tab": "f770804067012ee5707ffc65d90523180e09bab09230a49251777be821a1a4f6",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/polish/sent_starters.txt": "8564076ae22be3d549a3f097a18458ac2967d65bd28dad7cc223c53f5ce27d1b",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/abbrev_types.txt": "cd5c3cf9c4c8b766bc9edbc96444b0e2189b837b26c583aa2cce83a18e4285f5",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/collocations.tab": "a150d2ca3b8bd9d87cd25f2e1d2142607cdf9344efe914bd034af6017a16d841",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/ortho_context.tab": "2d9c143f7b322fc74738a21e0b2b04feed1668245ac93e5a8e5399e6e0d8ed8a",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/portuguese/sent_starters.txt": "7b7f4a1586b1df8592bf294c8dd0d19aaf90740d78ce3b40a31eff2b9669d15e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/abbrev_types.txt": "75191526be516a9918948fe3ad46f6c2c4dee14314359a899b8c2ebf496cb631",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/collocations.tab": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/ortho_context.tab": "b296cba91006569d3ef79eb2cff2378bf5be5b75e9e83ea119b883d3c3ee69b6",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/russian/sent_starters.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/abbrev_types.txt": "b1d6b16d1d2b3c0c4132c1528b9843d1557f7f544044db27f4e8d2d6985faf2b",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/collocations.tab": "4c10daafdff496e369f3a8809bebf187abc851df630457ae93c7ca4fda350651",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/ortho_context.tab": "3ba826bdd7e5543af7af8e317d4652ba8b47fd812157855a6274ec1387a46b3e",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/slovene/sent_starters.txt": "85ae14dadef3c4c9f753491d84919abb10e09003adfe248794d4a597fabc5793",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/abbrev_types.txt": "246a4b3efbad45b63eb9672b718574b535acef6d656f24dc17a46d13a38efba1",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/collocations.tab": "fa5ea7dbf61f2b1c12180d660a3012c9faaf4962eb12549d77af95e2a40be65d",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/ortho_context.tab": "1346ecfc57b26174987ffa9bd4a2558a66f46592a513da3859648790351df370",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/spanish/sent_starters.txt": "4d4f7380ba16380b6158e9e8ead6973c52f27e3c9c88af63f15a41c490998319",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/abbrev_types.txt": "1e1a78bd5e7fd6e7eb4b15b751a23d441cda845d5fc0b631958177b2f504da00",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/collocations.tab": "bd2260433c94617ba7cf6102e4c1035099a72e5a2f6b60734639252e41633c04",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/ortho_context.tab": "d48c5705d0570993628e539ca211f05cdb5aad7adfcc6ed7b24310941bfac9f8",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/swedish/sent_starters.txt": "6f0f7a6773f7488a23bafc6c29e7d4554e792d89c6b7a89fbd6a83bec85ef767",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/abbrev_types.txt": "de56078c5eeb3fe07e24eab67c4aaf44e2181cbe80edd976cb1622819599d6fd",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/collocations.tab": "061ce2981776a8f875da4f24bebd7e138f8da1d9057b43d07f580148ec106a33",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/ortho_context.tab": "fc214227f99d5ea3ee70d208df16b1984eab375d1946ed379061c6cf5c1718be",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab/turkish/sent_starters.txt": "93239fb55b5d2ae6d945a84a94e118ba8a816326b17cdc11ba8111bea0c97828",
+      "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/nltk_data/tokenizers/punkt_tab.zip": "e57f64187974277726a3417ca6f181ec5403676c717672eef6a748a7b20e0106"
+    },
+    "environment_lock_semantic_sha256": "b96be69ccf57507b0e08a04ddb2ee901b5c6bb32687c5da863627fbe4b4766e2",
+    "source_adapters": [
+      {
+        "path": "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/nmt_bleu.py",
+        "original_sha256": "d35b20182f82f22f1c31232df1d25977328cf011178fcd381c2d82ee4116b40b",
+        "runtime_source_sha256": "d35b20182f82f22f1c31232df1d25977328cf011178fcd381c2d82ee4116b40b",
+        "patches": []
+      },
+      {
+        "path": "/mnt/c/Users/agent/Project/專利挑戰/public-programs/models/patent-ce-extended/sources/bleu/tokenizer_13a.py",
+        "original_sha256": "496ba6b982897605ca52ac06595a0e59496c8563e26a28b47f14a0cfba725a91",
+        "runtime_source_sha256": "496ba6b982897605ca52ac06595a0e59496c8563e26a28b47f14a0cfba725a91",
+        "patches": []
+      }
+    ],
+    "algorithm_changes": [],
+    "assets_manifest_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/assets.json",
+    "input_path": "/mnt/c/Users/agent/Project/專利挑戰/outputs/patent_ce_extended_20261019_230412/pairs.json"
+  },
+  "environment": {
+    "python": "3.10.20 (main, Aug  7 2026, 02:25:15) [Clang 22.1.3 ]",
+    "python_executable": "/home/agent/.venvs/patent-ce-13methods-py310/bin/python",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "versions": {
+      "torch": "1.13.1+cpu",
+      "transformers": "4.26.1",
+      "numpy": "1.23.5",
+      "nltk": "3.9.2",
+      "rouge-score": "0.1.2",
+      "pyemd": "1.0.0",
+      "scikit-learn": "1.3.2",
+      "scipy": "1.10.1",
+      "pytorch-lightning": "1.9.5",
+      "spacy": "3.7.5",
+      "sentencepiece": "0.1.99",
+      "tokenizers": "0.13.3"
+    },
+    "device": "cpu",
+    "threads": 4,
+    "seed": 42,
+    "offline": true
+  },
+  "scores": {
+    "93ca682ad9bc3a9ca37e1503b1fadc5a3b6bdd7deba790a7de99c5a9097c992b": {
+      "score": 1.0,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 452,
+        "truncated": false
+      }
+    },
+    "d2d7b7b9e4291ab3abdc45976c388455ba31c4c0c9146c22cb150fb101547229": {
+      "score": 0.7995689655172413,
+      "metadata": {
+        "gold_tokens": 452,
+        "candidate_tokens": 464,
+        "truncated": false
+      }
+    },
+    "44007cfb65d7d9e3d4436696bc69a23ff56ed0656d39be0db59597c1fd2c3392": {
+      "score": 0.5031897926634769,
+      "metadata": {
+        "gold_tokens": 693,
+        "candidate_tokens": 1254,
+        "truncated": false
+      }
+    }
+  },
+  "evaluated_pairs": 3,
+  "total_input_pairs": 224,
+  "started_at": "2026-10-19T15:44:48+00:00",
+  "completed_at": "2026-10-19T15:44:48+00:00",
+  "elapsed_seconds": 1.725,
+  "runtime_diagnostics": {},
+  "smoke_validation": {
+    "status": "passed",
+    "absolute_tolerance": 1e-05,
+    "reference": "unchanged author scoring functions; CPU/local restoration adapters recorded",
+    "comparisons": [
+      {
+        "pair_id": "93ca682ad9bc3a9ca37e1503b1fadc5a3b6bdd7deba790a7de99c5a9097c992b",
+        "adapter": 1.0,
+        "official_reference": 1.0,
+        "absolute_error": 0.0
+      },
+      {
+        "pair_id": "d2d7b7b9e4291ab3abdc45976c388455ba31c4c0c9146c22cb150fb101547229",
+        "adapter": 0.7995689655172413,
+        "official_reference": 0.7995689655172413,
+        "absolute_error": 0.0
+      },
+      {
+        "pair_id": "44007cfb65d7d9e3d4436696bc69a23ff56ed0656d39be0db59597c1fd2c3392",
+        "adapter": 0.5031897926634769,
+        "official_reference": 0.5031897926634769,
+        "absolute_error": 0.0
+      }
+    ]
+  }
+}

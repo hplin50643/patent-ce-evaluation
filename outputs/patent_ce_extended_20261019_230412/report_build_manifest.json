@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-10-19T18:24:19+00:00",
+  "source_results_sha256": "2bd6ed7fe30bcdcb28ec8976d43b43b6ccbfeef57ac303d5951a8a12f46d194c",
+  "source_verification_sha256": "ba56debb26e86d05d5b6c607dd3df811adc8f1e3439bb2cdb40a372f0feef498",
+  "builder_sha256": "ca38f167ca68bd3dbe7955c36e6001fbe0fd508d46d6fea30f84e1b17ba53cab",
+  "docx_sha256": "7cb854666cd8163881987e427cf9d4050c2a25715ffa52623c47dcec6bee8514",
+  "figures": {
+    "test_accuracy_ci.png": "bb29dc0ad136a835316be23f749c25059b70163893fab14df26d1782b91bec0c",
+    "test_spearman_two_definitions.png": "48cbfb5837deb64b1baeb5f56f6bf51862ddac1bdf9a845774ad0a9aea9129d6",
+    "test_confusion_group_1.png": "afcf46df8c107cd8c9febe748f4c57316e1e05c6898a2a7da08fa14be531d836",
+    "test_confusion_group_2.png": "c47a920cfdc64d73a7a7fe209ad3f75c89ac7e9604d5fdeadfeba42a56419ffb",
+    "test_confusion_group_3.png": "4ba88d84a5164c0600e2b0d18e1ebda983f184c877958c413f3b3ed6b461959b"
+  }
+}

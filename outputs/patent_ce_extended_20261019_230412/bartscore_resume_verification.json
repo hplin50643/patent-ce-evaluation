@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "bartscore",
+  "verified_at": "2026-10-19T15:55:32+00:00",
+  "pairs": 224,
+  "inference_calls": 0,
+  "actual_run_resume_only_guard": true,
+  "scores_identical": true,
+  "original_output_unchanged": true,
+  "original_output_sha256": "524ac5944d019f15659578647ba65a44f28bce8917327b27623c6dfcd918859a",
+  "preserved_first_run_elapsed_seconds": 556.422
+}
