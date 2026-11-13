@@ -13,3 +13,4 @@ __pycache__/
 public-programs/models/
 outputs/**/qa*/
 *.tmp
+/reproduction-run/

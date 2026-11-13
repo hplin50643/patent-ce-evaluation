@@ -2,6 +2,10 @@
 
 本儲存庫提供 Patent-CE 全部 **1,228 筆比較**的評估結果，訓練集 **1,044 筆**與測試集 **184 筆**分開呈現。主要評估 **13 種本機方法**；G-Eval-4 未執行，不呼叫付費 API。只對公開的 `human_eval.Quality` 專家答案計算成效。
 
+## ModernBERT 與 Longformer 訓練比較
+
+原始 184 筆 Quality 測試中，主要種子的 Accuracy 從 59.24% 提高至 73.91%。本次發布包含訓練程式、固定資料切分、逐筆預測與獨立數值核對。可從公開預訓練權重重新訓練兩種模型，也可在 CPU 上直接重算已發布結果。[重現指南](public-programs/patent-ce-reproduce/README.md) · [比較報告與結果](outputs/paper-modernbert/paper_modernbert_original_20261109/README.md)
+
 ## 最新報告與結果
 
 - [完整繁體中文 PDF](outputs/patent_ce_extended_20261019_230412/Patent_CE_十三項方法評估與專家答案比較報告.pdf)

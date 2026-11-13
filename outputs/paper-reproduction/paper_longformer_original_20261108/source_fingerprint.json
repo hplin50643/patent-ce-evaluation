@@ -1,0 +1,12 @@
+{
+  "fingerprint": "b69a534b8b2dd20e52444832722474ef62257de8ad3437d16a68c97f73fb4a75",
+  "files": {
+    "experiment_config.json": "f35771d42e73d89ecb973bb35e5fc0e7a95e1c57ef4d5265e59bd5cb36922c2a",
+    "dataset.json": "71027cc7041568859fc86085f9dd4369eb9058330047a420810af8ee320ba5e3",
+    "split_manifest.json": "a093ddd4e77650e4d2fb527f42b85c7d198e9cc2396fddf25cf6f91cbcaebe97",
+    "run_reproduction.py": "97822616650f6d04ce5ec0a864efd1770ae80527fe702412d9c1327181f922eb",
+    "author_modeling.py": "b1d2385ca371fc77908732cef39eb30411f14930d874c832121df3b48488dd12",
+    "protocol.py": "002e0dfd34d3a171d540b0f4c8521b44f772fb4eec98dd06d3f86169a02fae93",
+    "prepare_original.py": "ebbae7553d57cfbaedc71cf13d202792862ad0a2286d751b67f33288563a7769"
+  }
+}

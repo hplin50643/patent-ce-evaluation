@@ -1,0 +1,13 @@
+{
+  "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+  "files": {
+    "experiment_config.json": "1a10df5462b8240e4102ee92453611b73a8d3cdd39405c5397ad3ce98ff2be9b",
+    "dataset.json": "71027cc7041568859fc86085f9dd4369eb9058330047a420810af8ee320ba5e3",
+    "split_manifest.json": "a093ddd4e77650e4d2fb527f42b85c7d198e9cc2396fddf25cf6f91cbcaebe97",
+    "baseline_lock.json": "e3ad8c25aa0833bf87471a754d94e6c6f59ce0d0021db21d413b66f7662b9381",
+    "run_modernbert.py": "1ad3fe5957aee19f3f6b28e69f4e5c87a6030178ef7a0884c62c08c665bdeba3",
+    "model.py": "2f57b961c4c28396d43bff24f4d992bde7782a3c478c529926b497cfbc3a4aa1",
+    "protocol.py": "002e0dfd34d3a171d540b0f4c8521b44f772fb4eec98dd06d3f86169a02fae93",
+    "prepare_inputs.py": "93d90fa53b028cd0c012ab8b3abe445d9ee3c14c9d5df5f071a3e26e9d5cb14f"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "file": "author_modeling.py",
+  "sha256": "b1d2385ca371fc77908732cef39eb30411f14930d874c832121df3b48488dd12",
+  "source": "https://huggingface.co/lj408/PatClaimEval-Quality/blob/c959e676f7eb61e32b0f8d9c4cc7d72a4aeb94d5/modeling_contrastive.py",
+  "revision": "c959e676f7eb61e32b0f8d9c4cc7d72a4aeb94d5",
+  "license": "CC BY-NC 4.0",
+  "byte_identical_to_fixed_local_original": true
+}

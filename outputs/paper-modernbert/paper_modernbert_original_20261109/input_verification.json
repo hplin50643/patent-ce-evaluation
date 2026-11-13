@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "baseline_run": "paper_longformer_original_20261108",
+  "baseline_files_verified": 42,
+  "dataset_sha256": "71027cc7041568859fc86085f9dd4369eb9058330047a420810af8ee320ba5e3",
+  "split_sha256": "a093ddd4e77650e4d2fb527f42b85c7d198e9cc2396fddf25cf6f91cbcaebe97",
+  "raw_source_sha256": {
+    "quality_train.json": "20c3e88862b0a8cd3ce6e48607f9887a29c4502d4e87633b41095be194bdca48",
+    "quality_test.json": "10e68f47f2f4329f92c6d60936d23f4eaab6b852150b8fa1b039d8d348868039"
+  },
+  "counts": {
+    "train": 939,
+    "validation": 105,
+    "test": 184
+  },
+  "method": "byte-identical copy of completed original-split Longformer experiment; duplicates and overlap retained"
+}

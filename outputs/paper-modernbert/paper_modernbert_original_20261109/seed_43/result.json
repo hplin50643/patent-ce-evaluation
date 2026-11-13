@@ -1,0 +1,291 @@
+{
+  "status": "complete",
+  "seed": 43,
+  "primary": false,
+  "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+  "assumptions": [
+    "training margin m=0.1 and tolerance n=0.01 (retained from the already predeclared earlier experiment, not fitted to this test)",
+    "AdamW and its beta/epsilon defaults",
+    "no scheduler, warmup or gradient clipping",
+    "seeds 42 primary and 43 prespecified sensitivity",
+    "validation seed42 and ceil rounding to 105 rows",
+    "FP32 and activation checkpointing for V100 memory",
+    "dynamic padding and 4096 cap to preserve all original text",
+    "Longformer control omitted explicit global mask based on public inference code; ModernBERT uses its native alternating attention",
+    "final epoch primary and validation-loss-selected checkpoint supplementary",
+    "Previously fixed Longformer control loaded base pretrained Longformer including its pooler and author default Linear initialization; ModernBERT initialization is specified separately below",
+    "ModernBERT native tokenizer and pretrained encoder replace Longformer; ModernBERT new pooler has BERT-style normal(0,.02) weights and zero bias; fc retains author default Linear initialization",
+    "Longformer retained its pretrained pooler; this comparison evaluates the practical encoder replacement and cannot isolate pure architecture effects",
+    "ModernBERT requires Transformers>=4.48; use tested 4.50.3 SDK and require old Longformer checkpoint replay <=1e-6 with exactly identical fixed-threshold classes"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "validation_loss": 0.04458817467093468,
+      "validation_accuracy": 0.6857142857142857,
+      "validation_continuous_tau": 0.5613991406081212
+    },
+    {
+      "epoch": 2,
+      "validation_loss": 0.02435624785721302,
+      "validation_accuracy": 0.7142857142857143,
+      "validation_continuous_tau": 0.6953150410858394
+    },
+    {
+      "epoch": 3,
+      "validation_loss": 0.017942646518349648,
+      "validation_accuracy": 0.7619047619047619,
+      "validation_continuous_tau": 0.7486081035208497
+    },
+    {
+      "epoch": 4,
+      "validation_loss": 0.021023251116275787,
+      "validation_accuracy": 0.7619047619047619,
+      "validation_continuous_tau": 0.7312992456359746
+    },
+    {
+      "epoch": 5,
+      "validation_loss": 0.012675083242356777,
+      "validation_accuracy": 0.7619047619047619,
+      "validation_continuous_tau": 0.7668279539259815
+    },
+    {
+      "epoch": 6,
+      "validation_loss": 0.007051908876746893,
+      "validation_accuracy": 0.780952380952381,
+      "validation_continuous_tau": 0.790969255712781
+    },
+    {
+      "epoch": 7,
+      "validation_loss": 0.00706186518073082,
+      "validation_accuracy": 0.7904761904761904,
+      "validation_continuous_tau": 0.7923357444931659
+    },
+    {
+      "epoch": 8,
+      "validation_loss": 0.006820132955908775,
+      "validation_accuracy": 0.780952380952381,
+      "validation_continuous_tau": 0.7814038342500867
+    },
+    {
+      "epoch": 9,
+      "validation_loss": 0.009176893159747124,
+      "validation_accuracy": 0.7619047619047619,
+      "validation_continuous_tau": 0.7686499389664946
+    },
+    {
+      "epoch": 10,
+      "validation_loss": 0.005088453181087971,
+      "validation_accuracy": 0.7904761904761904,
+      "validation_continuous_tau": 0.7964352108343206
+    }
+  ],
+  "attention_implementation": "sdpa",
+  "reference_compile": false,
+  "elapsed_seconds": 5239.402780650067,
+  "peak_vram_bytes": 4225055232,
+  "checkpoints": {
+    "final": {
+      "metadata": {
+        "seed": 43,
+        "epoch": 10,
+        "selection": "prespecified final epoch",
+        "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+        "settings": {
+          "seeds": [
+            42,
+            43
+          ],
+          "primary_seed": 42,
+          "max_length": 4096,
+          "batch_size_comparisons": 4,
+          "epochs": 10,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "optimizer": "AdamW",
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "adam_epsilon": 1e-08,
+          "margin": 0.1,
+          "tie_tolerance": 0.01,
+          "scheduler": "none",
+          "warmup": 0,
+          "gradient_clipping": "none",
+          "precision": "float32",
+          "gradient_checkpointing": true,
+          "padding": "dynamic, multiple of 512",
+          "global_attention_mask": "ModernBERT native alternating local/global attention; no explicit global mask",
+          "primary_checkpoint": "final epoch 10",
+          "supplementary_checkpoint": "minimum validation loss, earliest epoch on exact tie",
+          "shuffle": "Python Random(seed + epoch).shuffle(original training indices)",
+          "head": "CLS -> Linear(768,768) -> tanh -> Linear(768,1) -> sigmoid; new pooler (ModernBERT has no native pretrained pooler)"
+        },
+        "attention_implementation": "sdpa",
+        "reference_compile": false,
+        "base_model": {
+          "model_id": "answerdotai/ModernBERT-base",
+          "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+          "attention_implementation": "sdpa",
+          "reference_compile": false
+        }
+      },
+      "metrics": {
+        "n": 184,
+        "n_gold": 20,
+        "accuracy": 0.7336956521739131,
+        "f1_weighted": 0.6210387670047968,
+        "f1_macro": 0.5643364525176273,
+        "f1_micro": 0.7336956521739131,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            26,
+            0,
+            23
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "tie_recall": 0.0,
+        "continuous": {
+          "kendall_tau_b": 0.8101914638319714,
+          "kendall_tau_c": 0.9845522211720227,
+          "spearman_rho": 0.9357812304793752,
+          "undefined": null
+        },
+        "discrete": {
+          "kendall_tau_b": 0.8087267941116083,
+          "kendall_tau_c": 0.928875236294896,
+          "spearman_rho": 0.8565800586832725,
+          "undefined": null
+        },
+        "epsilon": 0.0001,
+        "tie_policy": "abs(delta) < epsilon",
+        "aggregation": "global original rows, duplicates retained"
+      },
+      "files": {
+        "reproduction_metadata.json": "e93df2e311401067541b6a35ab732530143645c13d5abb6542aaf9ba0be8a31f",
+        "model.safetensors": "57a92be181466c309a0ac841efc826cfe5039f72ff111867238fbbe5aecbc15f",
+        "special_tokens_map.json": "ea97ecdbcc73713039d8d64dbb05e3689495c96657fbd9a18f5bed381be81049",
+        "config.json": "10e8bba74c359a71639268eb9490e5149a15f46136a1a69573f54ccc2bbf80ec",
+        "tokenizer.json": "6c8aaa9a542084f2457eab775d4eeb51f92a70c0fd9de28d5edb0ddec3c08d30",
+        "tokenizer_config.json": "c16f1b07f93d05be753ec0acf8cb511d895a8bdb09669f6b156df81e3f96c2eb"
+      }
+    },
+    "validation_best": {
+      "metadata": {
+        "seed": 43,
+        "epoch": 10,
+        "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+        "settings": {
+          "seeds": [
+            42,
+            43
+          ],
+          "primary_seed": 42,
+          "max_length": 4096,
+          "batch_size_comparisons": 4,
+          "epochs": 10,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "optimizer": "AdamW",
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "adam_epsilon": 1e-08,
+          "margin": 0.1,
+          "tie_tolerance": 0.01,
+          "scheduler": "none",
+          "warmup": 0,
+          "gradient_clipping": "none",
+          "precision": "float32",
+          "gradient_checkpointing": true,
+          "padding": "dynamic, multiple of 512",
+          "global_attention_mask": "ModernBERT native alternating local/global attention; no explicit global mask",
+          "primary_checkpoint": "final epoch 10",
+          "supplementary_checkpoint": "minimum validation loss, earliest epoch on exact tie",
+          "shuffle": "Python Random(seed + epoch).shuffle(original training indices)",
+          "head": "CLS -> Linear(768,768) -> tanh -> Linear(768,1) -> sigmoid; new pooler (ModernBERT has no native pretrained pooler)"
+        },
+        "attention_implementation": "sdpa",
+        "reference_compile": false,
+        "base_model": {
+          "model_id": "answerdotai/ModernBERT-base",
+          "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+          "attention_implementation": "sdpa",
+          "reference_compile": false
+        },
+        "selection": "minimum validation loss"
+      },
+      "metrics": {
+        "n": 184,
+        "n_gold": 20,
+        "accuracy": 0.7336956521739131,
+        "f1_weighted": 0.6210387670047968,
+        "f1_macro": 0.5643364525176273,
+        "f1_micro": 0.7336956521739131,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            26,
+            0,
+            23
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "tie_recall": 0.0,
+        "continuous": {
+          "kendall_tau_b": 0.8101914638319714,
+          "kendall_tau_c": 0.9845522211720227,
+          "spearman_rho": 0.9357812304793752,
+          "undefined": null
+        },
+        "discrete": {
+          "kendall_tau_b": 0.8087267941116083,
+          "kendall_tau_c": 0.928875236294896,
+          "spearman_rho": 0.8565800586832725,
+          "undefined": null
+        },
+        "epsilon": 0.0001,
+        "tie_policy": "abs(delta) < epsilon",
+        "aggregation": "global original rows, duplicates retained"
+      },
+      "files": {
+        "reproduction_metadata.json": "33e51164b2d324c429855166c4144fb2d675f3b31645841cdd48e2f559676b6f",
+        "model.safetensors": "57a92be181466c309a0ac841efc826cfe5039f72ff111867238fbbe5aecbc15f",
+        "special_tokens_map.json": "ea97ecdbcc73713039d8d64dbb05e3689495c96657fbd9a18f5bed381be81049",
+        "config.json": "10e8bba74c359a71639268eb9490e5149a15f46136a1a69573f54ccc2bbf80ec",
+        "tokenizer.json": "6c8aaa9a542084f2457eab775d4eeb51f92a70c0fd9de28d5edb0ddec3c08d30",
+        "tokenizer_config.json": "c16f1b07f93d05be753ec0acf8cb511d895a8bdb09669f6b156df81e3f96c2eb"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "execution_verified": true,
+  "completed_seeds": [
+    42,
+    43
+  ],
+  "n_conditions": 8,
+  "n_test_rows_per_condition": 184,
+  "n_new_checkpoints": 4,
+  "n_fixed_baseline_checkpoints": 4,
+  "sha_manifest_sha256": "4d82f55ed591306d1a4db7c23958a6786c0bf29b08798ad6b411ecbc20856810",
+  "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+  "checked_at_taipei": "2026-11-09T10:58:09.365442+08:00",
+  "inference_sdk_replay": "passed",
+  "paper_protocol_reproduced": false
+}

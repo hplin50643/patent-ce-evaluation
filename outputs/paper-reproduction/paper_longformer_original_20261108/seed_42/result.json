@@ -1,0 +1,272 @@
+{
+  "status": "complete",
+  "seed": 42,
+  "primary": true,
+  "fingerprint": "b69a534b8b2dd20e52444832722474ef62257de8ad3437d16a68c97f73fb4a75",
+  "assumptions": [
+    "training margin m=0.1 and tolerance n=0.01 (retained from the already predeclared earlier experiment, not fitted to this test)",
+    "AdamW and its beta/epsilon defaults",
+    "no scheduler, warmup or gradient clipping",
+    "seeds 42 primary and 43 prespecified sensitivity",
+    "validation seed42 and ceil rounding to 105 rows",
+    "FP32 and activation checkpointing for V100 memory",
+    "dynamic padding and 4096 cap to preserve all original text",
+    "no explicit global attention mask, based on public inference code",
+    "final epoch primary and validation-loss-selected checkpoint supplementary",
+    "training initialization loads base pretrained Longformer including its pooler, retaining author constructor's default Linear initialization"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "validation_loss": 0.07804454863071442,
+      "validation_accuracy": 0.2761904761904762,
+      "validation_continuous_tau": 0.15515331970426144
+    },
+    {
+      "epoch": 2,
+      "validation_loss": 0.07778383046388626,
+      "validation_accuracy": 0.37142857142857144,
+      "validation_continuous_tau": 0.13166253540319772
+    },
+    {
+      "epoch": 3,
+      "validation_loss": 0.07662263512611389,
+      "validation_accuracy": 0.2857142857142857,
+      "validation_continuous_tau": 0.04510652335737441
+    },
+    {
+      "epoch": 4,
+      "validation_loss": 0.07523728907108307,
+      "validation_accuracy": 0.5047619047619047,
+      "validation_continuous_tau": 0.3009379664398566
+    },
+    {
+      "epoch": 5,
+      "validation_loss": 0.07656262814998627,
+      "validation_accuracy": 0.4095238095238095,
+      "validation_continuous_tau": 0.22025261234877874
+    },
+    {
+      "epoch": 6,
+      "validation_loss": 0.07471545785665512,
+      "validation_accuracy": 0.49523809523809526,
+      "validation_continuous_tau": 0.2967829926478373
+    },
+    {
+      "epoch": 7,
+      "validation_loss": 0.07462424039840698,
+      "validation_accuracy": 0.49523809523809526,
+      "validation_continuous_tau": 0.32867065110577837
+    },
+    {
+      "epoch": 8,
+      "validation_loss": 0.07290996611118317,
+      "validation_accuracy": 0.5047619047619047,
+      "validation_continuous_tau": 0.2799024518488361
+    },
+    {
+      "epoch": 9,
+      "validation_loss": 0.06910109519958496,
+      "validation_accuracy": 0.6,
+      "validation_continuous_tau": 0.4311272102114294
+    },
+    {
+      "epoch": 10,
+      "validation_loss": 0.058903779834508896,
+      "validation_accuracy": 0.6,
+      "validation_continuous_tau": 0.5044621080920847
+    }
+  ],
+  "elapsed_seconds": 5285.721588374989,
+  "peak_vram_bytes": 6262527488,
+  "checkpoints": {
+    "final": {
+      "metadata": {
+        "seed": 42,
+        "epoch": 10,
+        "selection": "prespecified final epoch",
+        "fingerprint": "b69a534b8b2dd20e52444832722474ef62257de8ad3437d16a68c97f73fb4a75",
+        "settings": {
+          "seeds": [
+            42,
+            43
+          ],
+          "primary_seed": 42,
+          "max_length": 4096,
+          "batch_size_comparisons": 4,
+          "epochs": 10,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "optimizer": "AdamW",
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "adam_epsilon": 1e-08,
+          "margin": 0.1,
+          "tie_tolerance": 0.01,
+          "scheduler": "none",
+          "warmup": 0,
+          "gradient_clipping": "none",
+          "precision": "float32",
+          "gradient_checkpointing": true,
+          "padding": "dynamic, multiple of 512",
+          "global_attention_mask": "not supplied, matches released model implementation",
+          "primary_checkpoint": "final epoch 10",
+          "supplementary_checkpoint": "minimum validation loss, earliest epoch on exact tie",
+          "shuffle": "Python Random(seed + epoch).shuffle(original training indices)"
+        }
+      },
+      "metrics": {
+        "n": 184,
+        "n_gold": 20,
+        "accuracy": 0.592391304347826,
+        "f1_weighted": 0.5538752362948961,
+        "f1_macro": 0.5217391304347826,
+        "f1_micro": 0.592391304347826,
+        "confusion_matrix": [
+          [
+            56,
+            6,
+            6
+          ],
+          [
+            23,
+            7,
+            19
+          ],
+          [
+            14,
+            7,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "tie_recall": 0.14285714285714285,
+        "continuous": {
+          "kendall_tau_b": 0.5322281967878282,
+          "kendall_tau_c": 0.6467686672967864,
+          "spearman_rho": 0.6610891739970131,
+          "undefined": null
+        },
+        "discrete": {
+          "kendall_tau_b": 0.5072672044174021,
+          "kendall_tau_c": 0.47229442344045364,
+          "spearman_rho": 0.5543903324339339,
+          "undefined": null
+        },
+        "epsilon": 0.0001,
+        "tie_policy": "abs(delta) < epsilon",
+        "aggregation": "global original rows, duplicates retained"
+      },
+      "files": {
+        "reproduction_metadata.json": "15ffb7a9bd4bbf010e3f0fe6a7d6b59b900c58c8af299c4525c6088e1c801612",
+        "model.safetensors": "bc39e29256dad8f4d0582a07e135d16c5922962eca11f611bce0a12b16789c95",
+        "vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+        "merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+        "special_tokens_map.json": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f",
+        "config.json": "9f21f071e6b502e4e6227b8c06487b307e2df10dc2ae9f17da44f9f26b726d28",
+        "tokenizer.json": "727009a8214ddfa5af1deedf1006d4d06e8e51e54aa5f03566263d4e19bfcdce",
+        "tokenizer_config.json": "18ef73773003fd10846845fa3adc26ce0bc0880de148effa2e684cd80061a0c8"
+      }
+    },
+    "validation_best": {
+      "metadata": {
+        "seed": 42,
+        "epoch": 10,
+        "selection": "minimum validation loss",
+        "fingerprint": "b69a534b8b2dd20e52444832722474ef62257de8ad3437d16a68c97f73fb4a75",
+        "settings": {
+          "seeds": [
+            42,
+            43
+          ],
+          "primary_seed": 42,
+          "max_length": 4096,
+          "batch_size_comparisons": 4,
+          "epochs": 10,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "optimizer": "AdamW",
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "adam_epsilon": 1e-08,
+          "margin": 0.1,
+          "tie_tolerance": 0.01,
+          "scheduler": "none",
+          "warmup": 0,
+          "gradient_clipping": "none",
+          "precision": "float32",
+          "gradient_checkpointing": true,
+          "padding": "dynamic, multiple of 512",
+          "global_attention_mask": "not supplied, matches released model implementation",
+          "primary_checkpoint": "final epoch 10",
+          "supplementary_checkpoint": "minimum validation loss, earliest epoch on exact tie",
+          "shuffle": "Python Random(seed + epoch).shuffle(original training indices)"
+        }
+      },
+      "metrics": {
+        "n": 184,
+        "n_gold": 20,
+        "accuracy": 0.592391304347826,
+        "f1_weighted": 0.5538752362948961,
+        "f1_macro": 0.5217391304347826,
+        "f1_micro": 0.592391304347826,
+        "confusion_matrix": [
+          [
+            56,
+            6,
+            6
+          ],
+          [
+            23,
+            7,
+            19
+          ],
+          [
+            14,
+            7,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "tie_recall": 0.14285714285714285,
+        "continuous": {
+          "kendall_tau_b": 0.5322281967878282,
+          "kendall_tau_c": 0.6467686672967864,
+          "spearman_rho": 0.6610891739970131,
+          "undefined": null
+        },
+        "discrete": {
+          "kendall_tau_b": 0.5072672044174021,
+          "kendall_tau_c": 0.47229442344045364,
+          "spearman_rho": 0.5543903324339339,
+          "undefined": null
+        },
+        "epsilon": 0.0001,
+        "tie_policy": "abs(delta) < epsilon",
+        "aggregation": "global original rows, duplicates retained"
+      },
+      "files": {
+        "reproduction_metadata.json": "639a92ba032682e896406ea206dc6d1205c34ab5ca72f4c6e87f82de956644ff",
+        "model.safetensors": "bc39e29256dad8f4d0582a07e135d16c5922962eca11f611bce0a12b16789c95",
+        "vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+        "merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+        "special_tokens_map.json": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f",
+        "config.json": "9f21f071e6b502e4e6227b8c06487b307e2df10dc2ae9f17da44f9f26b726d28",
+        "tokenizer.json": "727009a8214ddfa5af1deedf1006d4d06e8e51e54aa5f03566263d4e19bfcdce",
+        "tokenizer_config.json": "18ef73773003fd10846845fa3adc26ce0bc0880de148effa2e684cd80061a0c8"
+      }
+    }
+  }
+}

@@ -1,0 +1,3880 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "created_at_taipei": "2026-11-09T10:58:09.365442+08:00",
+  "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+  "settings": {
+    "schema_version": 2,
+    "experiment": "patclaimeval-original-split-modernbert-versus-retrained-longformer",
+    "paper": "https://aclanthology.org/2025.acl-long.190.pdf",
+    "base_model": {
+      "model_id": "answerdotai/ModernBERT-base",
+      "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+      "attention_implementation": "sdpa",
+      "reference_compile": false
+    },
+    "paper_disclosed": {
+      "original_train_rows": 1044,
+      "test_rows": 184,
+      "validation_fraction_of_training": 0.1,
+      "batch_size_comparisons": 4,
+      "learning_rate": 5e-06,
+      "weight_decay": 0.01,
+      "epochs": 10,
+      "classification_tie_epsilon": 0.0001,
+      "tie_comparison": "strict abs(delta) < epsilon",
+      "architecture": "author Longformer pooler_output -> Linear(768,1) -> sigmoid",
+      "training_loss": "paper equation 5"
+    },
+    "training": {
+      "seeds": [
+        42,
+        43
+      ],
+      "primary_seed": 42,
+      "max_length": 4096,
+      "batch_size_comparisons": 4,
+      "epochs": 10,
+      "learning_rate": 5e-06,
+      "weight_decay": 0.01,
+      "optimizer": "AdamW",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "adam_epsilon": 1e-08,
+      "margin": 0.1,
+      "tie_tolerance": 0.01,
+      "scheduler": "none",
+      "warmup": 0,
+      "gradient_clipping": "none",
+      "precision": "float32",
+      "gradient_checkpointing": true,
+      "padding": "dynamic, multiple of 512",
+      "global_attention_mask": "ModernBERT native alternating local/global attention; no explicit global mask",
+      "primary_checkpoint": "final epoch 10",
+      "supplementary_checkpoint": "minimum validation loss, earliest epoch on exact tie",
+      "shuffle": "Python Random(seed + epoch).shuffle(original training indices)",
+      "head": "CLS -> Linear(768,768) -> tanh -> Linear(768,1) -> sigmoid; new pooler (ModernBERT has no native pretrained pooler)"
+    },
+    "assumptions_not_disclosed_by_authors": [
+      "training margin m=0.1 and tolerance n=0.01 (retained from the already predeclared earlier experiment, not fitted to this test)",
+      "AdamW and its beta/epsilon defaults",
+      "no scheduler, warmup or gradient clipping",
+      "seeds 42 primary and 43 prespecified sensitivity",
+      "validation seed42 and ceil rounding to 105 rows",
+      "FP32 and activation checkpointing for V100 memory",
+      "dynamic padding and 4096 cap to preserve all original text",
+      "Longformer control omitted explicit global mask based on public inference code; ModernBERT uses its native alternating attention",
+      "final epoch primary and validation-loss-selected checkpoint supplementary",
+      "Previously fixed Longformer control loaded base pretrained Longformer including its pooler and author default Linear initialization; ModernBERT initialization is specified separately below",
+      "ModernBERT native tokenizer and pretrained encoder replace Longformer; ModernBERT new pooler has BERT-style normal(0,.02) weights and zero bias; fc retains author default Linear initialization",
+      "Longformer retained its pretrained pooler; this comparison evaluates the practical encoder replacement and cannot isolate pure architecture effects",
+      "ModernBERT requires Transformers>=4.48; use tested 4.50.3 SDK and require old Longformer checkpoint replay <=1e-6 with exactly identical fixed-threshold classes"
+    ],
+    "evaluation": {
+      "epsilon": 0.0001,
+      "tie_comparison": "strict abs(delta)<epsilon",
+      "primary_metrics": [
+        "accuracy",
+        "f1_weighted",
+        "patenteval_rank_pair_tau_b",
+        "discrete_spearman"
+      ],
+      "primary_comparison": "seed42 final epoch10 ModernBERT minus fixed Longformer seed42 final epoch10",
+      "secondary_seed": 43,
+      "supplement": "each validation loss minimum, earliest exact tie",
+      "bootstrap": {
+        "unit": "reference text SHA256 group",
+        "replicates": 10000,
+        "seed": 42,
+        "method": "paired resample of 20 reference groups; recompute global metrics with all rows of each drawn group; percentile 95% intervals; separate per-seed comparisons"
+      },
+      "no_test_set_tuning": true,
+      "no_selecting_seed_or_epoch_by_test": true,
+      "interpretation": "original public split content overlap retained, not unseen-reference generalization"
+    },
+    "paper_quality_targets": {
+      "accuracy": 0.565,
+      "f1_reported_averaging_unspecified": 0.574,
+      "kendall_tau": 0.477,
+      "spearman_rho": 0.602
+    },
+    "runtime": {
+      "budget_hours": 48,
+      "torch_threads": 6,
+      "checkpoint_every_batches": 100,
+      "transformers": "4.50.3",
+      "tokenizers": "0.21.1",
+      "software_choice_basis": "ModernBERT official API support; pinned existing V100-tested image; Longformer replay compatibility gate"
+    },
+    "baseline_experiment": {
+      "run_id": "paper_longformer_original_20261108",
+      "fingerprint": "b69a534b8b2dd20e52444832722474ef62257de8ad3437d16a68c97f73fb4a75",
+      "config_sha256": "f35771d42e73d89ecb973bb35e5fc0e7a95e1c57ef4d5265e59bd5cb36922c2a",
+      "role": "fixed previously completed paired-seed Longformer control; never select by test closeness",
+      "lock_sha256": "e3ad8c25aa0833bf87471a754d94e6c6f59ce0d0021db21d413b66f7662b9381"
+    }
+  },
+  "primary_comparison": "seed42 final epoch10; ModernBERT minus fixed Longformer",
+  "rows": [
+    {
+      "condition": "longformer_seed42_final",
+      "model": "longformer",
+      "seed": 42,
+      "checkpoint": "final",
+      "epoch": 10,
+      "role": "primary",
+      "metrics": {
+        "accuracy": 0.592391304347826,
+        "f1_weighted": 0.553875236294896,
+        "patenteval_rank_pair_tau_b": 0.4745981597647717,
+        "discrete_spearman": 0.5543903324339339,
+        "f1_macro": 0.5217391304347826,
+        "f1_micro": 0.592391304347826,
+        "tie_recall": 0.14285714285714285,
+        "non_tie_accuracy": 0.7555555555555555,
+        "reverse_rate": 0.14814814814814814,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            56,
+            6,
+            6
+          ],
+          [
+            23,
+            7,
+            19
+          ],
+          [
+            14,
+            7,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.5322281967878282,
+          "spearman_rho": 0.6610891739970132
+        },
+        "discrete_kendall_tau_b": 0.5072672044174021,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.49398125164747897,
+          "continuous_kendall_tau_b": 0.39480079658444817,
+          "discrete_spearman": 0.4526997393503648,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [
+              "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+            ],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.8944271909999159,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5659164584181103,
+              "continuous_kendall_tau_b": 0.5144434027684821,
+              "discrete_spearman": 0.6494596519462721,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.07273929674533079,
+              "continuous_kendall_tau_b": 0.390199486285854,
+              "discrete_spearman": 0.24285714285714285,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": -0.25617376914899,
+              "continuous_kendall_tau_b": -0.2477393699381441,
+              "discrete_spearman": -0.20412414523193148,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.4935665654655454,
+              "continuous_kendall_tau_b": 0.6369991687429494,
+              "discrete_spearman": 0.6324891437857275,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": -0.15228622596829317,
+              "continuous_kendall_tau_b": 0.0,
+              "discrete_spearman": -0.13887301496588272,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.408248290463863,
+              "continuous_kendall_tau_b": -0.6324555320336759,
+              "discrete_spearman": -0.25,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": -0.010101010101010102,
+              "continuous_kendall_tau_b": -0.02868876552746235,
+              "discrete_spearman": -0.03968253968253968,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.3333333333333333,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9082951062292475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5477225575051661,
+              "continuous_kendall_tau_b": 0.6817671416214415,
+              "discrete_spearman": 0.681385143869247,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.5393598899705937,
+              "continuous_kendall_tau_b": 0.6972166887783964,
+              "discrete_spearman": 0.6110100926607787,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.5698028822981898,
+              "continuous_kendall_tau_b": 0.7190924955066748,
+              "discrete_spearman": 0.6639400022069858,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.7216878364870323,
+              "continuous_kendall_tau_b": 0.5323152239464994,
+              "discrete_spearman": 0.7496295381349674,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.8366600265340756,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": 0.6324555320336759,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": null,
+              "continuous_kendall_tau_b": -0.253546276418555,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "patenteval_rank_pair_tau_b",
+                "discrete_spearman"
+              ]
+            }
+          ]
+        }
+      },
+      "train_seconds": 5285.721588374989,
+      "peak_vram_bytes": 6262527488
+    },
+    {
+      "condition": "longformer_seed42_validation_best",
+      "model": "longformer",
+      "seed": 42,
+      "checkpoint": "validation_best",
+      "epoch": 10,
+      "role": "prespecified supplement",
+      "metrics": {
+        "accuracy": 0.592391304347826,
+        "f1_weighted": 0.553875236294896,
+        "patenteval_rank_pair_tau_b": 0.4745981597647717,
+        "discrete_spearman": 0.5543903324339339,
+        "f1_macro": 0.5217391304347826,
+        "f1_micro": 0.592391304347826,
+        "tie_recall": 0.14285714285714285,
+        "non_tie_accuracy": 0.7555555555555555,
+        "reverse_rate": 0.14814814814814814,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            56,
+            6,
+            6
+          ],
+          [
+            23,
+            7,
+            19
+          ],
+          [
+            14,
+            7,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.5322281967878282,
+          "spearman_rho": 0.6610891739970132
+        },
+        "discrete_kendall_tau_b": 0.5072672044174021,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.49398125164747897,
+          "continuous_kendall_tau_b": 0.39480079658444817,
+          "discrete_spearman": 0.4526997393503648,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [
+              "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+            ],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.8944271909999159,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5659164584181103,
+              "continuous_kendall_tau_b": 0.5144434027684821,
+              "discrete_spearman": 0.6494596519462721,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.07273929674533079,
+              "continuous_kendall_tau_b": 0.390199486285854,
+              "discrete_spearman": 0.24285714285714285,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": -0.25617376914899,
+              "continuous_kendall_tau_b": -0.2477393699381441,
+              "discrete_spearman": -0.20412414523193148,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.4935665654655454,
+              "continuous_kendall_tau_b": 0.6369991687429494,
+              "discrete_spearman": 0.6324891437857275,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": -0.15228622596829317,
+              "continuous_kendall_tau_b": 0.0,
+              "discrete_spearman": -0.13887301496588272,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.408248290463863,
+              "continuous_kendall_tau_b": -0.6324555320336759,
+              "discrete_spearman": -0.25,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": -0.010101010101010102,
+              "continuous_kendall_tau_b": -0.02868876552746235,
+              "discrete_spearman": -0.03968253968253968,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.3333333333333333,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9082951062292475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5477225575051661,
+              "continuous_kendall_tau_b": 0.6817671416214415,
+              "discrete_spearman": 0.681385143869247,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.5393598899705937,
+              "continuous_kendall_tau_b": 0.6972166887783964,
+              "discrete_spearman": 0.6110100926607787,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.5698028822981898,
+              "continuous_kendall_tau_b": 0.7190924955066748,
+              "discrete_spearman": 0.6639400022069858,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.7216878364870323,
+              "continuous_kendall_tau_b": 0.5323152239464994,
+              "discrete_spearman": 0.7496295381349674,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.8366600265340756,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": 0.6324555320336759,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": null,
+              "continuous_kendall_tau_b": -0.253546276418555,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "patenteval_rank_pair_tau_b",
+                "discrete_spearman"
+              ]
+            }
+          ]
+        }
+      },
+      "train_seconds": 5285.721588374989,
+      "peak_vram_bytes": 6262527488
+    },
+    {
+      "condition": "longformer_seed43_final",
+      "model": "longformer",
+      "seed": 43,
+      "checkpoint": "final",
+      "epoch": 10,
+      "role": "prespecified supplement",
+      "metrics": {
+        "accuracy": 0.5543478260869565,
+        "f1_weighted": 0.49231298575680366,
+        "patenteval_rank_pair_tau_b": 0.4084677015619249,
+        "discrete_spearman": 0.4784926059021543,
+        "f1_macro": 0.4534085617357541,
+        "f1_micro": 0.5543478260869565,
+        "tie_recall": 0.04081632653061224,
+        "non_tie_accuracy": 0.7407407407407407,
+        "reverse_rate": 0.2,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            54,
+            2,
+            12
+          ],
+          [
+            24,
+            2,
+            23
+          ],
+          [
+            15,
+            6,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.5154570657751962,
+          "spearman_rho": 0.6414174104194393
+        },
+        "discrete_kendall_tau_b": 0.4402696902721923,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.3423252556374624,
+          "continuous_kendall_tau_b": 0.2699501246525665,
+          "discrete_spearman": 0.3105774496402702,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5659164584181103,
+              "continuous_kendall_tau_b": 0.7262730392025629,
+              "discrete_spearman": 0.6494596519462721,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.2886751345948129,
+              "continuous_kendall_tau_b": 0.043355498476206,
+              "discrete_spearman": 0.24688535993934707,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.46291004988627577,
+              "continuous_kendall_tau_b": 0.4789627818804119,
+              "discrete_spearman": 0.5099862535755045,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": -0.7745966692414834,
+              "continuous_kendall_tau_b": -0.7071067811865476,
+              "discrete_spearman": -0.816496580927726,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.0,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.30151134457776363,
+              "continuous_kendall_tau_b": 0.5906719564707349,
+              "discrete_spearman": 0.31819805153394637,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": -0.025482359571881278,
+              "continuous_kendall_tau_b": 0.19611613513818402,
+              "discrete_spearman": 0.02439750182371333,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.408248290463863,
+              "continuous_kendall_tau_b": -0.31622776601683794,
+              "discrete_spearman": -0.25,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": -0.30151134457776363,
+              "continuous_kendall_tau_b": -0.14344382763731175,
+              "discrete_spearman": -0.3585685828003181,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.3333333333333333,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9082951062292475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.36514837167011077,
+              "continuous_kendall_tau_b": 0.4597964443493443,
+              "discrete_spearman": 0.454256762579498,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.5393598899705937,
+              "continuous_kendall_tau_b": 0.5776938278449569,
+              "discrete_spearman": 0.5962847939999439,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.75,
+              "continuous_kendall_tau_b": 0.5367450401216932,
+              "discrete_spearman": 0.7745966692414834,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.7190924955066748,
+              "discrete_spearman": 0.8783100656536799,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.7216878364870323,
+              "continuous_kendall_tau_b": 0.588348405414552,
+              "discrete_spearman": 0.7899054483189433,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": -0.5,
+              "continuous_kendall_tau_b": -0.7302967433402214,
+              "discrete_spearman": -0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": -0.2182178902359924,
+              "continuous_kendall_tau_b": -0.3380617018914066,
+              "discrete_spearman": 0.0,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "train_seconds": 5308.98793214903,
+      "peak_vram_bytes": 6262276608
+    },
+    {
+      "condition": "longformer_seed43_validation_best",
+      "model": "longformer",
+      "seed": 43,
+      "checkpoint": "validation_best",
+      "epoch": 10,
+      "role": "prespecified supplement",
+      "metrics": {
+        "accuracy": 0.5543478260869565,
+        "f1_weighted": 0.49231298575680366,
+        "patenteval_rank_pair_tau_b": 0.4084677015619249,
+        "discrete_spearman": 0.4784926059021543,
+        "f1_macro": 0.4534085617357541,
+        "f1_micro": 0.5543478260869565,
+        "tie_recall": 0.04081632653061224,
+        "non_tie_accuracy": 0.7407407407407407,
+        "reverse_rate": 0.2,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            54,
+            2,
+            12
+          ],
+          [
+            24,
+            2,
+            23
+          ],
+          [
+            15,
+            6,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.5154570657751962,
+          "spearman_rho": 0.6414174104194393
+        },
+        "discrete_kendall_tau_b": 0.4402696902721923,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.3423252556374624,
+          "continuous_kendall_tau_b": 0.2699501246525665,
+          "discrete_spearman": 0.3105774496402702,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5659164584181103,
+              "continuous_kendall_tau_b": 0.7262730392025629,
+              "discrete_spearman": 0.6494596519462721,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.2886751345948129,
+              "continuous_kendall_tau_b": 0.043355498476206,
+              "discrete_spearman": 0.24688535993934707,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.46291004988627577,
+              "continuous_kendall_tau_b": 0.4789627818804119,
+              "discrete_spearman": 0.5099862535755045,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": -0.7745966692414834,
+              "continuous_kendall_tau_b": -0.7071067811865476,
+              "discrete_spearman": -0.816496580927726,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.0,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.30151134457776363,
+              "continuous_kendall_tau_b": 0.5906719564707349,
+              "discrete_spearman": 0.31819805153394637,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": -0.025482359571881278,
+              "continuous_kendall_tau_b": 0.19611613513818402,
+              "discrete_spearman": 0.02439750182371333,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.408248290463863,
+              "continuous_kendall_tau_b": -0.31622776601683794,
+              "discrete_spearman": -0.25,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": -0.30151134457776363,
+              "continuous_kendall_tau_b": -0.14344382763731175,
+              "discrete_spearman": -0.3585685828003181,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.3333333333333333,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9082951062292475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.36514837167011077,
+              "continuous_kendall_tau_b": 0.4597964443493443,
+              "discrete_spearman": 0.454256762579498,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.5393598899705937,
+              "continuous_kendall_tau_b": 0.5776938278449569,
+              "discrete_spearman": 0.5962847939999439,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.75,
+              "continuous_kendall_tau_b": 0.5367450401216932,
+              "discrete_spearman": 0.7745966692414834,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.7190924955066748,
+              "discrete_spearman": 0.8783100656536799,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.7216878364870323,
+              "continuous_kendall_tau_b": 0.588348405414552,
+              "discrete_spearman": 0.7899054483189433,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": -0.5,
+              "continuous_kendall_tau_b": -0.7302967433402214,
+              "discrete_spearman": -0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": -0.2182178902359924,
+              "continuous_kendall_tau_b": -0.3380617018914066,
+              "discrete_spearman": 0.0,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "train_seconds": 5308.98793214903,
+      "peak_vram_bytes": 6262276608
+    },
+    {
+      "condition": "modernbert_seed42_final",
+      "model": "modernbert",
+      "seed": 42,
+      "checkpoint": "final",
+      "epoch": 10,
+      "role": "primary",
+      "metrics": {
+        "accuracy": 0.7391304347826086,
+        "f1_weighted": 0.6336020913593835,
+        "patenteval_rank_pair_tau_b": 0.7653308909791743,
+        "discrete_spearman": 0.8588909491554269,
+        "f1_macro": 0.5793670886075949,
+        "f1_micro": 0.7391304347826086,
+        "tie_recall": 0.02040816326530612,
+        "non_tie_accuracy": 1.0,
+        "reverse_rate": 0.0,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            24,
+            1,
+            24
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.8128165104252528,
+          "spearman_rho": 0.9379191312903861
+        },
+        "discrete_kendall_tau_b": 0.8112821432529991,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.7804525573768217,
+          "continuous_kendall_tau_b": 0.7602160864698062,
+          "discrete_spearman": 0.7797227387063717,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.727606875108999,
+              "continuous_kendall_tau_b": 0.8473185457363235,
+              "discrete_spearman": 0.8498365855987975,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.823754471047914,
+              "discrete_spearman": 0.6210590034081188,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.9258200997725515,
+              "continuous_kendall_tau_b": 0.7762500258061849,
+              "discrete_spearman": 0.9501461875826149,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.6030226891555273,
+              "continuous_kendall_tau_b": 0.8223080178318074,
+              "discrete_spearman": 0.734968415259167,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.816496580927726,
+              "continuous_kendall_tau_b": 0.6324555320336759,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": 0.9045340337332909,
+              "continuous_kendall_tau_b": 0.7745966692414834,
+              "discrete_spearman": 0.9128709291752768,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 1.0,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9810708435174292,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5916079783099616,
+              "continuous_kendall_tau_b": 0.8086075400626399,
+              "discrete_spearman": 0.7144345083117603,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.674199862463242,
+              "continuous_kendall_tau_b": 0.8366600265340756,
+              "discrete_spearman": 0.8437758422458372,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.8660254037844387,
+              "continuous_kendall_tau_b": 0.7844645405527361,
+              "discrete_spearman": 0.9660917830792959,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8451542547285166,
+              "discrete_spearman": 0.816496580927726,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "train_seconds": 5188.92070071795,
+      "peak_vram_bytes": 4225317376
+    },
+    {
+      "condition": "modernbert_seed42_validation_best",
+      "model": "modernbert",
+      "seed": 42,
+      "checkpoint": "validation_best",
+      "epoch": 10,
+      "role": "prespecified supplement",
+      "metrics": {
+        "accuracy": 0.7391304347826086,
+        "f1_weighted": 0.6336020913593835,
+        "patenteval_rank_pair_tau_b": 0.7653308909791743,
+        "discrete_spearman": 0.8588909491554269,
+        "f1_macro": 0.5793670886075949,
+        "f1_micro": 0.7391304347826086,
+        "tie_recall": 0.02040816326530612,
+        "non_tie_accuracy": 1.0,
+        "reverse_rate": 0.0,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            24,
+            1,
+            24
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.8128165104252528,
+          "spearman_rho": 0.9379191312903861
+        },
+        "discrete_kendall_tau_b": 0.8112821432529991,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.7804525573768217,
+          "continuous_kendall_tau_b": 0.7602160864698062,
+          "discrete_spearman": 0.7797227387063717,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.727606875108999,
+              "continuous_kendall_tau_b": 0.8473185457363235,
+              "discrete_spearman": 0.8498365855987975,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.823754471047914,
+              "discrete_spearman": 0.6210590034081188,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.9258200997725515,
+              "continuous_kendall_tau_b": 0.7762500258061849,
+              "discrete_spearman": 0.9501461875826149,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.6030226891555273,
+              "continuous_kendall_tau_b": 0.8223080178318074,
+              "discrete_spearman": 0.734968415259167,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.816496580927726,
+              "continuous_kendall_tau_b": 0.6324555320336759,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": 0.9045340337332909,
+              "continuous_kendall_tau_b": 0.7745966692414834,
+              "discrete_spearman": 0.9128709291752768,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 1.0,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9810708435174292,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5916079783099616,
+              "continuous_kendall_tau_b": 0.8086075400626399,
+              "discrete_spearman": 0.7144345083117603,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.674199862463242,
+              "continuous_kendall_tau_b": 0.8366600265340756,
+              "discrete_spearman": 0.8437758422458372,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.8660254037844387,
+              "continuous_kendall_tau_b": 0.7844645405527361,
+              "discrete_spearman": 0.9660917830792959,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8451542547285166,
+              "discrete_spearman": 0.816496580927726,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "train_seconds": 5188.92070071795,
+      "peak_vram_bytes": 4225317376
+    },
+    {
+      "condition": "modernbert_seed43_final",
+      "model": "modernbert",
+      "seed": 43,
+      "checkpoint": "final",
+      "epoch": 10,
+      "role": "prespecified supplement",
+      "metrics": {
+        "accuracy": 0.7336956521739131,
+        "f1_weighted": 0.6210387670047968,
+        "patenteval_rank_pair_tau_b": 0.7611827255205554,
+        "discrete_spearman": 0.8565800586832727,
+        "f1_macro": 0.5643364525176273,
+        "f1_micro": 0.7336956521739131,
+        "tie_recall": 0.0,
+        "non_tie_accuracy": 1.0,
+        "reverse_rate": 0.0,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            26,
+            0,
+            23
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.8101914638319713,
+          "spearman_rho": 0.9357812304793752
+        },
+        "discrete_kendall_tau_b": 0.8087267941116083,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.778258286336582,
+          "continuous_kendall_tau_b": 0.7559076781739714,
+          "discrete_spearman": 0.72287084647386,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.727606875108999,
+              "continuous_kendall_tau_b": 0.8473185457363235,
+              "discrete_spearman": 0.8286209352417955,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.823754471047914,
+              "discrete_spearman": 0.6789347398332045,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.9258200997725515,
+              "continuous_kendall_tau_b": 0.7762500258061849,
+              "discrete_spearman": 0.9501461875826149,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.6030226891555273,
+              "continuous_kendall_tau_b": 0.7759808055595929,
+              "discrete_spearman": 0.7071067811865475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.816496580927726,
+              "continuous_kendall_tau_b": 0.6324555320336759,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": 0.9045340337332909,
+              "continuous_kendall_tau_b": 0.7745966692414834,
+              "discrete_spearman": 0.9128709291752768,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 1.0,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9810708435174292,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5477225575051661,
+              "continuous_kendall_tau_b": 0.8086075400626399,
+              "discrete_spearman": 0.681385143869247,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.674199862463242,
+              "continuous_kendall_tau_b": 0.7968190728895957,
+              "discrete_spearman": 0.7784989441615229,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.8783100656536799,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.8660254037844387,
+              "continuous_kendall_tau_b": 0.7844645405527361,
+              "discrete_spearman": 0.9660917830792959,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8451542547285166,
+              "discrete_spearman": 0.816496580927726,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "train_seconds": 5239.402780650067,
+      "peak_vram_bytes": 4225055232
+    },
+    {
+      "condition": "modernbert_seed43_validation_best",
+      "model": "modernbert",
+      "seed": 43,
+      "checkpoint": "validation_best",
+      "epoch": 10,
+      "role": "prespecified supplement",
+      "metrics": {
+        "accuracy": 0.7336956521739131,
+        "f1_weighted": 0.6210387670047968,
+        "patenteval_rank_pair_tau_b": 0.7611827255205554,
+        "discrete_spearman": 0.8565800586832727,
+        "f1_macro": 0.5643364525176273,
+        "f1_micro": 0.7336956521739131,
+        "tie_recall": 0.0,
+        "non_tie_accuracy": 1.0,
+        "reverse_rate": 0.0,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            26,
+            0,
+            23
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.8101914638319713,
+          "spearman_rho": 0.9357812304793752
+        },
+        "discrete_kendall_tau_b": 0.8087267941116083,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.778258286336582,
+          "continuous_kendall_tau_b": 0.7559076781739714,
+          "discrete_spearman": 0.72287084647386,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.727606875108999,
+              "continuous_kendall_tau_b": 0.8473185457363235,
+              "discrete_spearman": 0.8286209352417955,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.823754471047914,
+              "discrete_spearman": 0.6789347398332045,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.9258200997725515,
+              "continuous_kendall_tau_b": 0.7762500258061849,
+              "discrete_spearman": 0.9501461875826149,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.6030226891555273,
+              "continuous_kendall_tau_b": 0.7759808055595929,
+              "discrete_spearman": 0.7071067811865475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.816496580927726,
+              "continuous_kendall_tau_b": 0.6324555320336759,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": 0.9045340337332909,
+              "continuous_kendall_tau_b": 0.7745966692414834,
+              "discrete_spearman": 0.9128709291752768,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 1.0,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9810708435174292,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5477225575051661,
+              "continuous_kendall_tau_b": 0.8086075400626399,
+              "discrete_spearman": 0.681385143869247,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.674199862463242,
+              "continuous_kendall_tau_b": 0.7968190728895957,
+              "discrete_spearman": 0.7784989441615229,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.8783100656536799,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.8660254037844387,
+              "continuous_kendall_tau_b": 0.7844645405527361,
+              "discrete_spearman": 0.9660917830792959,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8451542547285166,
+              "discrete_spearman": 0.816496580927726,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "train_seconds": 5239.402780650067,
+      "peak_vram_bytes": 4225055232
+    }
+  ],
+  "comparisons": {
+    "42": {
+      "schema_version": 1,
+      "difference_direction": "modernbert_minus_longformer",
+      "primary_metric_names": [
+        "accuracy",
+        "f1_weighted",
+        "patenteval_rank_pair_tau_b",
+        "discrete_spearman"
+      ],
+      "n": 184,
+      "n_gold": 20,
+      "longformer": {
+        "accuracy": 0.592391304347826,
+        "f1_weighted": 0.553875236294896,
+        "patenteval_rank_pair_tau_b": 0.4745981597647717,
+        "discrete_spearman": 0.5543903324339339,
+        "f1_macro": 0.5217391304347826,
+        "f1_micro": 0.592391304347826,
+        "tie_recall": 0.14285714285714285,
+        "non_tie_accuracy": 0.7555555555555555,
+        "reverse_rate": 0.14814814814814814,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            56,
+            6,
+            6
+          ],
+          [
+            23,
+            7,
+            19
+          ],
+          [
+            14,
+            7,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.5322281967878282,
+          "spearman_rho": 0.6610891739970132
+        },
+        "discrete_kendall_tau_b": 0.5072672044174021,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.49398125164747897,
+          "continuous_kendall_tau_b": 0.39480079658444817,
+          "discrete_spearman": 0.4526997393503648,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [
+              "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+            ],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.8944271909999159,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5659164584181103,
+              "continuous_kendall_tau_b": 0.5144434027684821,
+              "discrete_spearman": 0.6494596519462721,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.07273929674533079,
+              "continuous_kendall_tau_b": 0.390199486285854,
+              "discrete_spearman": 0.24285714285714285,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": -0.25617376914899,
+              "continuous_kendall_tau_b": -0.2477393699381441,
+              "discrete_spearman": -0.20412414523193148,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.4935665654655454,
+              "continuous_kendall_tau_b": 0.6369991687429494,
+              "discrete_spearman": 0.6324891437857275,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": -0.15228622596829317,
+              "continuous_kendall_tau_b": 0.0,
+              "discrete_spearman": -0.13887301496588272,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.408248290463863,
+              "continuous_kendall_tau_b": -0.6324555320336759,
+              "discrete_spearman": -0.25,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": -0.010101010101010102,
+              "continuous_kendall_tau_b": -0.02868876552746235,
+              "discrete_spearman": -0.03968253968253968,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.3333333333333333,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9082951062292475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5477225575051661,
+              "continuous_kendall_tau_b": 0.6817671416214415,
+              "discrete_spearman": 0.681385143869247,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.5393598899705937,
+              "continuous_kendall_tau_b": 0.6972166887783964,
+              "discrete_spearman": 0.6110100926607787,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.5698028822981898,
+              "continuous_kendall_tau_b": 0.7190924955066748,
+              "discrete_spearman": 0.6639400022069858,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.7216878364870323,
+              "continuous_kendall_tau_b": 0.5323152239464994,
+              "discrete_spearman": 0.7496295381349674,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.8366600265340756,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": 0.6324555320336759,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": null,
+              "continuous_kendall_tau_b": -0.253546276418555,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "patenteval_rank_pair_tau_b",
+                "discrete_spearman"
+              ]
+            }
+          ]
+        }
+      },
+      "modernbert": {
+        "accuracy": 0.7391304347826086,
+        "f1_weighted": 0.6336020913593835,
+        "patenteval_rank_pair_tau_b": 0.7653308909791743,
+        "discrete_spearman": 0.8588909491554269,
+        "f1_macro": 0.5793670886075949,
+        "f1_micro": 0.7391304347826086,
+        "tie_recall": 0.02040816326530612,
+        "non_tie_accuracy": 1.0,
+        "reverse_rate": 0.0,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            24,
+            1,
+            24
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.8128165104252528,
+          "spearman_rho": 0.9379191312903861
+        },
+        "discrete_kendall_tau_b": 0.8112821432529991,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.7804525573768217,
+          "continuous_kendall_tau_b": 0.7602160864698062,
+          "discrete_spearman": 0.7797227387063717,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.727606875108999,
+              "continuous_kendall_tau_b": 0.8473185457363235,
+              "discrete_spearman": 0.8498365855987975,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.823754471047914,
+              "discrete_spearman": 0.6210590034081188,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.9258200997725515,
+              "continuous_kendall_tau_b": 0.7762500258061849,
+              "discrete_spearman": 0.9501461875826149,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.6030226891555273,
+              "continuous_kendall_tau_b": 0.8223080178318074,
+              "discrete_spearman": 0.734968415259167,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.816496580927726,
+              "continuous_kendall_tau_b": 0.6324555320336759,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": 0.9045340337332909,
+              "continuous_kendall_tau_b": 0.7745966692414834,
+              "discrete_spearman": 0.9128709291752768,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 1.0,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9810708435174292,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5916079783099616,
+              "continuous_kendall_tau_b": 0.8086075400626399,
+              "discrete_spearman": 0.7144345083117603,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.674199862463242,
+              "continuous_kendall_tau_b": 0.8366600265340756,
+              "discrete_spearman": 0.8437758422458372,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.8660254037844387,
+              "continuous_kendall_tau_b": 0.7844645405527361,
+              "discrete_spearman": 0.9660917830792959,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8451542547285166,
+              "discrete_spearman": 0.816496580927726,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "difference": {
+        "accuracy": 0.1467391304347826,
+        "f1_weighted": 0.07972685506448751,
+        "patenteval_rank_pair_tau_b": 0.2907327312144026,
+        "discrete_spearman": 0.304500616721493,
+        "f1_macro": 0.0576279581728123,
+        "tie_recall": -0.12244897959183673,
+        "group_macro_patenteval_rank_pair_tau_b": 0.28647130572934276,
+        "group_macro_continuous_kendall_tau_b": 0.36541528988535804,
+        "group_macro_discrete_spearman": 0.32702299935600687
+      },
+      "bootstrap": {
+        "method": "paired whole-reference-group percentile bootstrap; recompute global metrics on every draw",
+        "unit": "gold_id",
+        "n_gold": 20,
+        "group_order": [
+          "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+          "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+          "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+          "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+          "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+          "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+          "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+          "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+          "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+          "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+          "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+          "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+          "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+          "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+          "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+          "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+          "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+          "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+          "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+          "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+        ],
+        "n_resamples": 10000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "minimum_valid_fraction": 0.95,
+        "draws_sha256": "823fd399c1c3b8cc29ce56abc35e92184d90bf8190ff3c0a6dd457fc0c38ed73",
+        "undefined_global_policy": "Metric-wise finite differences only; disclose undefined counts; do not replace by zero",
+        "multiple_testing_adjustment": "None; metric-wise intervals are descriptive and pointwise",
+        "metrics": {
+          "accuracy": {
+            "point_difference": 0.1467391304347826,
+            "ci95": [
+              0.05769230769230771,
+              0.25743181680131194
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "f1_weighted": {
+            "point_difference": 0.07972685506448751,
+            "ci95": [
+              -0.011298983512652213,
+              0.18965234609494425
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "interval_includes_zero",
+            "fraction_bootstrap_positive": 0.9576
+          },
+          "patenteval_rank_pair_tau_b": {
+            "point_difference": 0.2907327312144026,
+            "ci95": [
+              0.12861998673260508,
+              0.48699511403730034
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "discrete_spearman": {
+            "point_difference": 0.304500616721493,
+            "ci95": [
+              0.1351409509218555,
+              0.5153607368793569
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "f1_macro": {
+            "point_difference": 0.0576279581728123,
+            "ci95": [
+              -0.031557121991918284,
+              0.1519289817220845
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "interval_includes_zero",
+            "fraction_bootstrap_positive": 0.8957
+          },
+          "tie_recall": {
+            "point_difference": -0.12244897959183673,
+            "ci95": [
+              -0.34615384615384615,
+              0.01639344262295082
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "interval_includes_zero",
+            "fraction_bootstrap_positive": 0.0301
+          },
+          "group_macro_patenteval_rank_pair_tau_b": {
+            "point_difference": 0.28647130572934276,
+            "ci95": [
+              0.13764979827161886,
+              0.454450913300421
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "group_macro_continuous_kendall_tau_b": {
+            "point_difference": 0.36541528988535804,
+            "ci95": [
+              0.19328324566131785,
+              0.554575018439175
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "group_macro_discrete_spearman": {
+            "point_difference": 0.32702299935600687,
+            "ci95": [
+              0.1277969140798465,
+              0.535340016386494
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 0.9997
+          }
+        }
+      },
+      "source_check": {
+        "status": "passed",
+        "source_file": "/data/quality_test.json",
+        "source_sha256": "10e68f47f2f4329f92c6d60936d23f4eaab6b852150b8fa1b039d8d348868039",
+        "n_original_test": 184,
+        "original_order_preserved": true,
+        "same_row_labels_and_gold_ids": true,
+        "matched_fields": [
+          "comparison_id",
+          "source_split",
+          "source_row_index",
+          "gold_id",
+          "label"
+        ],
+        "raw_text_fields_verified_when_present": [
+          "gold_claim",
+          "A",
+          "B"
+        ]
+      },
+      "limitations": [
+        "The original split shares all 20 reference groups and candidate content with training; this is not unseen-reference generalization.",
+        "Whole-group resampling reflects the 20 observed references at a fixed training seed, not variation across training seeds.",
+        "Compare seed42 final with seed42 final; seed43 is a separate matched sensitivity comparison; do not pool them into 368 independent rows.",
+        "Validation-best checkpoints are supplementary; this function never selects a model, seed or epoch using test metrics.",
+        "Equal-weight group-macro correlations are diagnostics; global primary metrics are recomputed after resampling all selected rows."
+      ]
+    },
+    "43": {
+      "schema_version": 1,
+      "difference_direction": "modernbert_minus_longformer",
+      "primary_metric_names": [
+        "accuracy",
+        "f1_weighted",
+        "patenteval_rank_pair_tau_b",
+        "discrete_spearman"
+      ],
+      "n": 184,
+      "n_gold": 20,
+      "longformer": {
+        "accuracy": 0.5543478260869565,
+        "f1_weighted": 0.49231298575680366,
+        "patenteval_rank_pair_tau_b": 0.4084677015619249,
+        "discrete_spearman": 0.4784926059021543,
+        "f1_macro": 0.4534085617357541,
+        "f1_micro": 0.5543478260869565,
+        "tie_recall": 0.04081632653061224,
+        "non_tie_accuracy": 0.7407407407407407,
+        "reverse_rate": 0.2,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            54,
+            2,
+            12
+          ],
+          [
+            24,
+            2,
+            23
+          ],
+          [
+            15,
+            6,
+            46
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.5154570657751962,
+          "spearman_rho": 0.6414174104194393
+        },
+        "discrete_kendall_tau_b": 0.4402696902721923,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.3423252556374624,
+          "continuous_kendall_tau_b": 0.2699501246525665,
+          "discrete_spearman": 0.3105774496402702,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5659164584181103,
+              "continuous_kendall_tau_b": 0.7262730392025629,
+              "discrete_spearman": 0.6494596519462721,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.2886751345948129,
+              "continuous_kendall_tau_b": 0.043355498476206,
+              "discrete_spearman": 0.24688535993934707,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.46291004988627577,
+              "continuous_kendall_tau_b": 0.4789627818804119,
+              "discrete_spearman": 0.5099862535755045,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": -0.7745966692414834,
+              "continuous_kendall_tau_b": -0.7071067811865476,
+              "discrete_spearman": -0.816496580927726,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.0,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.30151134457776363,
+              "continuous_kendall_tau_b": 0.5906719564707349,
+              "discrete_spearman": 0.31819805153394637,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": -0.025482359571881278,
+              "continuous_kendall_tau_b": 0.19611613513818402,
+              "discrete_spearman": 0.02439750182371333,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.408248290463863,
+              "continuous_kendall_tau_b": -0.31622776601683794,
+              "discrete_spearman": -0.25,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": -0.30151134457776363,
+              "continuous_kendall_tau_b": -0.14344382763731175,
+              "discrete_spearman": -0.3585685828003181,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.3333333333333333,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9082951062292475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.36514837167011077,
+              "continuous_kendall_tau_b": 0.4597964443493443,
+              "discrete_spearman": 0.454256762579498,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.5393598899705937,
+              "continuous_kendall_tau_b": 0.5776938278449569,
+              "discrete_spearman": 0.5962847939999439,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.75,
+              "continuous_kendall_tau_b": 0.5367450401216932,
+              "discrete_spearman": 0.7745966692414834,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.7190924955066748,
+              "discrete_spearman": 0.8783100656536799,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.7216878364870323,
+              "continuous_kendall_tau_b": 0.588348405414552,
+              "discrete_spearman": 0.7899054483189433,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": -0.5,
+              "continuous_kendall_tau_b": -0.7302967433402214,
+              "discrete_spearman": -0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": -0.2182178902359924,
+              "continuous_kendall_tau_b": -0.3380617018914066,
+              "discrete_spearman": 0.0,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "modernbert": {
+        "accuracy": 0.7336956521739131,
+        "f1_weighted": 0.6210387670047968,
+        "patenteval_rank_pair_tau_b": 0.7611827255205554,
+        "discrete_spearman": 0.8565800586832727,
+        "f1_macro": 0.5643364525176273,
+        "f1_micro": 0.7336956521739131,
+        "tie_recall": 0.0,
+        "non_tie_accuracy": 1.0,
+        "reverse_rate": 0.0,
+        "n": 184,
+        "n_gold": 20,
+        "confusion_matrix": [
+          [
+            68,
+            0,
+            0
+          ],
+          [
+            26,
+            0,
+            23
+          ],
+          [
+            0,
+            0,
+            67
+          ]
+        ],
+        "label_order": [
+          -1,
+          0,
+          1
+        ],
+        "epsilon": 0.0001,
+        "tie_policy": "strict abs(delta) < 1e-4; positive delta means A is better",
+        "aggregation": "global original rows; original duplicate identities retained",
+        "rank_pair_encoding": {
+          "1": [
+            1,
+            2
+          ],
+          "-1": [
+            2,
+            1
+          ],
+          "0": [
+            1,
+            1
+          ]
+        },
+        "reference_implementation": "https://github.com/ZoeYou/PatentEval/blob/d96b52c41fa4357e38c15ad334b84ea13008a25c/src/kendall_tau.py#L427",
+        "continuous": {
+          "kendall_tau_b": 0.8101914638319713,
+          "spearman_rho": 0.9357812304793752
+        },
+        "discrete_kendall_tau_b": 0.8087267941116083,
+        "group_macro": {
+          "n_gold": 20,
+          "patenteval_rank_pair_tau_b": 0.778258286336582,
+          "continuous_kendall_tau_b": 0.7559076781739714,
+          "discrete_spearman": 0.72287084647386,
+          "group_order": [
+            "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+            "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+            "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+            "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+            "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+            "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+            "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+            "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+            "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+            "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+            "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+            "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+            "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+            "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+            "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+            "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+            "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+            "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+            "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+            "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+          ],
+          "undefined_policy": "Keep every gold equally weighted; undefined per-gold diagnostics contribute zero",
+          "zero_assigned_gold_ids": {
+            "patenteval_rank_pair_tau_b": [],
+            "continuous_kendall_tau_b": [
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b"
+            ],
+            "discrete_spearman": [
+              "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391"
+            ]
+          },
+          "per_gold": [
+            {
+              "gold_id": "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+              "n": 12,
+              "patenteval_rank_pair_tau_b": 0.8451542547285166,
+              "continuous_kendall_tau_b": 0.816496580927726,
+              "discrete_spearman": 0.9086882225022429,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.727606875108999,
+              "continuous_kendall_tau_b": 0.8473185457363235,
+              "discrete_spearman": 0.8286209352417955,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.823754471047914,
+              "discrete_spearman": 0.6789347398332045,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.9258200997725515,
+              "continuous_kendall_tau_b": 0.7762500258061849,
+              "discrete_spearman": 0.9501461875826149,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7071067811865476,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+              "n": 4,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8164965809277261,
+              "discrete_spearman": 0.5773502691896258,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+              "n": 15,
+              "patenteval_rank_pair_tau_b": 0.6030226891555273,
+              "continuous_kendall_tau_b": 0.7759808055595929,
+              "discrete_spearman": 0.7071067811865475,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.9258200997725514,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+              "n": 5,
+              "patenteval_rank_pair_tau_b": 0.816496580927726,
+              "continuous_kendall_tau_b": 0.6324555320336759,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": null,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "continuous_kendall_tau_b",
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+              "n": 10,
+              "patenteval_rank_pair_tau_b": 0.9045340337332909,
+              "continuous_kendall_tau_b": 0.7745966692414834,
+              "discrete_spearman": 0.9128709291752768,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+              "n": 3,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 1.0,
+              "discrete_spearman": 0.8660254037844387,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+              "n": 11,
+              "patenteval_rank_pair_tau_b": 0.9128709291752768,
+              "continuous_kendall_tau_b": 0.7507571935295484,
+              "discrete_spearman": 0.9810708435174292,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+              "n": 13,
+              "patenteval_rank_pair_tau_b": 0.5477225575051661,
+              "continuous_kendall_tau_b": 0.8086075400626399,
+              "discrete_spearman": 0.681385143869247,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+              "n": 16,
+              "patenteval_rank_pair_tau_b": 0.674199862463242,
+              "continuous_kendall_tau_b": 0.7968190728895957,
+              "discrete_spearman": 0.7784989441615229,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 1.0,
+              "continuous_kendall_tau_b": 0.7319250547113999,
+              "discrete_spearman": 1.0,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+              "n": 9,
+              "patenteval_rank_pair_tau_b": 0.7977240352174656,
+              "continuous_kendall_tau_b": 0.8498365855987974,
+              "discrete_spearman": 0.8783100656536799,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+              "n": 14,
+              "patenteval_rank_pair_tau_b": 0.8660254037844387,
+              "continuous_kendall_tau_b": 0.7844645405527361,
+              "discrete_spearman": 0.9660917830792959,
+              "zero_assigned_metrics": []
+            },
+            {
+              "gold_id": "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+              "n": 6,
+              "patenteval_rank_pair_tau_b": 0.7071067811865476,
+              "continuous_kendall_tau_b": 0.7302967433402214,
+              "discrete_spearman": null,
+              "zero_assigned_metrics": [
+                "discrete_spearman"
+              ]
+            },
+            {
+              "gold_id": "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42",
+              "n": 8,
+              "patenteval_rank_pair_tau_b": 0.5773502691896258,
+              "continuous_kendall_tau_b": 0.8451542547285166,
+              "discrete_spearman": 0.816496580927726,
+              "zero_assigned_metrics": []
+            }
+          ]
+        }
+      },
+      "difference": {
+        "accuracy": 0.17934782608695654,
+        "f1_weighted": 0.1287257812479931,
+        "patenteval_rank_pair_tau_b": 0.3527150239586305,
+        "discrete_spearman": 0.3780874527811184,
+        "f1_macro": 0.1109278907818732,
+        "tie_recall": -0.04081632653061224,
+        "group_macro_patenteval_rank_pair_tau_b": 0.4359330306991196,
+        "group_macro_continuous_kendall_tau_b": 0.4859575535214049,
+        "group_macro_discrete_spearman": 0.41229339683358984
+      },
+      "bootstrap": {
+        "method": "paired whole-reference-group percentile bootstrap; recompute global metrics on every draw",
+        "unit": "gold_id",
+        "n_gold": 20,
+        "group_order": [
+          "059dad1197243540408287e79eb16e5e62b2823a01dd89ff0079bae402761901",
+          "05f18d4729cbfd273fb8b782dbb22f5974b99fb38df0ca0e6c66f5a825c2bad9",
+          "10ffb652b38aabd1d162f2db84039bb4d9c38b53d1a8fb7325dd9db7ff10e480",
+          "1471f5fe8c9095831f3038cd6f4c146cc4ce863852b55bfa1e5a3b2c8d2f515f",
+          "21c841bb2d7e3b4d5df2414c6a66c3ef621e2d08f71a26cfea2cacabd05d15fb",
+          "2b27789f92b87823b4ff5bc990fc4a66b949232df03fe166942667ec8ccbea25",
+          "2dcda1661476f43c8ac63758d8ad3f6c366c9347e4dae7c9f611175fc0d93385",
+          "31e86896a3e1dacffd37a08c247c569c49202a74c2a25e3dd6a6e5a1657a82b4",
+          "4886f845519a1a679277ab4096029c29723d41816ae19f064fcc4768677d6fe4",
+          "50f6b90089cac472de93f51e2fb8e444d55916bdfd87a0fdc1002bec696db17b",
+          "54a396b27cd902258e2800c861f788d9caabcfa8fe10f2d76b657f9ff7f73495",
+          "7e6e85c39b919e069d277901db07dae6b2b1ad179b070478584e4b306fc5e585",
+          "941c8ec35062b5236f7df3c12e934db1db8348ebbb2576201263d87fc9a40363",
+          "9b706352a16fac1623b12bb10e4f8e8711895ce3f690a0797504f92c4dcd11ed",
+          "9e638f3acdb4d83cdd1712de70e5b9970c371fc43f9c044ac8e191c65b332214",
+          "a3d37ad64be170e86b6f2df626c94bde238279c6c8f5a9d1caa67bec990b7a11",
+          "a440f7a36ee5a933375d19010b7acbee78a36467d1d7f9435abbd23ef87b324e",
+          "dd3082b25da2c7e7b731cad6e49232bdfb61eb9fd657a80cb8b2182a67c24830",
+          "edab7fe132eaa8db04291134082c67e655e0852269823af25ba279e15811d391",
+          "f39d1b0662e16caedbdc12dc5d374c788f7ac1effaaca5c2771563d27ae16a42"
+        ],
+        "n_resamples": 10000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "minimum_valid_fraction": 0.95,
+        "draws_sha256": "823fd399c1c3b8cc29ce56abc35e92184d90bf8190ff3c0a6dd457fc0c38ed73",
+        "undefined_global_policy": "Metric-wise finite differences only; disclose undefined counts; do not replace by zero",
+        "multiple_testing_adjustment": "None; metric-wise intervals are descriptive and pointwise",
+        "metrics": {
+          "accuracy": {
+            "point_difference": 0.17934782608695654,
+            "ci95": [
+              0.10416666666666663,
+              0.27742028715271305
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "f1_weighted": {
+            "point_difference": 0.1287257812479931,
+            "ci95": [
+              0.06142860086767602,
+              0.21970764464715212
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "patenteval_rank_pair_tau_b": {
+            "point_difference": 0.3527150239586305,
+            "ci95": [
+              0.20990648807763684,
+              0.5373817790323219
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "discrete_spearman": {
+            "point_difference": 0.3780874527811184,
+            "ci95": [
+              0.2236684327833588,
+              0.5771055580691866
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "f1_macro": {
+            "point_difference": 0.1109278907818732,
+            "ci95": [
+              0.05072372713557101,
+              0.1883748495175428
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 0.9999
+          },
+          "tie_recall": {
+            "point_difference": -0.04081632653061224,
+            "ci95": [
+              -0.13793103448275862,
+              0.0
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "interval_includes_zero",
+            "fraction_bootstrap_positive": 0.0
+          },
+          "group_macro_patenteval_rank_pair_tau_b": {
+            "point_difference": 0.4359330306991196,
+            "ci95": [
+              0.24471176689419039,
+              0.6603928160636111
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "group_macro_continuous_kendall_tau_b": {
+            "point_difference": 0.4859575535214049,
+            "ci95": [
+              0.2912559178249275,
+              0.6999561161824195
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          },
+          "group_macro_discrete_spearman": {
+            "point_difference": 0.41229339683358984,
+            "ci95": [
+              0.2230990807446614,
+              0.636457372739951
+            ],
+            "valid_resamples": 10000,
+            "undefined_resamples": 0,
+            "valid_fraction": 1.0,
+            "eligible_for_directional_interpretation": true,
+            "interpretation": "positive_in_this_fixed_seed_comparison",
+            "fraction_bootstrap_positive": 1.0
+          }
+        }
+      },
+      "source_check": {
+        "status": "passed",
+        "source_file": "/data/quality_test.json",
+        "source_sha256": "10e68f47f2f4329f92c6d60936d23f4eaab6b852150b8fa1b039d8d348868039",
+        "n_original_test": 184,
+        "original_order_preserved": true,
+        "same_row_labels_and_gold_ids": true,
+        "matched_fields": [
+          "comparison_id",
+          "source_split",
+          "source_row_index",
+          "gold_id",
+          "label"
+        ],
+        "raw_text_fields_verified_when_present": [
+          "gold_claim",
+          "A",
+          "B"
+        ]
+      },
+      "limitations": [
+        "The original split shares all 20 reference groups and candidate content with training; this is not unseen-reference generalization.",
+        "Whole-group resampling reflects the 20 observed references at a fixed training seed, not variation across training seeds.",
+        "Compare seed42 final with seed42 final; seed43 is a separate matched sensitivity comparison; do not pool them into 368 independent rows.",
+        "Validation-best checkpoints are supplementary; this function never selects a model, seed or epoch using test metrics.",
+        "Equal-weight group-macro correlations are diagnostics; global primary metrics are recomputed after resampling all selected rows."
+      ]
+    }
+  },
+  "preflight": {
+    "status": "passed",
+    "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+    "precision": "float32",
+    "batch_comparisons": 4,
+    "batch_sequences": 8,
+    "attention_implementation": "sdpa",
+    "reference_compile": false,
+    "longest_pair_tokens": 2046,
+    "padded_tokens": 2048,
+    "elapsed_seconds": 3.0320177590474486,
+    "peak_vram_bytes": 3045804544,
+    "gradient_checkpointing": true,
+    "gpu": "Tesla V100-SXM2-32GB",
+    "torch": "2.7.1+cu126",
+    "parameter_dtypes": [
+      "torch.float32"
+    ],
+    "trainable_parameters": 149605633,
+    "encoder_nonzero_gradient": true,
+    "new_pooler_nonzero_gradient": true,
+    "head_initialization": "pooler normal(0,.02)/zero; fc torch Linear defaults",
+    "save_reload_max_abs_error": 0.0,
+    "tokenization_sha256": "a07a4883c7bd03454622a56bfa07b783fb18ddd255c2fa9d870161dbd350e978",
+    "backend_fallbacks": []
+  },
+  "summaries": {
+    "42": "Accuracy、Weighted F1、PatentEval rank-pair τ-b、離散 Spearman ρ點估計提高；Accuracy、PatentEval rank-pair τ-b、離散 Spearman ρ群組bootstrap區間全高於0；Weighted F1尚無明確方向證據（區間含0或有效抽樣不足）。",
+    "43": "Accuracy、Weighted F1、PatentEval rank-pair τ-b、離散 Spearman ρ點估計提高；Accuracy、Weighted F1、PatentEval rank-pair τ-b、離散 Spearman ρ群組bootstrap區間全高於0。"
+  },
+  "longformer_replay": {
+    "status": "passed",
+    "score_absolute_tolerance": 1e-06,
+    "precision": "float32",
+    "model_eval": true,
+    "threshold": 0.0001,
+    "tie_policy": "strict abs(delta)<epsilon",
+    "torch": "2.7.1+cu126",
+    "transformers": "4.50.3",
+    "checkpoints": [
+      {
+        "seed": 42,
+        "checkpoint": "final",
+        "weights_sha256": "bc39e29256dad8f4d0582a07e135d16c5922962eca11f611bce0a12b16789c95",
+        "n": 184,
+        "maximum_absolute_score_difference": 0.0,
+        "class_predictions_identical": true,
+        "passed": true
+      },
+      {
+        "seed": 42,
+        "checkpoint": "validation_best",
+        "weights_sha256": "bc39e29256dad8f4d0582a07e135d16c5922962eca11f611bce0a12b16789c95",
+        "n": 184,
+        "maximum_absolute_score_difference": 0.0,
+        "class_predictions_identical": true,
+        "passed": true
+      },
+      {
+        "seed": 43,
+        "checkpoint": "final",
+        "weights_sha256": "6f55201127a5f63170d80d743821685b80b9e6038a92528102bd5e8b0d67dba3",
+        "n": 184,
+        "maximum_absolute_score_difference": 0.0,
+        "class_predictions_identical": true,
+        "passed": true
+      },
+      {
+        "seed": 43,
+        "checkpoint": "validation_best",
+        "weights_sha256": "6f55201127a5f63170d80d743821685b80b9e6038a92528102bd5e8b0d67dba3",
+        "n": 184,
+        "maximum_absolute_score_difference": 0.0,
+        "class_predictions_identical": true,
+        "passed": true
+      }
+    ],
+    "unique_weight_sets_replayed": 2,
+    "elapsed_seconds": 23.95519280107692,
+    "scope": "Inference compatibility only; original Longformer training used Transformers 4.46.2; ModernBERT uses 4.50.3"
+  },
+  "no_test_set_tuning": true,
+  "limitations": [
+    "original public split has content overlap",
+    "only two seeds and 20 references",
+    "different native tokenizers and pooler initialization",
+    "Longformer training SDK 4.46.2 versus ModernBERT 4.50.3; inference replay passed",
+    "Quality English only"
+  ],
+  "evaluation_source_sha256": {
+    "report.py": "a7459c4cd42ad104978c4723add9d2373e85c4b24273674dd4dcbd71ad8d4acf",
+    "compare_metrics.py": "6c1eb1825d2715d5332e0a165d805394b39c3b2454205bf5fac18a6165b05be4"
+  }
+}

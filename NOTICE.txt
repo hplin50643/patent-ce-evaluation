@@ -24,3 +24,12 @@ BERTScore model: roberta-large, revision722cf37b1afa9454edce342e7895e588b6ff1d59
 PatClaimEval model: lj408/PatClaimEval-Quality,
 revisionc959e676f7eb61e32b0f8d9c4cc7d72a4aeb94d5.
 Model weights are not included; consult their original model cards for terms and provenance.
+
+The Longformer comparison includes a copy of the original inference implementation
+from the PatClaimEval-Quality revision above. Both copies, author_modeling.py
+and author_longformer.py, retain the upstream CC BY-NC 4.0 terms.
+Source: https://huggingface.co/lj408/PatClaimEval-Quality/blob/c959e676f7eb61e32b0f8d9c4cc7d72a4aeb94d5/modeling_contrastive.py
+
+The comparison initializes ModernBERT from answerdotai/ModernBERT-base,
+revision 8949b909ec900327062f0ebf497f51aef5e6f0c8.
+Model license: Apache 2.0. Source: https://huggingface.co/answerdotai/ModernBERT-base

@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "score_absolute_tolerance": 1e-06,
+  "precision": "float32",
+  "model_eval": true,
+  "threshold": 0.0001,
+  "tie_policy": "strict abs(delta)<epsilon",
+  "torch": "2.7.1+cu126",
+  "transformers": "4.50.3",
+  "checkpoints": [
+    {
+      "seed": 42,
+      "checkpoint": "final",
+      "weights_sha256": "bc39e29256dad8f4d0582a07e135d16c5922962eca11f611bce0a12b16789c95",
+      "n": 184,
+      "maximum_absolute_score_difference": 0.0,
+      "class_predictions_identical": true,
+      "passed": true
+    },
+    {
+      "seed": 42,
+      "checkpoint": "validation_best",
+      "weights_sha256": "bc39e29256dad8f4d0582a07e135d16c5922962eca11f611bce0a12b16789c95",
+      "n": 184,
+      "maximum_absolute_score_difference": 0.0,
+      "class_predictions_identical": true,
+      "passed": true
+    },
+    {
+      "seed": 43,
+      "checkpoint": "final",
+      "weights_sha256": "6f55201127a5f63170d80d743821685b80b9e6038a92528102bd5e8b0d67dba3",
+      "n": 184,
+      "maximum_absolute_score_difference": 0.0,
+      "class_predictions_identical": true,
+      "passed": true
+    },
+    {
+      "seed": 43,
+      "checkpoint": "validation_best",
+      "weights_sha256": "6f55201127a5f63170d80d743821685b80b9e6038a92528102bd5e8b0d67dba3",
+      "n": 184,
+      "maximum_absolute_score_difference": 0.0,
+      "class_predictions_identical": true,
+      "passed": true
+    }
+  ],
+  "unique_weight_sets_replayed": 2,
+  "elapsed_seconds": 23.95519280107692,
+  "scope": "Inference compatibility only; original Longformer training used Transformers 4.46.2; ModernBERT uses 4.50.3"
+}

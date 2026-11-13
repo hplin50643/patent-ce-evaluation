@@ -1,0 +1,45 @@
+{
+  "seed": 42,
+  "epoch": 10,
+  "fingerprint": "ea5088dba86731dd9499773e070d106a5000961edd506b3102ece044207da9e8",
+  "settings": {
+    "seeds": [
+      42,
+      43
+    ],
+    "primary_seed": 42,
+    "max_length": 4096,
+    "batch_size_comparisons": 4,
+    "epochs": 10,
+    "learning_rate": 5e-06,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "adam_epsilon": 1e-08,
+    "margin": 0.1,
+    "tie_tolerance": 0.01,
+    "scheduler": "none",
+    "warmup": 0,
+    "gradient_clipping": "none",
+    "precision": "float32",
+    "gradient_checkpointing": true,
+    "padding": "dynamic, multiple of 512",
+    "global_attention_mask": "ModernBERT native alternating local/global attention; no explicit global mask",
+    "primary_checkpoint": "final epoch 10",
+    "supplementary_checkpoint": "minimum validation loss, earliest epoch on exact tie",
+    "shuffle": "Python Random(seed + epoch).shuffle(original training indices)",
+    "head": "CLS -> Linear(768,768) -> tanh -> Linear(768,1) -> sigmoid; new pooler (ModernBERT has no native pretrained pooler)"
+  },
+  "attention_implementation": "sdpa",
+  "reference_compile": false,
+  "base_model": {
+    "model_id": "answerdotai/ModernBERT-base",
+    "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+    "attention_implementation": "sdpa",
+    "reference_compile": false
+  },
+  "selection": "minimum validation loss"
+}
